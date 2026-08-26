@@ -8,7 +8,11 @@ from the Q1 review discussion:
 2. `anchor_ablation`: compare zero-initialized and randomly initialized local
    residual heads, with and without the logit anchor penalty.
 3. `second_encoder`: validate the same lead-set aggregation with the frozen
-   HeartLLM ECG encoder instead of CLEAR.
+   HeartLLM ECG encoder instead of CLEAR.  The intended paired comparison is
+   `second-encoder-paired`, which keeps HeartLLM fixed and compares DeepSets
+   with the HiLAR/Final Direct residual head.  The earlier `second-encoder`
+   output is retained as an exploratory HeartLLM + attention-head run and
+   must not be used as the DeepSets-versus-HiLAR result.
 
 The campaign deliberately opens only `train` and `val` arrays.  It refuses
 feature roots containing a `test` component and records `formal_test_used:
