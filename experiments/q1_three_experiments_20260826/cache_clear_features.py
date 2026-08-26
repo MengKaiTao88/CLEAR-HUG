@@ -153,6 +153,9 @@ def main() -> None:
             )
             total = len(dataset)
             local_out = open_memmap(destination / "local.npy", (total, 15, 12, 768), np.float16)
+            # The auxiliary shared representation is computed per heartbeat
+            # below (B, 15, 768), so keep its on-disk shape aligned with the
+            # value actually written.
             shared_out = open_memmap(destination / "shared.npy", (total, 15, 768), np.float16)
             valid_out = open_memmap(destination / "valid.npy", (total, 15, 12), np.bool_)
             logits_out = open_memmap(destination / "baseline_logits.npy", (total, args.classes), np.float32)
