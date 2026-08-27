@@ -27,22 +27,29 @@ def open_memmap(path: Path, shape: tuple[int, ...], dtype) -> np.memmap:
 
 
 def to_grid(signals: torch.Tensor, channels: torch.Tensor, times: torch.Tensor):
-    """Map lead-major QRS tokens to (batch, 15 beats, 12 leads, 96 samples)."""
+    """Map the stored lead-major QRS stream to ``(B, 15, 12, 96)``.
+
+    ``*_data_in_times.npy`` stores a positive-window mask/time quantity, not
+    an ordinal heartbeat id.  In particular, its values are only ``1..7`` on
+    the development arrays.  Treating those values as heartbeat indices
+    collapses repeated windows onto the first seven beats and silently loses
+    most of the local evidence.  The QRS writer's stable layout is lead-major
+    (12 leads, then 15 windows per lead), so the only valid mapping is the
+    reshape/permute below; the metadata is used solely for the validity mask.
+    """
 
     batch, tokens, width = signals.shape
     if tokens != 180 or width != 96:
         raise RuntimeError(f"expected QRS shape (B,180,96), got {tuple(signals.shape)}")
-    lead = channels.to(torch.long) - 1
-    beat = times.to(torch.long) - 1
-    valid = (lead >= 0) & (lead < 12) & (beat >= 0) & (beat < 15)
-    flat = (beat.clamp(0, 14) * 12 + lead.clamp(0, 11)).to(torch.long)
-    grid = torch.zeros((batch, 180, width), dtype=signals.dtype, device=signals.device)
-    safe_signals = signals * valid.unsqueeze(-1).to(signals.dtype)
-    grid.scatter_(1, flat.unsqueeze(-1).expand(-1, -1, width), safe_signals)
-    grid = grid.reshape(batch, 15, 12, width)
-    valid_grid = torch.zeros((batch, 180), dtype=torch.bool, device=signals.device)
-    valid_grid.scatter_(1, flat, valid)
-    return grid, valid_grid.reshape(batch, 15, 12)
+    if channels.shape != (batch, tokens) or times.shape != (batch, tokens):
+        raise RuntimeError(
+            "channel/time metadata must have shape (B,180), "
+            f"got channels={tuple(channels.shape)}, times={tuple(times.shape)}"
+        )
+    # The persisted stream is lead-major: [lead0:15 windows, ..., lead11:15].
+    grid = signals.reshape(batch, 12, 15, width).permute(0, 2, 1, 3).contiguous()
+    valid = times.reshape(batch, 12, 15).permute(0, 2, 1).gt(0)
+    return grid, valid
 
 
 def encode_segments(encoder, grid: torch.Tensor, segment_batch: int) -> torch.Tensor:
@@ -101,6 +108,8 @@ def main() -> None:
         "classes": args.classes,
         "feature_shape": ["N", 15, 12, 32],
         "token_layout": "heartbeat x lead x HeartLLM local embedding",
+        "source_order": "lead-major (12 leads x 15 windows), reshaped then permuted",
+        "time_metadata_role": "positive-window validity mask; not heartbeat ordinal",
         "source_window_samples": 96,
         "normalization": "per heartbeat-lead window z-score",
         "splits": {},
