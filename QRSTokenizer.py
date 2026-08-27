@@ -352,7 +352,10 @@ class QRSTokenizer(nn.Module):
             # indices = np.linspace(0, 4999, 1000, dtype=int)
             # ecg_signal = ecg_signal[:, indices]
             
-            if ecg_signal.max() == 0:
+            # Missing-lead intervention inserts exact zeros.  A valid record can
+            # therefore have max()==0 when all observed samples are non-positive;
+            # only skip a record when every sample is actually zero.
+            if not np.any(ecg_signal):
                 continue
             qrs_inds,flag = self.qrs_detection(ecg_signal)
             if len(qrs_inds[0]) == 0:

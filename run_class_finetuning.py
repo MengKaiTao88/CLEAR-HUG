@@ -219,6 +219,31 @@ def get_args():
     parser.add_argument(
         "--split_ratio", default=1.0, type=float, help="train dataset split ratio"
     )
+    parser.add_argument(
+        "--screen_only",
+        action="store_true",
+        help="Validation screening: never construct or evaluate the test split.",
+    )
+    parser.add_argument(
+        "--screen_loss",
+        choices=("bce", "asl", "db", "asl_hierarchy"),
+        default="bce",
+    )
+    parser.add_argument("--asl_gamma_pos", type=float, default=0.0)
+    parser.add_argument("--asl_gamma_neg", type=float, default=4.0)
+    parser.add_argument("--asl_clip", type=float, default=0.05)
+    parser.add_argument("--hierarchy_matrix", default="", type=str)
+    parser.add_argument(
+        "--screen_select_metric",
+        choices=("roc_auc", "pr_auc"),
+        default="roc_auc",
+    )
+    parser.add_argument(
+        "--screen_patience",
+        type=int,
+        default=12,
+        help="Early-stop patience for validation-only screening; 0 disables it.",
+    )
     parser.add_argument("--dataset_dir", default="", help="dataset path")
     parser.add_argument(
         "--nb_classes", default=0, type=int, help="number of the classification types"
@@ -301,6 +326,17 @@ def get_models(args):
 
 
 def get_dataset(args):
+    if args.screen_only:
+        from utils.QRSDataset import ECGDatasetFinetune
+
+        train_dataset = ECGDatasetFinetune(
+            data_folder_path=args.dataset_dir,
+            stage="train",
+            split_ratio=args.split_ratio,
+            sampling_method=args.sampling_method,
+        )
+        val_dataset = ECGDatasetFinetune(data_folder_path=args.dataset_dir, stage="val")
+        return train_dataset, val_dataset, None, ["accuracy", "f1", "recall", "precision"]
     train_dataset, val_dataset, test_dataset = prepare_finetune_dataset(
         args.dataset_dir, args.split_ratio, args.sampling_method
     )
@@ -332,8 +368,9 @@ def main(args, ds_init):
 
     val_invalid_columns = utils.check_dataset_labels(dataset_val)
     print("val dataset has invalid columns: ", val_invalid_columns)
-    test_invalid_columns = utils.check_dataset_labels(dataset_test)
-    print("test dataset has invalid columns: ", test_invalid_columns)
+    if dataset_test is not None:
+        test_invalid_columns = utils.check_dataset_labels(dataset_test)
+        print("test dataset has invalid columns: ", test_invalid_columns)
 
     if args.disable_eval_during_finetuning:
         dataset_val = None
@@ -372,7 +409,11 @@ def main(args, ds_init):
                 )
         else:
             sampler_val = torch.utils.data.SequentialSampler(dataset_val)
-            sampler_test = torch.utils.data.SequentialSampler(dataset_test)
+            sampler_test = (
+                torch.utils.data.SequentialSampler(dataset_test)
+                if dataset_test is not None
+                else None
+            )
     else:
         sampler_train = torch.utils.data.RandomSampler(dataset_train)
         sampler_val = torch.utils.data.SequentialSampler(dataset_val)
@@ -410,7 +451,9 @@ def main(args, ds_init):
             pin_memory=args.pin_mem,
             drop_last=False,
         )
-        if type(dataset_test) == list:
+        if dataset_test is None:
+            data_loader_test = None
+        elif type(dataset_test) == list:
             data_loader_test = [
                 torch.utils.data.DataLoader(
                     dataset,
@@ -470,7 +513,10 @@ def main(args, ds_init):
     if args.trainable == "linear":
         freeze_except_prefix(model, "mlp_head")
     elif args.trainable == "adapter":
-        freeze_specific_layers(model, ["adapter", "mlp_head"])
+        freeze_specific_layers(
+            model,
+            ["adapter", "mlp_head", "c_classifier", "v_classifier", "gate_logits"],
+        )
     elif args.trainable == "moe":
         freeze_specific_layers(model, ["moe", "mlp_head","weight_sum"])
     elif args.trainable == "all":
@@ -580,9 +626,31 @@ def main(args, ds_init):
     )
 
     if args.is_binary == True:
-        criterion = torch.nn.BCEWithLogitsLoss()
+        if args.screen_loss == "bce":
+            criterion = torch.nn.BCEWithLogitsLoss()
+        else:
+            from phase1_losses import (
+                AsymmetricLoss,
+                DistributionBalancedLoss,
+                HierarchicalSubLoss,
+            )
+
+            if args.screen_loss in ("asl", "asl_hierarchy"):
+                criterion = AsymmetricLoss(
+                    gamma_pos=args.asl_gamma_pos,
+                    gamma_neg=args.asl_gamma_neg,
+                    clip=args.asl_clip,
+                )
+            else:
+                criterion = DistributionBalancedLoss(dataset_train.labels)
+            if args.screen_loss == "asl_hierarchy":
+                if not args.hierarchy_matrix:
+                    raise ValueError("--hierarchy_matrix is required for asl_hierarchy")
+                hierarchy = torch.from_numpy(np.load(args.hierarchy_matrix)).float()
+                criterion = HierarchicalSubLoss(criterion, hierarchy)
     else:
         criterion = torch.nn.CrossEntropyLoss()
+    criterion = criterion.to(device)
     print("criterion = %s" % str(criterion))
 
     utils.auto_load_model(
@@ -622,6 +690,7 @@ def main(args, ds_init):
     print(f"Start training for {args.epochs} epochs")
     start_time = time.time()
     max_auc = 0.0
+    epochs_without_improvement = 0
     for epoch in range(args.start_epoch, args.epochs + 1):
         if args.distributed:
             data_loader_train.sampler.set_epoch(epoch - 1)
@@ -678,8 +747,10 @@ def main(args, ds_init):
                 f"AUC of the network on the {len(dataset_val)} val ECG: {val_stats['roc_auc']*100:.2f}%"
             )
 
-            if max_auc < val_stats["roc_auc"]:
-                max_auc = val_stats["roc_auc"]
+            selection_value = val_stats[args.screen_select_metric]
+            if max_auc < selection_value:
+                max_auc = selection_value
+                epochs_without_improvement = 0
                 if args.output_dir and args.save_ckpt:
                     utils.save_model(
                         args=args,
@@ -690,8 +761,12 @@ def main(args, ds_init):
                         epoch="best",
                         model_ema=model_ema,
                     )
+            else:
+                epochs_without_improvement += 1
 
-            print(f"Max auc val: {max_auc*100:.2f}%")
+            print(
+                f"Max {args.screen_select_metric} val: {max_auc*100:.2f}%"
+            )
             if log_writer is not None:
                 for key, value in val_stats.items():
                     if key == "accuracy":
@@ -732,6 +807,17 @@ def main(args, ds_init):
                 os.path.join(args.output_dir, "log.txt"), mode="a", encoding="utf-8"
             ) as f:
                 f.write(json.dumps(log_stats) + "\n")
+        if (
+            args.screen_only
+            and args.screen_patience > 0
+            and epochs_without_improvement >= args.screen_patience
+        ):
+            print(
+                f"Validation-screen early stop after {epoch} epochs; "
+                f"no {args.screen_select_metric} improvement for "
+                f"{epochs_without_improvement} epochs."
+            )
+            break
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))

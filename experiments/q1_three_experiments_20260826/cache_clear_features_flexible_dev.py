@@ -69,11 +69,17 @@ def aggregate_baseline(model, lead_cls, local, valid):
 
     batch = local.shape[0]
     lead_valid = valid.any(dim=1)
-    # Legacy CLEAR_HUG checkpoints use the original stage-2 classifier, whose
-    # record head is a plain mean over the twelve Lead-CLS tokens and has no
-    # named aggregation adapter.
+    # Legacy CLEAR_HUG checkpoints use the original stage-2 HUG classifier.
+    # Its record head is *not* a plain mean over the twelve Lead-CLS tokens:
+    # the stage-2 backbone applies the learned hierarchical MoE first and the
+    # classifier then averages the seven returned group summaries.  Using a
+    # plain mean here silently turns the frozen HUG baseline into a different
+    # model (the source of the anomalous Subdiagnostic baseline).
     if hasattr(model, "stage") and not hasattr(model, "aggregation"):
-        summary = lead_cls.mean(dim=1)
+        if not hasattr(model.backbone, "moe"):
+            raise RuntimeError("legacy HUG model has no backbone.moe aggregation")
+        moe_groups = model.backbone.moe(lead_cls)
+        summary = torch.stack(moe_groups, dim=1).mean(dim=1)
         baseline_logits = model.mlp_head(summary)
         beat_shared = local.mean(dim=2)
         return baseline_logits, beat_shared, lead_valid

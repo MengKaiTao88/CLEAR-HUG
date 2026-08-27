@@ -10,6 +10,7 @@ import torch.distributed as dist
 import numpy as np
 from sklearn.metrics import (
     accuracy_score,
+    average_precision_score,
     precision_score,
     recall_score,
     f1_score,
@@ -140,6 +141,8 @@ def train_one_epoch(
 
         samples = samples.float().to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
+        in_chan_matrix = in_chan_matrix.to(device, non_blocking=True)
+        in_time_matrix = in_time_matrix.to(device, non_blocking=True)
         mask_pad_matrix = mask_pad_matrix.to(device, non_blocking=True).bool()
         bool_masked_pos, attn_mask = random_masking_attn_mask(samples, mask_ratio=0, cls_token_num=12)
 
@@ -155,7 +158,7 @@ def train_one_epoch(
                 model, samples, targets, criterion, in_chan_matrix, in_time_matrix, key_padding_mask=mask_pad_matrix,attn_mask=attn_mask
             )
         else:
-            with torch.cuda.amp.autocast(enabled=False): #enabled=False
+            with torch.cuda.amp.autocast(enabled=True, dtype=torch.float16):
                 loss, output = train_class_batch(
                     model, samples, targets, criterion, in_chan_matrix, in_time_matrix, key_padding_mask=mask_pad_matrix,attn_mask=attn_mask
                 )
@@ -298,6 +301,8 @@ def evaluate(
             target = batch[1]
             in_chan_matrix = batch[2]
             in_time_matrix = batch[3]
+            in_chan_matrix = in_chan_matrix.to(device, non_blocking=True)
+            in_time_matrix = in_time_matrix.to(device, non_blocking=True)
             if len(batch) == 5:
                 mask_pad_matrix = batch[4].to(device, non_blocking=True).bool()
             else:
@@ -310,7 +315,7 @@ def evaluate(
                 target = target.float()
 
             # compute output
-            with torch.cuda.amp.autocast(enabled=False): #enabled=False
+            with torch.cuda.amp.autocast(enabled=True, dtype=torch.float16):
                 output = model(
                     ECG, in_chan_matrix=in_chan_matrix, in_time_matrix=in_time_matrix,key_padding_mask=mask_pad_matrix,attn_mask=attn_mask
                 )
@@ -365,7 +370,13 @@ def evaluate(
         gather_all_outputs.cpu().numpy(),
         gather_all_targets.cpu().numpy(),
     )
+    pr_auc = average_precision_score(
+        gather_all_targets.cpu().numpy(),
+        gather_all_outputs.cpu().numpy(),
+        average="macro",
+    )
     metric_logger.update(roc_auc=roc_auc)
+    metric_logger.update(pr_auc=pr_auc)
     # gather the stats from all processes
     metric_logger.synchronize_between_processes()
     print("* loss {losses.global_avg:.3f}".format(losses=metric_logger.loss))
@@ -375,6 +386,7 @@ def evaluate(
     )
     ret["loss"] = metric_logger.loss.global_avg
     ret["roc_auc"] = roc_auc
+    ret["pr_auc"] = pr_auc
     return ret
 
 
