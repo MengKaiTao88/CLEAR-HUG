@@ -30,8 +30,8 @@ def to_grid(signals: torch.Tensor, channels: torch.Tensor, times: torch.Tensor):
     """Map the stored lead-major QRS stream to ``(B, 15, 12, 96)``.
 
     ``*_data_in_times.npy`` stores a positive-window mask/time quantity, not
-    an ordinal heartbeat id.  In particular, its values are only ``1..7`` on
-    the development arrays.  Treating those values as heartbeat indices
+    an ordinal heartbeat id.  Its small time-bin values (for example ``1..10``)
+    are repeated within every lead.  Treating those values as heartbeat indices
     collapses repeated windows onto the first seven beats and silently loses
     most of the local evidence.  The QRS writer's stable layout is lead-major
     (12 leads, then 15 windows per lead), so the only valid mapping is the
