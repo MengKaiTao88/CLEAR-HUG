@@ -3,6 +3,7 @@ set -euo pipefail
 ROOT="${CLEAR_HUG_ROOT:?CLEAR_HUG_ROOT is required}"
 QUEUE="${1:?queue name required}"; shift
 [[ $# -gt 0 ]]
+source "${ROOT}/mvp/activate_mvp.sh"
 CAMPAIGN="q1-clear-deepsets-hilar-10seed-20260903"
 OUT="${ROOT}/results/${CAMPAIGN}"
 mkdir -p "${OUT}"
