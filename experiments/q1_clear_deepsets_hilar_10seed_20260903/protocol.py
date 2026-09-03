@@ -32,7 +32,7 @@ ASSIGNMENTS = {
     "10092": {
         "root": "/root/107552503710-1",
         "specs": (
-            "csn:44", "form:42",
+            "csn:44", "csn:42",
             "csn:47", "csn:50", "csn:51",
             "subdiagnostic:43", "subdiagnostic:46", "subdiagnostic:49",
             "rhythm:42", "rhythm:45", "rhythm:48",
@@ -40,13 +40,13 @@ ASSIGNMENTS = {
             "form:45", "form:48", "form:51",
             "cpsc2018:43", "cpsc2018:46", "cpsc2018:49",
         ),
-        "canaries": ("csn:44", "form:42"),
+        "canaries": ("rhythm:42", "cpsc2018:43"),
     },
     "10103": {
         "root": "/root/107552503710-2",
         "specs": (
             "rhythm:43", "superdiagnostic:42",
-            "csn:42", "csn:45", "csn:48",
+            "form:42", "csn:45", "csn:48",
             "subdiagnostic:44", "subdiagnostic:47", "subdiagnostic:50",
             "rhythm:46", "rhythm:49", "rhythm:51",
             "superdiagnostic:45", "superdiagnostic:48", "superdiagnostic:51",
