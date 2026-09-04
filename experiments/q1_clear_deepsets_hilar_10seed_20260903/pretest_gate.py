@@ -44,7 +44,7 @@ def main() -> None:
 
     node_audits = {}
     actual_hashes = {"hug": set(), "deepsets": set(), "hilar": set()}
-    for path in args.node_audits.glob("*-checkpoint-audit.json"):
+    for path in args.node_audits.rglob("*-checkpoint-audit.json"):
         audit = json.loads(path.read_text())
         node = audit.get("node")
         if node in node_audits or audit.get("status") != "passed":
@@ -62,7 +62,7 @@ def main() -> None:
 
     preflights = {}
     reference_arrays = None
-    for path in args.preflights.glob("*-preflight.json"):
+    for path in args.preflights.rglob("*-preflight.json"):
         preflight = json.loads(path.read_text())
         node = preflight.get("node")
         if node in preflights or preflight.get("status") != "passed":
