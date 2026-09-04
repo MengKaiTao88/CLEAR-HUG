@@ -51,7 +51,7 @@ def bootstrap(task, y, patient_id, high, low, repetitions, seed):
 
 
 def identity_for(task: str, truth: np.ndarray, root: Path) -> np.ndarray:
-    for path in root.rglob("test_predictions.npz"):
+    for path in root.rglob("*.npz"):
         if task not in path.as_posix().lower(): continue
         with np.load(path, allow_pickle=False) as payload:
             if "y_true" not in payload or not np.array_equal(payload["y_true"], truth): continue
