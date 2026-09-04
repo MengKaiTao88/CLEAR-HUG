@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "dataset": "PTB-XL",
+  "task": "superdiagnostic",
+  "split": "test",
+  "model_seed": 42,
+  "representation": "five-dimensional class-logit decision space",
+  "class_order_in_files": [
+    "CD",
+    "HYP",
+    "MI",
+    "NORM",
+    "STTC"
+  ],
+  "display_order": [
+    "NORM",
+    "MI",
+    "STTC",
+    "CD",
+    "HYP"
+  ],
+  "records_total": 2158,
+  "records_single_label": 1650,
+  "selected_indices_sha256": "67818aabbfdef238e273e28cc7140c1b06d71a70ff1c95c1b07a1f852c171908",
+  "class_counts": {
+    "NORM": 912,
+    "MI": 256,
+    "STTC": 242,
+    "CD": 184,
+    "HYP": 56
+  },
+  "alignment": {
+    "labels_equal": true,
+    "record_order_equal": true,
+    "same_single_label_indices_all_panels": true
+  },
+  "inputs": {
+    "hug": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\p1s\\transfer\\final-closeout-inputs-20260726\\superdiagnostic-hug-seed42-full\\test_predictions.npz",
+    "hug_sha256": "0712ab22667dfb93b008a01c4b86b0cbff1174cdc3712138dcc87efa3c580f34",
+    "hug_logit_source": "inverse_sigmoid(y_score)",
+    "paired": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-final-no-anchor-formal-test-20260828\\superdiagnostic\\seed42\\test_predictions.npz",
+    "paired_sha256": "be0054b133fa8831ee27b9407bf77e70d9ce9aa34f3a3b9cc24d7b2ec5c45e38"
+  },
+  "tsne": {
+    "dimensions": 2,
+    "perplexity": 30,
+    "learning_rate": "auto",
+    "init": "pca",
+    "max_iter": 2000,
+    "random_state": 42,
+    "preprocessing": "per-panel StandardScaler on 5D logits; no PCA because source dimension is 5"
+  },
+  "cluster_metrics_space": "per-panel standardized 5D logits (not t-SNE coordinates)",
+  "metrics": {
+    "HUG": {
+      "silhouette": 0.08902765710166315,
+      "davies_bouldin": 2.1060121240010714
+    },
+    "Identity-aware DeepSets": {
+      "silhouette": 0.11885917965180995,
+      "davies_bouldin": 2.064016259067146
+    },
+    "HiLAR": {
+      "silhouette": 0.1126705989139212,
+      "davies_bouldin": 2.0820564208224375
+    }
+  },
+  "interpretation_guardrail": "t-SNE is descriptive; visual separation is not evidence of monotonic model improvement."
+}
