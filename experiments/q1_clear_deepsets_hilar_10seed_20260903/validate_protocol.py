@@ -25,6 +25,12 @@ def main() -> None:
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--node", choices=tuple(ASSIGNMENTS), required=True)
     parser.add_argument("--commit", required=True)
+    parser.add_argument(
+        "--input-root",
+        type=Path,
+        default=None,
+        help="Resolved campaign ecg_datasets directory (defaults to the original snapshot path).",
+    )
     args = parser.parse_args()
     validate_protocol()
     if args.root.as_posix() != ASSIGNMENTS[args.node]["root"]:
@@ -32,7 +38,9 @@ def main() -> None:
     checkpoint = args.root / "checkpoints/released_ckpt.pth"
     if sha256(checkpoint) != RELEASED_SHA256:
         raise RuntimeError("released checkpoint hash mismatch")
-    inputs = args.root / "campaign-inputs" / CAMPAIGN / "ecg_datasets"
+    inputs = args.input_root or (
+        args.root / "campaign-inputs" / CAMPAIGN / "ecg_datasets"
+    )
     arrays: dict[str, dict[str, object]] = {}
     for task, config in TASKS.items():
         dataset = inputs / str(config["dataset"])
@@ -54,6 +62,7 @@ def main() -> None:
     payload = {
         "schema_version": 1, "status": "passed", "campaign": CAMPAIGN,
         "node": args.node, "root": str(args.root), "code_commit": args.commit,
+        "input_root": str(inputs),
         "seeds": list(SEEDS), "specs": list(ASSIGNMENTS[args.node]["specs"]),
         "released_checkpoint_sha256": RELEASED_SHA256, "arrays": arrays,
     }
