@@ -68,13 +68,23 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--campaign", type=Path, required=True); parser.add_argument("--identity-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True); parser.add_argument("--bootstrap", type=int, default=10_000); parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument(
+        "--seeds",
+        type=int,
+        nargs="+",
+        default=list(SEEDS),
+        help="Common seed subset used for every task (default: the frozen ten seeds).",
+    )
     args = parser.parse_args()
     if args.bootstrap != 10_000 or args.output.exists(): raise RuntimeError("frozen bootstrap count or output violation")
+    selected_seeds = tuple(args.seeds)
+    if not selected_seeds or len(selected_seeds) != len(set(selected_seeds)) or not set(selected_seeds).issubset(SEEDS):
+        raise RuntimeError(f"invalid common seed subset: {selected_seeds}")
     seed_rows = []; ensembles = {}; identities = {}
     expected_hashes = {model: set() for model in MODELS}
     for task, config in TASKS.items():
         scores = {model: [] for model in MODELS}; truths = []
-        for seed in SEEDS:
+        for seed in selected_seeds:
             run = args.campaign / f"{task}-seed{seed}"
             manifest = json.loads((run / "train-val-complete.json").read_text())
             complete = json.loads((run / "formal-test/complete.json").read_text())
@@ -95,7 +105,8 @@ def main() -> None:
         ensemble_scores = {model: np.mean(np.stack(values), axis=0) for model, values in scores.items()}
         ensembles[task] = {"y_true": truths[0], **ensemble_scores, "metrics": {model: metrics(truths[0], score) for model, score in ensemble_scores.items()}}
         identities[task] = identity_for(task, truths[0], args.identity_root)
-    if any(len(values) != 60 for values in expected_hashes.values()): raise RuntimeError({k: len(v) for k, v in expected_hashes.items()})
+    expected_checkpoint_count = len(TASKS) * len(selected_seeds)
+    if any(len(values) != expected_checkpoint_count for values in expected_hashes.values()): raise RuntimeError({k: len(v) for k, v in expected_hashes.items()})
     task_summary = {task: summarize([row for row in seed_rows if row["task"] == task]) for task in TASKS}
     task_equal = {model: {metric: float(np.mean([task_summary[t][model][metric]["mean"] for t in TASKS])) for metric in METRICS} for model in MODELS}
     database = {db: {model: {metric: float(np.mean([task_summary[t][model][metric]["mean"] for t in tasks])) for metric in METRICS} for model in MODELS} for db, tasks in DATABASES.items()}
@@ -112,13 +123,16 @@ def main() -> None:
         boot[name] = rows
     positive = {name: {metric: sum(row["differences"][name][metric] > 0 for row in seed_rows) for metric in METRICS} for name in COMPARISONS}
     args.output.mkdir(parents=True)
-    payload = {"protocol": {"seeds": list(SEEDS), "bootstrap": 10_000, "archived_scores_used": False}, "seed_results": seed_rows, "task_10seed_mean_sd": task_summary, "six_task_equal_mean": task_equal, "database_means": database, "three_database_equal_mean": database_equal, "positive_counts_out_of_60": positive, "ensemble_metrics": {task: e["metrics"] for task, e in ensembles.items()}, "patient_bootstrap": boot}
+    full_campaign = selected_seeds == tuple(SEEDS)
+    summary_key = "task_10seed_mean_sd" if full_campaign else "task_seed_mean_sd"
+    positive_key = "positive_counts_out_of_60" if full_campaign else "positive_counts"
+    payload = {"protocol": {"seeds": list(selected_seeds), "bootstrap": 10_000, "archived_scores_used": False}, "seed_results": seed_rows, summary_key: task_summary, "six_task_equal_mean": task_equal, "database_means": database, "three_database_equal_mean": database_equal, positive_key: positive, "ensemble_metrics": {task: e["metrics"] for task, e in ensembles.items()}, "patient_bootstrap": boot}
     (args.output / "final-analysis.json").write_text(json.dumps(payload, indent=2) + "\n")
     with (args.output / "seed-results.csv").open("w", newline="") as handle:
         fields = ["task", "seed"] + [f"{m}_{x}" for m in MODELS for x in METRICS]
         writer = csv.DictWriter(handle, fieldnames=fields); writer.writeheader()
         for row in seed_rows: writer.writerow({"task": row["task"], "seed": row["seed"], **{f"{m}_{x}": row[m][x] for m in MODELS for x in METRICS}})
-    print(json.dumps({"task_10seed_mean_sd": task_summary, "positive_counts_out_of_60": positive}, indent=2))
+    print(json.dumps({summary_key: task_summary, positive_key: positive}, indent=2))
 
 
 if __name__ == "__main__":
