@@ -111,16 +111,20 @@ def main() -> None:
     task_equal = {model: {metric: float(np.mean([task_summary[t][model][metric]["mean"] for t in TASKS])) for metric in METRICS} for model in MODELS}
     database = {db: {model: {metric: float(np.mean([task_summary[t][model][metric]["mean"] for t in tasks])) for metric in METRICS} for model in MODELS} for db, tasks in DATABASES.items()}
     database_equal = {model: {metric: float(np.mean([database[db][model][metric] for db in DATABASES])) for metric in METRICS} for model in MODELS}
-    boot = {}
-    for comparison_index, (name, (high, low)) in enumerate(COMPARISONS.items()):
-        futures = {}; rows = {}
-        with ProcessPoolExecutor(max_workers=args.workers) as pool:
+    boot = {name: {} for name in COMPARISONS}
+    futures = {}
+    with ProcessPoolExecutor(max_workers=args.workers) as pool:
+        for comparison_index, (name, (high, low)) in enumerate(COMPARISONS.items()):
             for task_index, task in enumerate(TASKS):
-                e = ensembles[task]; futures[pool.submit(bootstrap, task, e["y_true"], identities[task], e[high], e[low], args.bootstrap, 20260903 + comparison_index * 100 + task_index)] = task
-            for future in as_completed(futures): task, result = future.result(); rows[task] = result
+                e = ensembles[task]
+                future = pool.submit(bootstrap, task, e["y_true"], identities[task], e[high], e[low], args.bootstrap, 20260903 + comparison_index * 100 + task_index)
+                futures[future] = name
+        for future in as_completed(futures):
+            task, result = future.result()
+            boot[futures[future]][task] = result
+    for name, rows in boot.items():
         adjusted = holm({f"{task}:{metric}": rows[task][metric]["raw_p"] for task in TASKS for metric in METRICS})
         for key, value in adjusted.items(): task, metric = key.split(":"); rows[task][metric]["holm_p"] = value
-        boot[name] = rows
     positive = {name: {metric: sum(row["differences"][name][metric] > 0 for row in seed_rows) for metric in METRICS} for name in COMPARISONS}
     args.output.mkdir(parents=True)
     full_campaign = selected_seeds == tuple(SEEDS)
