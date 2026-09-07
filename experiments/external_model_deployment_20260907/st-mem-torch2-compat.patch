@@ -1,0 +1,13 @@
+diff --git a/util/misc.py b/util/misc.py
+index b86fc1b..51bece6 100644
+--- a/util/misc.py
++++ b/util/misc.py
+@@ -17,7 +17,7 @@ from collections import defaultdict, deque
+ 
+ import torch
+ import torch.distributed as dist
+-from torch._six import inf
++from math import inf
+ 
+ 
+ class SmoothedValue(object):

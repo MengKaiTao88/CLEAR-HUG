@@ -1,0 +1,18 @@
+{
+  "deployment_root": "/root/107552503710",
+  "heartlang": {
+    "commit": "a08afd8117e813fee212a1ac283db4a7140a4669",
+    "repository": "https://github.com/PKUDigitalHealth/HeartLang",
+    "weights": {
+      "pretrain": "/root/107552503710/model_weights/HeartLang/checkpoint-200.pth",
+      "vqhbr": "/root/107552503710/model_weights/HeartLang/vqhbr-checkpoint-100.pth"
+    }
+  },
+  "runtime": "/root/107552503710/.venv/bin/python",
+  "st_mem": {
+    "commit": "311c6446894dee4126db8d2520024e9f62cf1616",
+    "license": "CC-BY-NC-4.0",
+    "repository": "https://github.com/bakqui/ST-MEM",
+    "weight": "/root/107552503710/model_weights/ST-MEM/st_mem_vit_base_encoder.pth"
+  }
+}

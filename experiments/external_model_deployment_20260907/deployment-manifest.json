@@ -1,0 +1,79 @@
+{
+  "campaign": "external-model-deployment-20260907",
+  "deployed_at_utc": "2026-09-07T11:14:11.644505+00:00",
+  "deployment_root": "/root/107552503710",
+  "host": {
+    "address": "10.109.118.172",
+    "port": 10110,
+    "gpu": "NVIDIA TITAN RTX",
+    "gpu_memory_mib": 24576,
+    "nvidia_driver": "535.288.01"
+  },
+  "runtime": {
+    "python_executable": "/root/107552503710/.venv/bin/python",
+    "python": "3.10.20",
+    "torch": "2.1.0+cu121",
+    "cuda_runtime": "12.1",
+    "ld_preload": "/lib/x86_64-linux-gnu/libcuda.so.1",
+    "offline_additions": {
+      "mergedeep": "1.3.4",
+      "torchmetrics": "0.11.4"
+    }
+  },
+  "st_mem": {
+    "repository": "https://github.com/bakqui/ST-MEM",
+    "commit": "311c6446894dee4126db8d2520024e9f62cf1616",
+    "source_path": "/root/107552503710/external_models/ST-MEM",
+    "source_archive": {
+      "path": "/root/107552503710/deployment_logs/ST-MEM-clean.tar.gz",
+      "sha256": "c3749c1ca37ce005f9737299fffd7471b46f7d2613ef2dfe1c2171c4c6fd515e"
+    },
+    "license": "CC-BY-NC-4.0",
+    "compatibility_patch": {
+      "reason": "torch._six was removed in Torch 2.x",
+      "change": "from torch._six import inf -> from math import inf",
+      "patch_path": "/root/107552503710/deployment_tools/st-mem-torch2-compat.patch",
+      "upstream_file_sha256": "07908fba1604109d4c936163c6016cd417c7335c9e018fb507ccdbebef1d6977",
+      "deployed_file_sha256": "87d5a99199ab160016a30c7c87a43bdc74e640511f7dc00b913255353b55f258"
+    },
+    "encoder_weight": {
+      "official_url": "https://drive.usercontent.google.com/download?id=1E7J-A1HqWa2f08T6Sfk5uWk-_CFJhOYQ&export=download&confirm=t",
+      "path": "/root/107552503710/model_weights/ST-MEM/st_mem_vit_base_encoder.pth",
+      "size_bytes": 340663413,
+      "sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6"
+    }
+  },
+  "heartlang": {
+    "repository": "https://github.com/PKUDigitalHealth/HeartLang",
+    "commit": "a08afd8117e813fee212a1ac283db4a7140a4669",
+    "source_path": "/root/107552503710/external_models/HeartLang",
+    "source_archive": {
+      "path": "/root/107552503710/deployment_logs/HeartLang-clean.tar.gz",
+      "sha256": "819751dfe74cbc367d0290b11a0305e119fb8e5992eaf7dc901d8ffb04371391"
+    },
+    "license": "MIT",
+    "pretrain_weight": {
+      "official_url": "https://huggingface.co/PKUDigitalHealth/HeartLang/resolve/main/checkpoints/pretrain/MIMIC-IV/checkpoint-200.pth",
+      "path": "/root/107552503710/model_weights/HeartLang/checkpoint-200.pth",
+      "size_bytes": 534928678,
+      "sha256": "9dc89d72a3f1cacd941892103eaa523d44e373164cd4fadfb975907cc65864f6"
+    },
+    "vqhbr_weight": {
+      "official_url": "https://huggingface.co/PKUDigitalHealth/HeartLang/resolve/main/checkpoints/vqhbr/MIMIC-IV/checkpoint-100.pth",
+      "path": "/root/107552503710/model_weights/HeartLang/vqhbr-checkpoint-100.pth",
+      "size_bytes": 291691311,
+      "sha256": "c510f170c34cc134dcea61c92d11cd9d117dbe6d80c6662e72d3276011397490"
+    }
+  },
+  "smoke_test": {
+    "path": "/root/107552503710/deployment_logs/smoke-test.json",
+    "passed": true,
+    "st_mem_output_shape": [1, 5],
+    "heartlang_token_shape": [1, 256],
+    "heartlang_output_shape": [1, 257, 768],
+    "heartlang_missing_keys": [],
+    "heartlang_unexpected_keys": [],
+    "st_mem_expected_missing_keys": ["head.weight", "head.bias"],
+    "st_mem_unexpected_keys": []
+  }
+}

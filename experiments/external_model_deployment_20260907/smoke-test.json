@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-07T11:14:11.644505+00:00",
+  "cuda_runtime": "12.1",
+  "gpu": "NVIDIA TITAN RTX",
+  "heartlang": {
+    "output_shape": [
+      1,
+      257,
+      768
+    ],
+    "passed": true,
+    "pretrain_checkpoint": "/root/107552503710/model_weights/HeartLang/checkpoint-200.pth",
+    "pretrain_missing_keys": [],
+    "pretrain_sha256": "9dc89d72a3f1cacd941892103eaa523d44e373164cd4fadfb975907cc65864f6",
+    "pretrain_unexpected_keys": [],
+    "token_shape": [
+      1,
+      256
+    ],
+    "tokenizer_checkpoint": "/root/107552503710/model_weights/HeartLang/vqhbr-checkpoint-100.pth",
+    "tokenizer_missing_keys": [],
+    "tokenizer_sha256": "c510f170c34cc134dcea61c92d11cd9d117dbe6d80c6662e72d3276011397490",
+    "tokenizer_unexpected_keys": []
+  },
+  "passed": true,
+  "python": "3.10.20",
+  "st_mem": {
+    "checkpoint": "/root/107552503710/model_weights/ST-MEM/st_mem_vit_base_encoder.pth",
+    "missing_keys": [
+      "head.weight",
+      "head.bias"
+    ],
+    "output_shape": [
+      1,
+      5
+    ],
+    "passed": true,
+    "removed_shape_mismatch_keys": [],
+    "sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+    "unexpected_keys": []
+  },
+  "torch": "2.1.0+cu121"
+}
