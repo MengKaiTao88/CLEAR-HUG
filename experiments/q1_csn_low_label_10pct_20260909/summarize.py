@@ -5,6 +5,7 @@ import numpy as np
 
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--root',type=Path,required=True)
+    parser.add_argument('--train-fraction',type=float,default=0.1)
     args=parser.parse_args(); rows=[]
     for seed in (43,45,47):
         p=json.loads((args.root/f'csn-seed{seed}/formal-test/complete.json').read_text())
@@ -15,7 +16,7 @@ def main():
     fields=list(rows[0]); csv_path=args.root/'seed-results.csv'
     with csv_path.open('w',newline='',encoding='utf-8') as f:
         writer=csv.DictWriter(f,fieldnames=fields); writer.writeheader(); writer.writerows(rows)
-    summary={'protocol':{'task':'csn','train_fraction':0.1,'seeds':[43,45,47],'test_used_for_selection':False},'models':{},'paired_deltas':{}}
+    summary={'protocol':{'task':'csn','train_fraction':args.train_fraction,'seeds':[43,45,47],'test_used_for_selection':False},'models':{},'paired_deltas':{}}
     for model in ('hug','hila','hilar'):
         summary['models'][model]={}
         for metric in ('macro_auroc','macro_auprc'):
@@ -29,4 +30,3 @@ def main():
     target=args.root/'summary.json'; incoming=target.with_suffix('.json.incoming'); incoming.write_text(json.dumps(summary,indent=2)+'\n'); os.replace(incoming,target)
     print(json.dumps(summary,indent=2))
 if __name__=='__main__': main()
-
