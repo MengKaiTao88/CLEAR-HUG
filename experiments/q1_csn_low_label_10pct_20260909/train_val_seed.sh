@@ -21,8 +21,11 @@ LOG="${RUN}/train-val.log"
 
 if [[ -e "${RUN}" ]]; then
   if [[ -s "${RUN}/train-val-complete.json" ]]; then exit 0; fi
-  echo "refusing partial run directory ${RUN}" >&2
-  exit 20
+  if [[ ! -s "${HUG}/checkpoint.pth" || -e "${HILA}" ]]; then
+    echo "refusing non-resumable partial run directory ${RUN}" >&2
+    exit 20
+  fi
+  echo "resuming interrupted HUG stage from ${HUG}/checkpoint.pth"
 fi
 mkdir -p "${RUN}"
 exec > >(tee -a "${LOG}") 2>&1
@@ -48,6 +51,7 @@ for split in train val test; do
   test -s "${INPUT}/${split}_data.npy"
   test -s "${INPUT}/${split}_labels.npy"
 done
+if [[ ! -s "${RUN}/subset-manifest.json" ]]; then
 "${ROOT}/.venv/bin/python" - "${INPUT}" "${SEED}" "${RUN}/subset-manifest.json" "${TRAIN_FRACTION}" <<'PY'
 import hashlib, json, random, sys
 from pathlib import Path
@@ -71,6 +75,7 @@ payload = {
 }
 output.write_text(json.dumps(payload, indent=2)+'\n')
 PY
+fi
 
 stage=hug-training
 write_status running "${stage}"
