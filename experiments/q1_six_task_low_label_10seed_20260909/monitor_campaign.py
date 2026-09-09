@@ -91,16 +91,24 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
 
 def main() -> None:
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        rows = list(pool.map(inspect, NODES))
+        futures = {pool.submit(inspect, node): node[0] for node in NODES}
+        rows = []
+        for future, node in futures.items():
+            try:
+                rows.append(future.result())
+            except Exception as exc:
+                rows.append({"node": node, "error": f"{type(exc).__name__}: {exc}"})
+    healthy = [row for row in rows if "error" not in row]
     result = {
         "nodes": rows,
         "totals": {
-            "units_1pct": sum(x["units_1pct"] for x in rows),
-            "units_10pct": sum(x["units_10pct"] for x in rows),
-            "hug_checkpoints": sum(x["hug_checkpoints"] for x in rows),
-            "hila_checkpoints": sum(x["hila_checkpoints"] for x in rows),
-            "hilar_checkpoints": sum(x["hilar_checkpoints"] for x in rows),
-            "formal_tests": sum(x["formal_tests"] for x in rows),
+            "reporting_nodes": len(healthy),
+            "units_1pct": sum(x["units_1pct"] for x in healthy),
+            "units_10pct": sum(x["units_10pct"] for x in healthy),
+            "hug_checkpoints": sum(x["hug_checkpoints"] for x in healthy),
+            "hila_checkpoints": sum(x["hila_checkpoints"] for x in healthy),
+            "hilar_checkpoints": sum(x["hilar_checkpoints"] for x in healthy),
+            "formal_tests": sum(x["formal_tests"] for x in healthy),
         },
     }
     print(json.dumps(result, indent=2))
