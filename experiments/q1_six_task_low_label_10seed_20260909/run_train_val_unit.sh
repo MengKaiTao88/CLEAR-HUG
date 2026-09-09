@@ -29,7 +29,17 @@ FEATURES="${RUN}/features"; HILAR_ROOT="${RUN}/hilar-training"; HILAR="${HILAR_R
 STATUS="${RUN}/status.json"; LOG="${RUN}/train-val.log"
 if [[ -e "${RUN}" ]]; then
  [[ -s "${RUN}/train-val-complete.json" ]] && exit 0
- echo "refusing partial unit ${RUN}" >&2; exit 20
+ if [[ "${ALLOW_SAFE_RESUME:-0}" != 1 ]]; then
+  echo "refusing partial unit ${RUN}" >&2; exit 20
+ fi
+ test -s "${RUN}/status.json"
+ test -s "${RUN}/subset-manifest.json"
+ python - "${RUN}/status.json" "${RUN}/subset-manifest.json" "${FRACTION_KEY}" "${TASK}" "${SEED}" "${FRACTION}" "${EXPECTED}" <<'PY'
+import json,sys
+status=json.load(open(sys.argv[1])); subset=json.load(open(sys.argv[2]))
+assert status['fraction']==sys.argv[3] and status['task']==sys.argv[4] and status['seed']==int(sys.argv[5])
+assert subset['seed']==int(sys.argv[5]) and subset['fraction']==float(sys.argv[6]) and subset['selected_records']==int(sys.argv[7])
+PY
 fi
 mkdir -p "${RUN}"; exec > >(tee -a "${LOG}") 2>&1
 write_status(){ python - "${STATUS}" "$1" "${2:-}" "${FRACTION_KEY}" "${TASK}" "${SEED}" <<'PY'
