@@ -9,22 +9,31 @@ INPUT="${ROOT}/campaign-inputs/q1-clear-deepsets-hilar-10seed-20260903/ecg_datas
 RUN="${ROOT}/results/${CAMPAIGN}/csn-seed${SEED}"
 test -s "${ROOT}/results/${CAMPAIGN}/pretest-gate.json"
 test -s "${RUN}/train-val-complete.json"
-if [[ -e "${RUN}/formal-test" ]]; then echo "refusing existing formal test ${RUN}" >&2; exit 20; fi
+if [[ -s "${RUN}/formal-test/complete.json" ]]; then
+  echo "formal test already complete: ${RUN}"
+  exit 0
+fi
 source "${ROOT}/mvp/activate_mvp.sh"
 export CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=1
-"${ROOT}/.venv/bin/python" "${CODE}/cache_low_label_features.py" \
-  --root "${ROOT}" --dataset "${INPUT}" --checkpoint "${RUN}/hila/checkpoint-best.pth" \
-  --output "${RUN}/features" --classes 38 --seed "${SEED}" --splits test
 mkdir -p "${RUN}/formal-test"
-"${ROOT}/.venv/bin/python" "${ROOT}/mvp/evaluate_direct_residual_formal.py" \
-  --features "${RUN}/features/test" \
-  --classifier "${RUN}/hilar-training/parameter-matched-direct/checkpoint-best.pth" \
-  --output "${RUN}/formal-test/paired" --classes 38 --task csn --seed "${SEED}"
-"${ROOT}/.venv/bin/python" "${ROOT}/src/CLEAR-HUG/experiments/q1_clear_deepsets_hilar_10seed_20260903/evaluate_hug_formal.py" \
-  --root "${ROOT}" --dataset "${INPUT}" --checkpoint "${RUN}/clear-hug/checkpoint-best.pth" \
-  --released-checkpoint "${ROOT}/checkpoints/released_ckpt.pth" \
-  --strict-labels "${RUN}/features/test/labels.npy" --output "${RUN}/formal-test/hug" \
-  --task csn --seed "${SEED}" --classes 38
+if [[ ! -s "${RUN}/features/test/feature-manifest.json" ]]; then
+  "${ROOT}/.venv/bin/python" "${CODE}/cache_low_label_features.py" \
+    --root "${ROOT}" --dataset "${INPUT}" --checkpoint "${RUN}/hila/checkpoint-best.pth" \
+    --output "${RUN}/features" --classes 38 --seed "${SEED}" --splits test
+fi
+if [[ ! -s "${RUN}/formal-test/paired/formal-test-result.json" ]]; then
+  "${ROOT}/.venv/bin/python" "${ROOT}/mvp/evaluate_direct_residual_formal.py" \
+    --features "${RUN}/features/test" \
+    --classifier "${RUN}/hilar-training/parameter-matched-direct/checkpoint-best.pth" \
+    --output "${RUN}/formal-test/paired" --classes 38 --task csn --seed "${SEED}"
+fi
+if [[ ! -s "${RUN}/formal-test/hug/formal-test-result.json" ]]; then
+  "${ROOT}/.venv/bin/python" "${ROOT}/src/CLEAR-HUG/experiments/q1_clear_deepsets_hilar_10seed_20260903/evaluate_hug_formal.py" \
+    --root "${ROOT}" --dataset "${INPUT}" --checkpoint "${RUN}/clear-hug/checkpoint-best.pth" \
+    --released-checkpoint "${ROOT}/checkpoints/released_ckpt.pth" \
+    --strict-labels "${RUN}/features/test/labels.npy" --output "${RUN}/formal-test/hug" \
+    --task csn --seed "${SEED}" --classes 38
+fi
 "${ROOT}/.venv/bin/python" - "${RUN}" <<'PY'
 import json, os, sys
 from pathlib import Path
