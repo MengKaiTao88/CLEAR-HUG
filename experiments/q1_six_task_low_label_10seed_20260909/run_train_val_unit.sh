@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="${CLEAR_HUG_ROOT:?CLEAR_HUG_ROOT required}"
+source "${ROOT}/mvp/activate_mvp.sh"
 FRACTION_KEY="${1:?fraction key required}"
 TASK="${2:?task required}"
 SEED="${3:?seed required}"
@@ -40,7 +41,7 @@ q.write_text(json.dumps({'state':sys.argv[2],'stage':sys.argv[3] or None,'fracti
 PY
 }
 stage=initializing; trap 'c=$?; [[ $c -eq 0 ]] || write_status failed "${stage}:exit=${c}"' EXIT
-write_status running "${stage}"; source "${ROOT}/mvp/activate_mvp.sh"
+write_status running "${stage}"
 export CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=1
 for split in train val test; do test -s "${QRS}/${split}_data.npy"; test -s "${QRS}/${split}_labels.npy"; done
 python - "${QRS}" "${SEED}" "${FRACTION}" "${RUN}/subset-manifest.json" <<'PY'
