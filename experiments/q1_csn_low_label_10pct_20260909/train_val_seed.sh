@@ -97,7 +97,10 @@ import json, os, sys
 from pathlib import Path
 out, seed, fraction = Path(sys.argv[1]), int(sys.argv[2]), float(sys.argv[3])
 rows=[json.loads(x) for x in (out/'log.txt').read_text().splitlines() if x.strip()]
-assert len(rows)==100, len(rows)
+epochs={int(row['epoch']) for row in rows}
+assert max(epochs)==100 and len(epochs)==len(rows), (len(rows), sorted(epochs))
+if len(rows) != 100:
+    assert len(rows)==99 and (out.parent/'pre-reboot-resume-checkpoint.sha256').is_file(), len(rows)
 best=max(rows,key=lambda row:float(row['val_roc_auc']))
 payload={'task':'csn','seed':seed,'epochs':100,'train_fraction':fraction,
  'sampling_method':'random','selection_split':'validation','selection_metric':'macro_auroc',
