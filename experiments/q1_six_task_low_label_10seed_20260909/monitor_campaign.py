@@ -64,9 +64,12 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
         run = f"{out}/{fraction}/{task}-seed{seed}"
         status = read_json(sftp, f"{run}/status.json")
         model = "clear-hug" if status["stage"] == "hug-training" else "hila"
-        with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
-            rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
-        best = max(rows, key=lambda row: float(row["val_roc_auc"]))
+        try:
+            with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
+                rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
+        except FileNotFoundError:
+            rows = []
+        best = max(rows, key=lambda row: float(row["val_roc_auc"])) if rows else None
         with sftp.open(f"{run}/train-val.log", "r") as handle:
             current_traceback = "Traceback (most recent call last)" in handle.read().decode()
     finally:
@@ -77,9 +80,11 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
         "units_1pct": int(lines[0]), "units_10pct": int(lines[1]),
         "hug_checkpoints": int(lines[2]), "hila_checkpoints": int(lines[3]),
         "hilar_checkpoints": int(lines[4]), "formal_tests": int(lines[5]),
-        "gpu": lines[6], "model": model, "current_epoch": int(rows[-1]["epoch"]),
-        "best_epoch": int(best["epoch"]), "best_auroc": float(best["val_roc_auc"]),
-        "best_auprc": float(best["val_pr_auc"]),
+        "gpu": lines[6], "model": model,
+        "current_epoch": int(rows[-1]["epoch"]) if rows else None,
+        "best_epoch": int(best["epoch"]) if best else None,
+        "best_auroc": float(best["val_roc_auc"]) if best else None,
+        "best_auprc": float(best["val_pr_auc"]) if best else None,
         "current_traceback": current_traceback,
     }
 
