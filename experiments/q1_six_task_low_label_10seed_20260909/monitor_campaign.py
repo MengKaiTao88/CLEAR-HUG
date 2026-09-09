@@ -63,10 +63,12 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
         fraction, task, seed = queue["spec"].split(":")
         run = f"{out}/{fraction}/{task}-seed{seed}"
         status = read_json(sftp, f"{run}/status.json")
-        model = "hila" if status["stage"] == "hila-training" else "clear-hug"
+        model = "clear-hug" if status["stage"] == "hug-training" else "hila"
         with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
             rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
         best = max(rows, key=lambda row: float(row["val_roc_auc"]))
+        with sftp.open(f"{run}/train-val.log", "r") as handle:
+            current_traceback = "Traceback (most recent call last)" in handle.read().decode()
     finally:
         sftp.close()
         client.close()
@@ -78,6 +80,7 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
         "gpu": lines[6], "model": model, "current_epoch": int(rows[-1]["epoch"]),
         "best_epoch": int(best["epoch"]), "best_auroc": float(best["val_roc_auc"]),
         "best_auprc": float(best["val_pr_auc"]),
+        "current_traceback": current_traceback,
     }
 
 
