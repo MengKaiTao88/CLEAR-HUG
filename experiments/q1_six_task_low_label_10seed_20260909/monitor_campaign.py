@@ -46,9 +46,9 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
     command = (
         f"find {out}/1pct -mindepth 2 -maxdepth 2 -name train-val-complete.json -type f 2>/dev/null | wc -l; "
         f"find {out}/10pct -mindepth 2 -maxdepth 2 -name train-val-complete.json -type f 2>/dev/null | wc -l; "
-        f"find {out} -name training-complete.json -type f 2>/dev/null | wc -l; "
-        f"find {out} -name baseline-complete.json -type f 2>/dev/null | wc -l; "
-        f"find {out} -path '*/hilar-training/parameter-matched-direct/complete.json' -type f 2>/dev/null | wc -l; "
+        f"find {out} -type d -name '*.failed-*' -prune -o -name training-complete.json -type f -print 2>/dev/null | wc -l; "
+        f"find {out} -type d -name '*.failed-*' -prune -o -name baseline-complete.json -type f -print 2>/dev/null | wc -l; "
+        f"find {out} -type d -name '*.failed-*' -prune -o -path '*/hilar-training/parameter-matched-direct/complete.json' -type f -print 2>/dev/null | wc -l; "
         f"find {out} -path '*/formal-test/complete.json' -type f 2>/dev/null | wc -l; "
         "nvidia-smi --query-gpu=memory.used,memory.total,utilization.gpu --format=csv,noheader"
     )
@@ -60,18 +60,25 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
     sftp = client.open_sftp()
     try:
         queue = read_json(sftp, f"{out}/{name}-queue-status.json")
-        fraction, task, seed = queue["spec"].split(":")
-        run = f"{out}/{fraction}/{task}-seed{seed}"
-        status = read_json(sftp, f"{run}/status.json")
-        model = "clear-hug" if status["stage"] == "hug-training" else "hila"
-        try:
-            with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
-                rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
-        except FileNotFoundError:
+        if queue.get("spec"):
+            fraction, task, seed = queue["spec"].split(":")
+            run = f"{out}/{fraction}/{task}-seed{seed}"
+            status = read_json(sftp, f"{run}/status.json")
+            model = "clear-hug" if status["stage"] == "hug-training" else "hila"
+            try:
+                with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
+                    rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
+            except FileNotFoundError:
+                rows = []
+            best = max(rows, key=lambda row: float(row["val_roc_auc"])) if rows else None
+            with sftp.open(f"{run}/train-val.log", "r") as handle:
+                current_traceback = "Traceback (most recent call last)" in handle.read().decode()
+        else:
+            status = {"state": queue["state"], "stage": None}
+            model = None
             rows = []
-        best = max(rows, key=lambda row: float(row["val_roc_auc"])) if rows else None
-        with sftp.open(f"{run}/train-val.log", "r") as handle:
-            current_traceback = "Traceback (most recent call last)" in handle.read().decode()
+            best = None
+            current_traceback = False
     finally:
         sftp.close()
         client.close()
