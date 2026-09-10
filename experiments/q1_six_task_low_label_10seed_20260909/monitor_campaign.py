@@ -66,7 +66,7 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
                 queue = reassigned
         except FileNotFoundError:
             pass
-        if queue.get("spec"):
+        if queue.get("state") == "running" and queue.get("spec"):
             fraction, task, seed = queue["spec"].split(":")
             run = f"{out}/{fraction}/{task}-seed{seed}"
             status = read_json(sftp, f"{run}/status.json")
