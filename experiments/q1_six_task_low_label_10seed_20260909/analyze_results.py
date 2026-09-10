@@ -11,7 +11,7 @@ def main():
   for task in TASKS:
    task_rows=[]
    for seed in SEEDS:
-    x=json.loads((a.root/f/task/f'{task}-seed{seed}'/'formal-test/complete.json').read_text()); row={'fraction':f,'task':task,'seed':seed}
+    x=json.loads((a.root/f/f'{task}-seed{seed}'/'formal-test/complete.json').read_text()); row={'fraction':f,'task':task,'seed':seed}
     for m in ('hug','hila','hilar'):
      row[f'{m}_auroc']=x[m].get('macro_auroc',x[m].get('auroc'));row[f'{m}_auprc']=x[m].get('macro_auprc',x[m].get('auprc'))
     rows.append(row);task_rows.append(row)
