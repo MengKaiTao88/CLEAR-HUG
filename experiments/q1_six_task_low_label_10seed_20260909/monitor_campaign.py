@@ -66,19 +66,32 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
                 queue = reassigned
         except FileNotFoundError:
             pass
+        formal_queue = None
+        try:
+            formal_queue = read_json(sftp, f"{out}/{name}-formal-queue-status.json")
+            if formal_queue.get("state") in {"running", "failed"}:
+                queue = formal_queue
+        except FileNotFoundError:
+            pass
         if queue.get("state") == "running" and queue.get("spec"):
             fraction, task, seed = queue["spec"].split(":")
             run = f"{out}/{fraction}/{task}-seed{seed}"
-            status = read_json(sftp, f"{run}/status.json")
-            model = "clear-hug" if status["stage"] == "hug-training" else "hila"
-            try:
-                with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
-                    rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
-            except FileNotFoundError:
-                rows = []
-            best = max(rows, key=lambda row: float(row["val_roc_auc"])) if rows else None
-            with sftp.open(f"{run}/train-val.log", "r") as handle:
-                current_traceback = "Traceback (most recent call last)" in handle.read().decode()
+            if formal_queue is not None and queue is formal_queue:
+                status = {"state": "running", "stage": "formal-test"}
+                model, rows, best = "formal-test", [], None
+                with sftp.open(f"{out}/{name}-formal-queue.log", "r") as handle:
+                    current_traceback = "Traceback (most recent call last)" in handle.read().decode()
+            else:
+                status = read_json(sftp, f"{run}/status.json")
+                model = "clear-hug" if status["stage"] == "hug-training" else "hila"
+                try:
+                    with sftp.open(f"{run}/{model}/log.txt", "r") as handle:
+                        rows = [json.loads(x) for x in handle.read().decode().splitlines() if x.strip()]
+                except FileNotFoundError:
+                    rows = []
+                best = max(rows, key=lambda row: float(row["val_roc_auc"])) if rows else None
+                with sftp.open(f"{run}/train-val.log", "r") as handle:
+                    current_traceback = "Traceback (most recent call last)" in handle.read().decode()
         else:
             status = {"state": queue["state"], "stage": None}
             model = None
