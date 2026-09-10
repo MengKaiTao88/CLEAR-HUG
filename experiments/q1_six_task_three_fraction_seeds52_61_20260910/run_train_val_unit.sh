@@ -89,7 +89,7 @@ b=max(rows,key=lambda x:float(x['val_roc_auc'])); p={'task':task,'seed':seed,'ep
 q=out/'baseline-complete.json.incoming'; q.write_text(json.dumps(p,indent=2)+'\n'); os.replace(q,out/'baseline-complete.json')
 PY
 stage=cache-train-val; write_status running "${stage}"
-python "${ROOT}/src/CLEAR-HUG/experiments/q1_csn_low_label_10pct_20260909/cache_low_label_features.py" --root "${ROOT}" --dataset "${QRS}" --checkpoint "${HILA}/checkpoint-best.pth" --output "${FEATURES}" \
+python "${ROOT}/src/CLEAR-HUG/experiments/q1_six_task_low_label_10seed_20260909/cache_low_label_features.py" --root "${ROOT}" --dataset "${QRS}" --checkpoint "${HILA}/checkpoint-best.pth" --output "${FEATURES}" \
  --classes "${CLASSES}" --seed "${SEED}" --splits train val --train-split-ratio "${FRACTION}" --sampling-method random
 stage=hilar-training; write_status running "${stage}"
 python "${ROOT}/mvp/train_deepsets_anchored_residual.py" --features "${FEATURES}" --output "${HILAR_ROOT}" --task "${TASK}" --classes "${CLASSES}" \

@@ -24,7 +24,7 @@ PY
 [[ -s "${RUN}/formal-test/complete.json" ]] && exit 0
 mkdir -p "${RUN}/formal-test"
 if [[ ! -s "${RUN}/features/test/labels.npy" ]]; then
- python "${ROOT}/src/CLEAR-HUG/experiments/q1_csn_low_label_10pct_20260909/cache_low_label_features.py" --root "${ROOT}" --dataset "${QRS}" --checkpoint "${RUN}/hila/checkpoint-best.pth" --output "${RUN}/features" --classes "${CLASSES}" --seed "${SEED}" --splits test --train-split-ratio "${FRACTION}" --sampling-method random
+ python "${ROOT}/src/CLEAR-HUG/experiments/q1_six_task_low_label_10seed_20260909/cache_low_label_features.py" --root "${ROOT}" --dataset "${QRS}" --checkpoint "${RUN}/hila/checkpoint-best.pth" --output "${RUN}/features" --classes "${CLASSES}" --seed "${SEED}" --splits test --train-split-ratio "${FRACTION}" --sampling-method random
 fi
 if [[ ! -s "${RUN}/formal-test/paired/formal-test-result.json" ]]; then
  python "${ROOT}/mvp/evaluate_direct_residual_formal.py" --features "${RUN}/features/test" --classifier "${RUN}/hilar-training/parameter-matched-direct/checkpoint-best.pth" --output "${RUN}/formal-test/paired" --classes "${CLASSES}" --task "${TASK}" --seed "${SEED}"
