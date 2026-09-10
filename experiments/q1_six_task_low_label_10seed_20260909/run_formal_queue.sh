@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="${CLEAR_HUG_ROOT:?}"; NODE="${1:?}"; shift; [[ $# -eq 40 ]]
+ROOT="${CLEAR_HUG_ROOT:?}"; NODE="${1:?}"; shift; [[ $# -gt 0 ]]
 source "${ROOT}/mvp/activate_mvp.sh"
 CAMPAIGN=q1-six-task-low-label-10seed-20260909; CODE="${ROOT}/src/CLEAR-HUG/experiments/q1_six_task_low_label_10seed_20260909"; OUT="${ROOT}/results/${CAMPAIGN}"; STATUS="${OUT}/${NODE}-formal-queue-status.json"; LOG="${OUT}/${NODE}-formal-queue.log"
 exec > >(tee -a "${LOG}") 2>&1
