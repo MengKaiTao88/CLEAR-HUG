@@ -60,6 +60,12 @@ def inspect(node: tuple[str, str, str, int, str]) -> dict:
     sftp = client.open_sftp()
     try:
         queue = read_json(sftp, f"{out}/{name}-queue-status.json")
+        try:
+            reassigned = read_json(sftp, f"{out}/{name}-reassigned-queue-status.json")
+            if reassigned.get("state") != "complete":
+                queue = reassigned
+        except FileNotFoundError:
+            pass
         if queue.get("spec"):
             fraction, task, seed = queue["spec"].split(":")
             run = f"{out}/{fraction}/{task}-seed{seed}"

@@ -29,6 +29,7 @@ FEATURES="${RUN}/features"; HILAR_ROOT="${RUN}/hilar-training"; HILAR="${HILAR_R
 STATUS="${RUN}/status.json"; LOG="${RUN}/train-val.log"
 if [[ -e "${RUN}" ]]; then
  [[ -s "${RUN}/train-val-complete.json" ]] && exit 0
+ [[ -s "${RUN}/reassigned-unit.json" ]] && exit 0
  echo "refusing partial unit ${RUN}" >&2; exit 20
 fi
 mkdir -p "${RUN}"; exec > >(tee -a "${LOG}") 2>&1
