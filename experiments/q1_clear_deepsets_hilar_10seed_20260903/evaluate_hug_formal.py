@@ -77,7 +77,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.output.exists():
         raise RuntimeError(f"refusing to overwrite {args.output}")
-    if args.seed not in range(42, 52) or not torch.cuda.is_available():
+    if args.seed not in range(42, 62) or not torch.cuda.is_available():
         raise RuntimeError("invalid seed or CUDA unavailable")
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed); torch.cuda.manual_seed_all(args.seed)
     sys.path[:0] = [str(args.root / "src/CLEAR-HUG"), str(args.root / "mvp")]
