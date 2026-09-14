@@ -27,7 +27,11 @@ for entry in pathlib.Path("/proc").iterdir():
     except (FileNotFoundError, PermissionError, ProcessLookupError):
         continue
     argv = [part.decode(errors="replace") for part in raw.split(b"\0") if part]
-    if argv and campaign in " ".join(argv) and any(name in " ".join(argv) for name in allowed):
+    executable = pathlib.Path(argv[0]).name if argv else ""
+    is_campaign_python = executable.startswith("python") and any(
+        any(arg.endswith(name) for name in allowed) for arg in argv
+    )
+    if argv and campaign in " ".join(argv) and is_campaign_python:
         targets.append((int(entry.name), argv))
 # Stop queue parents first so terminated workers cannot advance the queue.
 targets.sort(key=lambda item: 0 if any("run_official_finetune.py" in arg for arg in item[1]) else 1)
