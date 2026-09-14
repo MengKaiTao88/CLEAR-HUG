@@ -136,9 +136,10 @@ def deploy_models(source: paramiko.SSHClient, destination: paramiko.SSHClient, r
     for archive, digest, directory in archives:
         target = f"{root}/deployment_logs/{archive}"
         ensure_relay(source, destination, f"{source_root}/deployment_logs/{archive}", target, digest)
-        run(destination, f"mkdir -p {shlex.quote(root + '/external_models')} && "
-                         f"if ! test -d {shlex.quote(root + '/external_models/' + directory)}; then "
-                         f"tar -xzf {shlex.quote(target)} -C {shlex.quote(root + '/external_models')}; fi")
+        model_dir = root + "/external_models/" + directory
+        run(destination, f"if ! test -d {shlex.quote(model_dir)}; then "
+                         f"mkdir -p {shlex.quote(model_dir)} && "
+                         f"tar -xzf {shlex.quote(target)} -C {shlex.quote(model_dir)}; fi")
     weights = (
         ("HeartLang/checkpoint-200.pth", HEARTLANG_SHA256),
         ("ST-MEM/st_mem_vit_base_encoder.pth", STMEM_SHA256),
