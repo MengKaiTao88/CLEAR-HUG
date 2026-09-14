@@ -220,6 +220,7 @@ def main() -> None:
     parser.add_argument("--start-canaries", action="store_true")
     parser.add_argument("--start-only", action="store_true", help="skip deployment audit and only idempotently start canaries")
     parser.add_argument("--code-only", action="store_true", help="only update campaign source on all nodes")
+    parser.add_argument("--start-train", action="store_true", help="idempotently start the full train/validation queues")
     args = parser.parse_args()
     clients = {node: connect(node) for node in NODES}
     source = clients[SOURCE_NODE]
@@ -259,6 +260,21 @@ def main() -> None:
                            f"echo $! > {result}/{node}-canary.pid; fi")
                 start_background(client, command)
                 print(f"STARTED_OR_ALREADY_RUNNING {node}", flush=True)
+        if args.start_train:
+            for node, client in clients.items():
+                root = NODES[node][3]
+                python = f"{root}/.venv/bin/python"
+                code = f"{root}/src/CLEAR-HUG/experiments/{CODE_DIRNAME}/run_node.py"
+                result = f"{root}/results/{CAMPAIGN}"
+                queue_status = f"{result}/{node}-train-queue-status.json"
+                preload = "env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else ""
+                command = (f"mkdir -p {shlex.quote(result)}; "
+                           f"if ! test -f {shlex.quote(queue_status)}; then "
+                           f"nohup setsid {preload}{python} {code} --root {root} --node {node} --mode train "
+                           f"> {result}/{node}-train.log 2>&1 < /dev/null & "
+                           f"echo $! > {result}/{node}-train.pid; fi")
+                start_background(client, command)
+                print(f"TRAIN_STARTED_OR_ALREADY_RUNNING {node}", flush=True)
     finally:
         for client in clients.values():
             client.close()
