@@ -221,6 +221,7 @@ def main() -> None:
     parser.add_argument("--start-only", action="store_true", help="skip deployment audit and only idempotently start canaries")
     parser.add_argument("--code-only", action="store_true", help="only update campaign source on all nodes")
     parser.add_argument("--start-train", action="store_true", help="idempotently start the full train/validation queues")
+    parser.add_argument("--start-formal", action="store_true", help="idempotently start the gated formal-test queues")
     args = parser.parse_args()
     clients = {node: connect(node) for node in NODES}
     source = clients[SOURCE_NODE]
@@ -230,7 +231,7 @@ def main() -> None:
             for node, client in clients.items():
                 upload_code(client, NODES[node][3])
                 print(f"UPDATED_CODE {node}", flush=True)
-        elif not (args.start_only or args.start_train):
+        elif not (args.start_only or args.start_train or args.start_formal):
             for node, client in clients.items():
                 root = NODES[node][3]
                 print(f"deploy code/models {node}", flush=True)
@@ -275,6 +276,23 @@ def main() -> None:
                            f"echo $! > {result}/{node}-train.pid; fi")
                 start_background(client, command)
                 print(f"TRAIN_STARTED_OR_ALREADY_RUNNING {node}", flush=True)
+        if args.start_formal:
+            for node, client in clients.items():
+                root = NODES[node][3]
+                python = f"{root}/.venv/bin/python"
+                code = f"{root}/src/CLEAR-HUG/experiments/{CODE_DIRNAME}/run_node.py"
+                result = f"{root}/results/{CAMPAIGN}"
+                queue_status = f"{result}/{node}-formal-queue-status.json"
+                gate = f"{result}/global-pretest-gate.json"
+                if remote_sha(client, gate) is None:
+                    raise RuntimeError(f"formal gate missing on {node}")
+                preload = "env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else ""
+                command = (f"if ! test -f {shlex.quote(queue_status)}; then "
+                           f"nohup setsid {preload}{python} {code} --root {root} --node {node} --mode formal "
+                           f"> {result}/{node}-formal.log 2>&1 < /dev/null & "
+                           f"echo $! > {result}/{node}-formal.pid; fi")
+                start_background(client, command)
+                print(f"FORMAL_STARTED_OR_ALREADY_RUNNING {node}", flush=True)
     finally:
         for client in clients.values():
             client.close()
