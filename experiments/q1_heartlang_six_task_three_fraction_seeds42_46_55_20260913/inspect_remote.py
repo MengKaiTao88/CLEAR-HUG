@@ -83,6 +83,9 @@ if test "{name}" = 10110; then
   find {root}/external_models/HeartLang -maxdepth 3 -type f \
     \( -name '*.py' -o -name '*.yaml' -o -name '*.yml' -o -name '*.md' \) \
     | sort | head -200
+  find {root}/external_models/ST-MEM -maxdepth 4 -type f \
+    \( -name '*.py' -o -name '*.yaml' -o -name '*.yml' -o -name '*.md' \) \
+    | sort | head -300
 fi
 '''
     _, stdout, stderr = client.exec_command(command)
@@ -92,7 +95,7 @@ fi
     return {"node": name, "stdout": out, "stderr": err}
 
 
-def cat_source(relative_path: str, line_range: str | None = None) -> None:
+def cat_source(relative_path: str, line_range: str | None = None, repository: str = "HeartLang") -> None:
     name, env_name, host, port, root = NODES[0]
     cfg = env_file(env_name)
     client = paramiko.SSHClient()
@@ -101,7 +104,7 @@ def cat_source(relative_path: str, line_range: str | None = None) -> None:
                    password=cfg["CODEX_REMOTE_PASSWORD"], timeout=20)
     sftp = client.open_sftp()
     try:
-        path = f"{root}/external_models/HeartLang/{relative_path}"
+        path = f"{root}/external_models/{repository}/{relative_path}"
         with sftp.open(path, "r") as handle:
             body = handle.read().decode(errors="replace")
         if line_range:
@@ -158,12 +161,92 @@ def qrs_shapes() -> None:
     client.close()
 
 
+def split_leakage_audit() -> None:
+    """Check record identifiers and exact waveform hashes across every split."""
+    name, env_name, host, port, root = NODES[0]
+    cfg = env_file(env_name)
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(host, port=port, username=cfg.get("CODEX_REMOTE_USER", "root"),
+                   password=cfg["CODEX_REMOTE_PASSWORD"], timeout=20)
+    python = f"{root}/.venv/bin/python"
+    code = rf'''
+import hashlib, json, pathlib
+import numpy as np
+
+base = pathlib.Path("{root}/src/CLEAR-HUG/datasets/ecg_datasets")
+tasks = {{
+    "superdiagnostic": "PTBXL/superdiagnostic/data",
+    "subdiagnostic": "PTBXL/subdiagnostic/data",
+    "form": "PTBXL/form/data",
+    "rhythm": "PTBXL/rhythm/data",
+    "cpsc2018": "CPSC2018/data",
+    "csn": "CSN/data",
+}}
+report = {{}}
+for task, relative in tasks.items():
+    directory = base / relative
+    ids = {{}}
+    hashes = {{}}
+    waveform_labels = {{}}
+    for split in ("train", "val", "test"):
+        values = np.load(directory / f"{{split}}_path.npy", allow_pickle=True)
+        ids[split] = set(map(str, values.tolist()))
+        waveforms = np.load(directory / f"{{split}}_data.npy", mmap_mode="r")
+        labels = np.load(directory / f"{{split}}_labels.npy", mmap_mode="r")
+        mapping = {{}}
+        for row, label in zip(waveforms, labels):
+            digest = hashlib.sha256(np.ascontiguousarray(row).view(np.uint8)).digest()
+            mapping.setdefault(digest, set()).add(np.ascontiguousarray(label).tobytes())
+        waveform_labels[split] = mapping
+        hashes[split] = set(mapping)
+    pairs = (("train", "val"), ("train", "test"), ("val", "test"))
+    label_agreement = {{}}
+    for left, right in pairs:
+        shared = hashes[left] & hashes[right]
+        same = sum(bool(waveform_labels[left][key] & waveform_labels[right][key]) for key in shared)
+        label_agreement[f"{{left}}_{{right}}"] = {{
+            "shared_waveforms": len(shared),
+            "same_label": same,
+            "conflicting_only": len(shared) - same,
+        }}
+    report[task] = {{
+        "id_unique": {{split: len(ids[split]) for split in ids}},
+        "id_overlap": {{
+            "train_val": len(ids["train"] & ids["val"]),
+            "train_test": len(ids["train"] & ids["test"]),
+            "val_test": len(ids["val"] & ids["test"]),
+        }},
+        "exact_waveform_overlap": {{
+            "train_val": len(hashes["train"] & hashes["val"]),
+            "train_test": len(hashes["train"] & hashes["test"]),
+            "val_test": len(hashes["val"] & hashes["test"]),
+        }},
+        "cross_split_waveform_label_agreement": label_agreement,
+        "within_split_duplicate_waveforms": {{
+            split: len(np.load(directory / f"{{split}}_data.npy", mmap_mode="r")) - len(hashes[split])
+            for split in hashes
+        }},
+    }}
+print(json.dumps(report, sort_keys=True))
+'''
+    command = f"{python} - <<'PY'\n{code}\nPY"
+    _, stdout, stderr = client.exec_command(command)
+    print(stdout.read().decode(errors="replace"))
+    error = stderr.read().decode(errors="replace")
+    if error:
+        print(error, file=sys.stderr)
+    client.close()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--cat", help="print one HeartLang source file from 10110")
+    parser.add_argument("--stmem-cat", help="print one ST-MEM source file from 10110")
     parser.add_argument("--lines", help="one-based inclusive line range, e.g. 300:500")
     parser.add_argument("--checkpoint-keys", action="store_true")
     parser.add_argument("--qrs-shapes", action="store_true")
+    parser.add_argument("--split-leakage-audit", action="store_true")
     args = parser.parse_args()
     if args.checkpoint_keys:
         checkpoint_keys()
@@ -171,8 +254,14 @@ def main() -> None:
     if args.qrs_shapes:
         qrs_shapes()
         return
+    if args.split_leakage_audit:
+        split_leakage_audit()
+        return
     if args.cat:
         cat_source(args.cat, args.lines)
+        return
+    if args.stmem_cat:
+        cat_source(args.stmem_cat, args.lines, repository="ST-MEM")
         return
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         reports = list(pool.map(inspect, NODES))
