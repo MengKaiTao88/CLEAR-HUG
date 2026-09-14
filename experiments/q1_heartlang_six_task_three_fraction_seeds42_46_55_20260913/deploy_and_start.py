@@ -8,6 +8,7 @@ import os
 import shlex
 import stat
 import sys
+import time
 from pathlib import Path, PurePosixPath
 
 import paramiko
@@ -50,6 +51,13 @@ def run(client: paramiko.SSHClient, command: str) -> str:
     if code:
         raise RuntimeError(f"remote command failed ({code}): {command}\n{error}\n{output}")
     return output
+
+
+def start_background(client: paramiko.SSHClient, command: str) -> None:
+    """Dispatch a fully redirected nohup command without waiting on its job."""
+    _, stdout, _ = client.exec_command(command)
+    time.sleep(1)
+    stdout.channel.close()
 
 
 def remote_sha(client: paramiko.SSHClient, path: str) -> str | None:
@@ -236,10 +244,14 @@ def main() -> None:
                 code = f"{root}/src/CLEAR-HUG/experiments/{CODE_DIRNAME}/run_node.py"
                 result = f"{root}/results/{CAMPAIGN}"
                 preload = "env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else ""
-                command = (f"mkdir -p {shlex.quote(result)} && "
-                           f"nohup {preload}{python} {code} --root {root} --node {node} --mode canary "
-                           f"> {result}/{node}-canary.log 2>&1 < /dev/null & echo $!")
-                print(f"START {node} pid={run(client, command).strip()}", flush=True)
+                pattern = f"[r]un_node.py --root {root} --node {node} --mode canary"
+                command = (f"mkdir -p {shlex.quote(result)}; "
+                           f"if ! pgrep -f {shlex.quote(pattern)} >/dev/null; then "
+                           f"nohup setsid {preload}{python} {code} --root {root} --node {node} --mode canary "
+                           f"> {result}/{node}-canary.log 2>&1 < /dev/null & "
+                           f"echo $! > {result}/{node}-canary.pid; fi")
+                start_background(client, command)
+                print(f"STARTED_OR_ALREADY_RUNNING {node}", flush=True)
     finally:
         for client in clients.values():
             client.close()
