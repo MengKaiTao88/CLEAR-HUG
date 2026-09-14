@@ -230,7 +230,7 @@ def main() -> None:
             for node, client in clients.items():
                 upload_code(client, NODES[node][3])
                 print(f"UPDATED_CODE {node}", flush=True)
-        elif not args.start_only:
+        elif not (args.start_only or args.start_train):
             for node, client in clients.items():
                 root = NODES[node][3]
                 print(f"deploy code/models {node}", flush=True)
