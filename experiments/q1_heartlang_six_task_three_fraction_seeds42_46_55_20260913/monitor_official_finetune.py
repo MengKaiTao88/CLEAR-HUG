@@ -18,9 +18,17 @@ done=list(r.glob("*pct/*-seed*/stmem/training-complete.json"))
 status={{}}
 p=r/"{node}-train-queue-status.json"
 if p.exists(): status=json.loads(p.read_text())
-print(json.dumps({{"completed":len(done),"status":status}}))
+by_fraction={{fraction:len(list(r.glob(f"{{fraction}}/*-seed*/stmem/training-complete.json"))) for fraction in ("100pct","10pct","1pct")}}
+current_log=[]
+spec=status.get("spec")
+if spec:
+    fraction,task,seed=spec.split(":")
+    log=r/fraction/f"{{task}}-seed{{seed}}"/"stmem"/"log.txt"
+    if log.exists(): current_log=log.read_text().splitlines()[-2:]
+print(json.dumps({{"completed":len(done),"by_fraction":by_fraction,"status":status,"current_log":current_log}}))
 PY
 nvidia-smi --query-gpu=memory.used,memory.total,utilization.gpu --format=csv,noheader
+ps -eo etime,pid,args | grep '[t]rain_official_finetune.py' | tail -1
 tail -n 5 {result}/{node}-train.log 2>/dev/null || true'''
         try: reports.append({"node": node, "output": run(client, command)})
         finally: client.close()
