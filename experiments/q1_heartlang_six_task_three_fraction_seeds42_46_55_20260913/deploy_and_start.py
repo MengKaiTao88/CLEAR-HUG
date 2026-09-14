@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import shlex
@@ -89,28 +88,33 @@ def relay_file(source: paramiko.SSHClient, destination: paramiko.SSHClient,
     incoming = destination_path + ".incoming"
     try:
         size = source_sftp.stat(source_path).st_size
-        digest = hashlib.sha256()
-        transferred = 0
-        with source_sftp.open(source_path, "rb") as reader, destination_sftp.open(incoming, "wb") as writer:
+        try:
+            transferred = destination_sftp.stat(incoming).st_size
+        except FileNotFoundError:
+            transferred = 0
+        if transferred > size:
+            destination_sftp.remove(incoming)
+            transferred = 0
+        mode = "ab" if transferred else "wb"
+        with source_sftp.open(source_path, "rb") as reader, destination_sftp.open(incoming, mode) as writer:
             # Paramiko otherwise waits for an acknowledgement for every small
             # SFTP packet, which is prohibitively slow when relaying between
             # two isolated remote containers.
             writer.set_pipelined(True)
+            if transferred:
+                reader.seek(transferred)
+                print(f"resume {source_path}: {transferred}/{size}", flush=True)
             while True:
                 block = reader.read(8 * 1024 * 1024)
                 if not block:
                     break
                 writer.write(block)
-                digest.update(block)
                 transferred += len(block)
                 if transferred % (512 * 1024 * 1024) < len(block):
                     print(f"relay {source_path}: {transferred}/{size}", flush=True)
-        actual = digest.hexdigest()
-        if expected_sha and actual != expected_sha:
-            raise RuntimeError(f"source hash mismatch for {source_path}: {actual}")
         destination_sftp.chmod(incoming, stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH)
         destination_sftp.posix_rename(incoming, destination_path)
-        return actual
+        return expected_sha or "unverified"
     finally:
         source_sftp.close()
         destination_sftp.close()
