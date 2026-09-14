@@ -22,8 +22,9 @@ def inspect(node_info):
         command = f'''python3 - <<'PY'
 import json, pathlib
 r=pathlib.Path("{campaign}")
-complete=list(r.glob("*pct/*-seed*/*/training-complete.json"))
-formal=list(r.glob("*pct/*-seed*/*/formal-test/formal-test-result.json"))
+models=("heartlang","stmem")
+complete=[p for m in models for p in r.glob(f"*pct/*-seed*/{{m}}/training-complete.json")]
+formal=[p for m in models for p in r.glob(f"*pct/*-seed*/{{m}}/formal-test/formal-test-result.json")]
 queues=[]
 for p in sorted(r.glob("*-queue-status.json")):
     try: queues.append(json.loads(p.read_text()))
