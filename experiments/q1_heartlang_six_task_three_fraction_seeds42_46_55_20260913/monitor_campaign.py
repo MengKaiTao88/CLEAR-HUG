@@ -32,7 +32,9 @@ for p in sorted(r.glob("*-queue-status.json")):
 print(json.dumps({{"training":len(complete),"formal":len(formal),"queues":queues}}))
 PY
 nvidia-smi --query-gpu=name,memory.used,memory.total,utilization.gpu --format=csv,noheader
-tail -n 8 {campaign}/{node}-canary.log 2>/dev/null || true'''
+for log in {campaign}/{node}-train.log {campaign}/{node}-canary.log; do
+  if test -f "$log"; then echo LOG=$log; tail -n 8 "$log"; fi
+done'''
         _, stdout, stderr = client.exec_command(command)
         output = stdout.read().decode(errors="replace")
         error = stderr.read().decode(errors="replace")
