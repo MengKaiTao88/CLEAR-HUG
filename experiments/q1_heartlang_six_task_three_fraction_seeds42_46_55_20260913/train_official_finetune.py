@@ -35,7 +35,9 @@ class ArrayDataset(Dataset):
         value = np.asarray(self.x[index], dtype=np.float32)
         if value.shape == (1000, 12):
             value = value.T
-        return self.transform(value), torch.as_tensor(np.asarray(self.y[index]), dtype=torch.float32)
+        # Memmapped arrays are read-only; copy the tiny label row before
+        # converting it so PyTorch never receives a non-writable view.
+        return self.transform(value), torch.as_tensor(np.array(self.y[index], copy=True), dtype=torch.float32)
 
 
 def transforms_for(repo: Path, split: str):
