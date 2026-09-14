@@ -1,0 +1,229 @@
+{
+  "campaign": "q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914",
+  "formal_test_authorized": true,
+  "paired_subset_and_head_initialization": true,
+  "records": {
+    "100pct:cpsc2018:42": {
+      "heartlang": "80a22268bdce59f58a814328ed3f8bc75722f36f9ddf1ef5d909c375b28eeaec",
+      "stmem": "25bf8a1dbe31366b4392a6671a8296df61d9bd70c8697b0e06eb39fab8087936"
+    },
+    "100pct:cpsc2018:46": {
+      "heartlang": "f2d7c0562e7390d756f0e17fba777a28701d869374a323357269eb5c5425486e",
+      "stmem": "d32d6aca89c9b32da03ea34903d7821e540bc3f02768f048f20a960eab67ac6f"
+    },
+    "100pct:cpsc2018:55": {
+      "heartlang": "3a2d6a67d881ccdacad90fb1f2e3a875e5c4854d4da1d0989b13a2b39ac1ee93",
+      "stmem": "70548e25c79ec270e294630f90a7e78804e945035d36dcbbe0d6a659afc67d54"
+    },
+    "100pct:csn:42": {
+      "heartlang": "71f8404a132921ef7d054f61e0d1105b3e36c691d6e9ba499d01795aa639e6e7",
+      "stmem": "f528392e4ce1846e115952f054e4c3baf698134e36762867176dd84cce0fb1e4"
+    },
+    "100pct:csn:46": {
+      "heartlang": "df10ca40c3c47943851de1e6ac38686c2d5471fb6f9a4250ae847cc2d47683b5",
+      "stmem": "6712f42ed9f2c0cc8046c6114f21310b8c49c0c301ec790a1b77ff86e506d2be"
+    },
+    "100pct:csn:55": {
+      "heartlang": "f733b017e307e0071324ee135b2909985d1682dc858c3e0d2815d2963a79038e",
+      "stmem": "28063883481b1da0f1b32cb4838aebe35e63c2d81bc55cb7ab8af2ca3caae991"
+    },
+    "100pct:form:42": {
+      "heartlang": "a6bdb9db90940e825bef4e6fe46e0a168da355441046fab303cdb947815bdfa6",
+      "stmem": "f01ba9f7950c4fa06313b6a8d40f934f7a34f169fe4f9af633157b269b0bfdec"
+    },
+    "100pct:form:46": {
+      "heartlang": "829650f805975f35e697f4fd93b88e52924a024610c9d967376ef921fc7fc97a",
+      "stmem": "7a59a6aaf23d2ccb49b6b9736fc7d67b0ac1234ea670efc7048464d6c378c11e"
+    },
+    "100pct:form:55": {
+      "heartlang": "0da5311d3688f036ef263558f68b60fad123b9c2c8b2db3e01513f599910ccf7",
+      "stmem": "806ff76fecafadefe55c556edf184f69f7ac6eefbc474c18e150ca760dbfa6e1"
+    },
+    "100pct:rhythm:42": {
+      "heartlang": "75d54209eb0c0b9ff4c76cdbd73adcd8a0d4e315610f01223f4a63cdea3fc66e",
+      "stmem": "3f3e29679e56f9de77c32d23aeab893740220f466ccfc1b54f81e66af9d99905"
+    },
+    "100pct:rhythm:46": {
+      "heartlang": "ccfce5933d068f85941f555d13eb65392ba9bbdc6cb6b8e2dbce3c318eb0bdce",
+      "stmem": "33235ecd8518bff207dca4dcae157cd6e4733c58a3943e6ca7877482a2a756ec"
+    },
+    "100pct:rhythm:55": {
+      "heartlang": "1c93012e2a7e405375f9b3a2cde704a0301f3dbd7ce2a029c8db1fb060eb32fe",
+      "stmem": "50b106f7eb02ce1a938f407556d08688e73ac793d54c8afc468e893a9bc2f795"
+    },
+    "100pct:subdiagnostic:42": {
+      "heartlang": "cfa2ceb1ceb75064ae6249776bb73cf053a17b7296f6543426530ef0f9e43b24",
+      "stmem": "02b943f955e6cb2393e76cd991a34101dc253a58781cbb6a541295378a253199"
+    },
+    "100pct:subdiagnostic:46": {
+      "heartlang": "40b2549edcfacf093edb0fd5a34655e398427f79749c48fe19d4aa60ca4de1b7",
+      "stmem": "0d28704635eac4ca8bfc4531e799075c26bab92f5c2b548a8ee74744e4598b73"
+    },
+    "100pct:subdiagnostic:55": {
+      "heartlang": "83b0c5b31b7d2b83bc13e0d5d1ea2c0269530a80c6e36c12dd3f2ce2753f1bb3",
+      "stmem": "6291ee313fe1618225293b8714d2959ab7b1970844f05f38a294e5a1c96741e0"
+    },
+    "100pct:superdiagnostic:42": {
+      "heartlang": "a065e0a5d212c3e8ed4bd713151a910e1524ec795f246e4fb8c3dd1967841382",
+      "stmem": "8bca7ac9d22ceeff5b01375390583385befdf75e41bcac34a98a255e8f2f54a5"
+    },
+    "100pct:superdiagnostic:46": {
+      "heartlang": "1af6aafceed1c918a9399eae76eaf85d73508b92bbebc22498b1af392216b3f3",
+      "stmem": "f715e5685d6d37635f305c97bd6b1a137579d2fb97c7e5594da598f984f124b3"
+    },
+    "100pct:superdiagnostic:55": {
+      "heartlang": "0e561cad21c34732219ee5cc698e2dc975e8bd6315b0db31532dd8a19d0f19d3",
+      "stmem": "4b4f200f0e4b25a217d99ffbc664dfa961a8475975c76cc151801cab28c0b447"
+    },
+    "10pct:cpsc2018:42": {
+      "heartlang": "704413bd7dc118000ff85e531d1fb1c1c0b04c1b72ed46433c0e23bd53ee810b",
+      "stmem": "618407ea6db8c909918559b430ace302b7cfc295448e30129f6d46e69d3d70cf"
+    },
+    "10pct:cpsc2018:46": {
+      "heartlang": "b9139b7f1d8c6f0ee26ee10197946cfbef5694e85b875b8271ac284cbed46ac3",
+      "stmem": "d088c07e3604318d86331d69ed813054262175f08647ec479887c325801bb9ae"
+    },
+    "10pct:cpsc2018:55": {
+      "heartlang": "ac182b53c7aa53f1bd658880e9cc48f370be49882759580b8e1f291ade9bc6e7",
+      "stmem": "7cd4b340145790df76c277be2cb9873ed4c2192827ad95813410c70fdd34b6e1"
+    },
+    "10pct:csn:42": {
+      "heartlang": "0d88eeb819dfb5dc0f148a3b68d0aeb0e5f845f0affa5f955a8d5b9cca6b0eb9",
+      "stmem": "921477732f677ada728ad3da63e43160da8399f0ddcd9fd5ec5074cfbed05e80"
+    },
+    "10pct:csn:46": {
+      "heartlang": "4bc9f2ddfeaa54cf8d5792577b7ea36905404c9621bd100b773470fd2da23925",
+      "stmem": "8292368dfe8c9ad333401e733753a4746a9940a4aed8e853d0952099a521d5c1"
+    },
+    "10pct:csn:55": {
+      "heartlang": "5314570aa65b75413741dd547cdc1d5e9c176062173565d07a70359d53b86cec",
+      "stmem": "ec1ab5a83ee378eaeaeb5ab7fdc4cd4e4641b7531491efa5cc9e5aa95ed09f12"
+    },
+    "10pct:form:42": {
+      "heartlang": "4301fdf0e36d1250dfe9e48378b756188e25d0936f65fa0f5add98b0a8e1afb7",
+      "stmem": "cd00c8654a0cf709f700197501743fe7f5fd71ec64d40e41966da96ded1bf1b2"
+    },
+    "10pct:form:46": {
+      "heartlang": "903073dd4d3aef79eff74e4e8f2587f8edc93f03879e9a1700bd0ef32ad8fd4c",
+      "stmem": "ae5aafcc1cf17f01ffbb63473da6bba89c67294ed83c25d9c40e8b2f0d5e75d5"
+    },
+    "10pct:form:55": {
+      "heartlang": "ca1d210a09d3ec81b5f5838759b3e608d81724711aa56d58e57fe3abbdbba272",
+      "stmem": "6b85dd426acde057c1696bdefb6e7af823b24f74f4dbcd3c712e9a313f9f0793"
+    },
+    "10pct:rhythm:42": {
+      "heartlang": "a6b6dac0866aa90ee875829445f38e138503f60107f0158787a2fd7af315871a",
+      "stmem": "3976ba51b8d449b8eb472e58a8214d476bcef05b4dadd4a3916cd177bc84caf1"
+    },
+    "10pct:rhythm:46": {
+      "heartlang": "c638a18f6569c10d7c452b0aede525bf2592f59bd00777296fcb7e5e7de92128",
+      "stmem": "6061002549c2ad707b54dd42cb12059c86a90409f8c2bccf1456216d23c4fd36"
+    },
+    "10pct:rhythm:55": {
+      "heartlang": "e05824470c4cc113d583355a59e441acc48c5339b2628cf62511b1e8b59dde7b",
+      "stmem": "eefbf461850b5b3687c27ae3576cf04c608d45bea197487c75473cbc54985446"
+    },
+    "10pct:subdiagnostic:42": {
+      "heartlang": "8ec0b755157df5868a4ed303e59842cc8163b164cbec6caab469f25e83f138cc",
+      "stmem": "a510fe2e98bfb24cfa53d39f16a5bea6efef13dd3818bae4bce96ab591716fab"
+    },
+    "10pct:subdiagnostic:46": {
+      "heartlang": "898480743b9ecf566d76fd94ff8d1875ad7a82e90757b66a80c4689115b0ebad",
+      "stmem": "58f06be204aa48e17c18cdd5aec71c94e96cf2d86aea0d9d55c8d9b8ae4f3f3d"
+    },
+    "10pct:subdiagnostic:55": {
+      "heartlang": "223384d501dea47656f0329d515b822fb9d27577901193a66601086eefa9114d",
+      "stmem": "7cf59ac1821cbd50816da16592c4fedfc57e6f724fae9b1506749f8211575328"
+    },
+    "10pct:superdiagnostic:42": {
+      "heartlang": "8febe87352b1a281221b22d3e52b5a1d58f56c058182f54e73af2fa0bbecd4ab",
+      "stmem": "e477df2d55ccb35a75d32c20e6bf7438e870ca74d0eea768c2f6a77d851ac36a"
+    },
+    "10pct:superdiagnostic:46": {
+      "heartlang": "e65063efd960b0e7afb9b68f1b8f2a8a65f1955ffedb9b1aefb895183979287e",
+      "stmem": "c15b5622f053b9502144ec2cb8669f62b98e29349d1fc44714c25339436d503b"
+    },
+    "10pct:superdiagnostic:55": {
+      "heartlang": "d9621f8f1b4b3e49356164c9bdf9dd46e7001c0a81110cc94cb7d8723fbed673",
+      "stmem": "5e62d4db8f1e422bf2689686dac43263b1e44e8b20e7b68ae9478e1eb8874cbc"
+    },
+    "1pct:cpsc2018:42": {
+      "heartlang": "28e30c592d03f2aa170bde75a4ba5e6b2609ce1d198ce08b5f7b1e80a28606bd",
+      "stmem": "cebfbb34f0b1014c2fc748062bb657fd00b2645d3dd2333e40e2c171e4344772"
+    },
+    "1pct:cpsc2018:46": {
+      "heartlang": "e5868bf9478aa87b43621c5626b33f87654be97277f1c9c848e9450eaba2cc8e",
+      "stmem": "e09f2f5a8b54829d7085200d84f2c16dae27a169f0065566026338fbbde2aea8"
+    },
+    "1pct:cpsc2018:55": {
+      "heartlang": "a61f8401f39e692d17890b0524e792a47c445254356960948ffa3aa7974edcc9",
+      "stmem": "6e454486502e78a0d8d2334b3549e84c11dc536fef034b1c72eb749a6cc06312"
+    },
+    "1pct:csn:42": {
+      "heartlang": "328ae43f6d8bf2cb271c59b0b2d7745b01f0c97864ff37873089db9db863471b",
+      "stmem": "98f57e6b4abf49d45a630c49ab264161405bba20a7c37363c02e8e43aa98c180"
+    },
+    "1pct:csn:46": {
+      "heartlang": "93d6e7dbfd089950c97c9da3f4cead71be11513abe3e232a0fec0b3e9a1cedca",
+      "stmem": "e819acb9f468b43ce66e901edd41e120ff2f86dc693931f239dd86771e0db198"
+    },
+    "1pct:csn:55": {
+      "heartlang": "d7b9031f64b3fc52370891032f2370315782da8df15ea0af5f29b49e33e1049f",
+      "stmem": "e39cedd9f31b515eac09436c244e0edf0147c2938739fc51a8a1983d25616adb"
+    },
+    "1pct:form:42": {
+      "heartlang": "d0dea48459bfc1074b53afb974e87a64fcbc185a98027ad2eb83ffa73bd0f075",
+      "stmem": "c62218c233ae2d6a78d499dde88e3a9d310734eabb16c60cd029aacdd5e1be8e"
+    },
+    "1pct:form:46": {
+      "heartlang": "2feba0b90026cf049246d128beb0ee2da8609af3e3832fa3d5e9ea806e46db24",
+      "stmem": "0c2da3a1c2fbf9433fd627db561e2ccbdab6a25bb50fd29a38c10deaaac4146b"
+    },
+    "1pct:form:55": {
+      "heartlang": "6b93b2e2cae07570f8a8373045c10f6da100568af47c2847fa0387fd6bf0585b",
+      "stmem": "54042dbf786d542b3220446073cebddf260bcef86950f0013ade7ea1bb9e6fb6"
+    },
+    "1pct:rhythm:42": {
+      "heartlang": "cf7a2c0797626652de704ed3e747d48c381e374562613889ced56a057456a999",
+      "stmem": "3f3a0de19ba3eee09ddd7d9a02960201cab0846b5ac70e6b5b86aa1ef4cbb3c0"
+    },
+    "1pct:rhythm:46": {
+      "heartlang": "74240379ae34b4cd065a8a3e663a98355ffd034cffc36154fa77690930d5d37e",
+      "stmem": "6e0af22fb6d18c429d30789a98191542c7d55623f1562f6d7ea5fa3983141505"
+    },
+    "1pct:rhythm:55": {
+      "heartlang": "e245bde8cc0b2ee89b3421e89e8d6bf6d92e2d809281b5c6a605d763327ed47f",
+      "stmem": "83a32a56ab9e934c8aed7597470805f4160fa9ae5a102b4d6f233270119c53e5"
+    },
+    "1pct:subdiagnostic:42": {
+      "heartlang": "22eff1ccc4ebda283d41f5b60d65d225407c2553433791abb95a0b19c186c84b",
+      "stmem": "0dd6256ec7c1f516f23be60253baaaa2b3cb1a5a3591f4748dfde1d0362289cc"
+    },
+    "1pct:subdiagnostic:46": {
+      "heartlang": "349e1d689073bd30db7a4ea2e3072dea51b9734fd10c11c4de994ee683bb5965",
+      "stmem": "a44a71867872dea00bf6eae25e4de4c0d1b8bf5d2b5e825b16d522542b9ebbc4"
+    },
+    "1pct:subdiagnostic:55": {
+      "heartlang": "eb017a6394e2eaa9515b7e15a662d09f59552c574d4278b3d021941d94d28e4a",
+      "stmem": "98b212867041e6b27b0ad1a5e14ed3cb0d39acd7c10e1eb39f871e59cbc581ac"
+    },
+    "1pct:superdiagnostic:42": {
+      "heartlang": "8392c6659dc573a9787889c9471a8cce4176fb600778f81235e4fcdc6a03f2e7",
+      "stmem": "7e5ecce39ccdb4cb8094a2152ca8c3d271a257768652219acd74d6acca6ea008"
+    },
+    "1pct:superdiagnostic:46": {
+      "heartlang": "30aab804286362a17cae65070148573cda14a4dd301ec9397ab322763d40dbcf",
+      "stmem": "cd33d3739b13ed37c16ec7aaa28920e3e17aa8c603ee8b3fc4c90e990fa0669c"
+    },
+    "1pct:superdiagnostic:55": {
+      "heartlang": "ec2e24c7af8f1e401c3cab385c3fa043023dfa58983fd68000cb4018ad05baac",
+      "stmem": "685ec99912a1cbe26dc7875cbc9206022cf8150e5a8b346758205cffdcc4c136"
+    }
+  },
+  "selection_metric": "validation_macro_auroc",
+  "status": "passed",
+  "task_seed_fraction_specs": 54,
+  "test_used_for_selection": false,
+  "train_validation_units": 108,
+  "unique_checkpoint_hashes": 108
+}
