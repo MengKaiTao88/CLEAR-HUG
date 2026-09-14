@@ -1,0 +1,106 @@
+{
+  "campaign": "q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914",
+  "nodes": {
+    "10092": {
+      "raw_sha256": {
+        "cpsc2018": {
+          "test_data.npy": "c3d904a9be5d40b7f07997082c988f5e6750e9651b2c63aadfd274f62b95459e",
+          "test_labels.npy": "ab6722b6c853205672902781432f3029e4b09fdfd4171109aecff8b4bd04f661",
+          "test_path.npy": "5a16e11bd9ec078447a6ad2995e81e60b1e8277c6fd385f9d44d551b9d99efd6",
+          "train_data.npy": "93a4619ab93aca8e684cfa8ef956794432f1749d7909e9cae5e99db90b36bb1b",
+          "train_labels.npy": "318d7146a3894ef5eb34a9fdda663767a507557092c63f3e4a297b27c844e53e",
+          "train_path.npy": "f6a553f3517d46854a8f45d4f303bb97f718b5df1b6118715ae176b6f0938fac",
+          "val_data.npy": "76bad1582d5f8999907e94d0c4c2d7cd59644b89398ddea191664d52fd9acc2b",
+          "val_labels.npy": "232160e3b139ca9825a5f26a37848768d3febe88e77703430aae5b429cd17945",
+          "val_path.npy": "21e04bb13ed52216767f6fb9f83ea65ae2c4de3cd2d7c443fdc3a86ae5e74cb8"
+        },
+        "csn": {
+          "test_data.npy": "91069e8f7aca40cc551aea31124fa989d1a28f97d39b66e28f42c2797d8eb5c9",
+          "test_labels.npy": "3709f81c28cc635022ce546939c9e15922f03e428e4ac74fcee05e04fa5211af",
+          "test_path.npy": "7638b6c2266de8e7f4ab63b2c050e4beb881a573db2e99d7ae53d3b7c61e04b1",
+          "train_data.npy": "0f2ecde428306bf7820b9238831c866184877c6c1b4939ad660c97e0c8765fe8",
+          "train_labels.npy": "5d1420dfe11f4236528c9c7c1ba961b7b5d402f4c59289e96ba00ff3a19d2653",
+          "train_path.npy": "b8db8c2592503d0438c65753b760a182696f3edc7a6c57336282120e96ba87b8",
+          "val_data.npy": "d09afc4b9d997a42ef83067a88d9b6b720e512f19fa820e94a74b1a3dfddc5fa",
+          "val_labels.npy": "acb12d583ef6c157379a90cbc2ee8bff430d34672f6016c2354abce2a6332c20",
+          "val_path.npy": "86fa6f8e0cac1eabe2d982419aa47646e079bd4bf83994a57ffccd487d7023f8"
+        }
+      },
+      "root": "/root/107552503710-1",
+      "tasks": [
+        "csn",
+        "cpsc2018"
+      ]
+    },
+    "10103": {
+      "raw_sha256": {
+        "form": {
+          "mlb.pkl": "e8a76dc5de0c02fe09eca0bdeb4e1711dc7ff3d2d6afca89f80766d26690eab7",
+          "standard_scaler.pkl": "aabdd4ad2dbdf6eff52fb12f634c5c3590331552161288060fc8e002ca511aaf",
+          "test_data.npy": "ebbef0b4e74b2d11e143613ac2378859af58970ad1285536df580f4dc6b03bfb",
+          "test_labels.npy": "5aef196a763b568643ee1f91531f9f511dd6f74c34df92a82595d6194d0f7d69",
+          "test_path.npy": "390fea4da6d04972ab87d205b8f340a90280e9697e01be28d9236ab1af2ea573",
+          "train_data.npy": "22778653fd3a4336f6e8dccad6c508ce0b2d9b02cd3773d21f20634170c70296",
+          "train_labels.npy": "5b8bc3e1f2b055250b4f2961eec8a00e6b87c3b8207b72354e016a81428e34c9",
+          "train_path.npy": "b0a9fa109daf1ad5bd0da3d5c4f077c30e0100b2fd02fa754c1dc918bf3bdf53",
+          "val_data.npy": "daec67d0e469f1ae48c3803c511ee0479b9d4bd7538330dc8257e0fee73a0130",
+          "val_labels.npy": "4399ed05f4adbaf9f9953a783f5bb979273cdd12b831362eb1c14ecb3614b67e",
+          "val_path.npy": "b13447e99560c742b1cd72fb798000be520abb9340e09fbc212488092a89d35b"
+        },
+        "superdiagnostic": {
+          "mlb.pkl": "f14546ec3b6533dab06a1500d0f17a7e3225a9140aea31ed9bb2d37c05b666d4",
+          "standard_scaler.pkl": "1982a80ca849b95cdce093f546a388f5ed5fb1a1876529508d3d5fba3551e172",
+          "test_data.npy": "1acedf8f228fd4d6ea35eb55a0146f865b4811f1c1579da6529b0d322a06cc81",
+          "test_labels.npy": "87fd2b1d02a7a639d2e37ea17e3d71a450d650c55844c91fbb80860165744411",
+          "test_path.npy": "e5f7fcf0f0e7f14fbf3c429a4941d7d7fcd1d9e81ac7e51426e2d5ea0c112189",
+          "train_data.npy": "8078675080896a056455e3b4291bbf0f30dce4c48552f8069a8904e51eaadb44",
+          "train_labels.npy": "3df1c43602d4b64b1c5602c76ee399496b56b8b9649b923f5a6ced1d18e1fd90",
+          "train_path.npy": "ac7e8b4081b132806edfd4c7b42c05be02152fd5f9eaf84746133796d26a99e6",
+          "val_data.npy": "6e70388f5a7b18ccf250da0a7254f28778474e8dc7b6a9092cb374c25a720464",
+          "val_labels.npy": "297f3d06a803695e6038396b257b35e591269131062511bfea4dececef7ac91b",
+          "val_path.npy": "403eaae383f76a7fbf48b2a782d10758b3cfc75c614a6b38c7c36d0ab5b51bb4"
+        }
+      },
+      "root": "/root/107552503710-2",
+      "tasks": [
+        "superdiagnostic",
+        "form"
+      ]
+    },
+    "10110": {
+      "raw_sha256": {
+        "rhythm": {
+          "mlb.pkl": "33b969b4c584d78cf8da4c68065c09fa0b3b971afa20ddec6453f536469e9b23",
+          "standard_scaler.pkl": "c7443eb37671b7f94f6f7e2236d986b7f24ffd390f7745bacd38ec494c615900",
+          "test_data.npy": "10aa7f0b0b3ee65c9280ebe482cee72b4679f3d1da5728e63740d4148bc99aa8",
+          "test_labels.npy": "8a7e714a4cf289873d53f682f8804a503378cd0c16d39ef04450de869007f184",
+          "test_path.npy": "66d63789be3a7f24624795c37d3f07534925ba8ff9632b7818bd6900bd43f5a5",
+          "train_data.npy": "670f28209b23cee7eee6a48163345eca644a39b1050ce27a19747e987377eb26",
+          "train_labels.npy": "25b2607625f1160153aa48c47e523bc147924b00c6ede69a717c5c161f87f923",
+          "train_path.npy": "22383e70f46003445c61d2b71a104f3d75680a7b93e850ac9f2feeb602042fac",
+          "val_data.npy": "9bbbdd401efcc55dc7abb56959bcc19026ece885faf7a4dcdd9adb7b5df5e022",
+          "val_labels.npy": "026f5e176ab0e4cc397068ae8e566444160d53f32940fa8a1878b4101e93c05f",
+          "val_path.npy": "3a1d795c1aa83a649ca562caa7059673254ff61475c1b24f752319d09a1baea1"
+        },
+        "subdiagnostic": {
+          "mlb.pkl": "2170b9fcad0f8b290db056be9b9c2e2adac0c428940018c0f968d9695bc60335",
+          "standard_scaler.pkl": "1982a80ca849b95cdce093f546a388f5ed5fb1a1876529508d3d5fba3551e172",
+          "test_data.npy": "1acedf8f228fd4d6ea35eb55a0146f865b4811f1c1579da6529b0d322a06cc81",
+          "test_labels.npy": "72c6c1f1166fac42bf2aabb6b4e6acff623954f0a566174d2ba00838ab9b1d20",
+          "test_path.npy": "e5f7fcf0f0e7f14fbf3c429a4941d7d7fcd1d9e81ac7e51426e2d5ea0c112189",
+          "train_data.npy": "8078675080896a056455e3b4291bbf0f30dce4c48552f8069a8904e51eaadb44",
+          "train_labels.npy": "0f01c4cd7b4359117cc92caf9718fc4acc57fb2ec644b7893eea2f541661e07a",
+          "train_path.npy": "ac7e8b4081b132806edfd4c7b42c05be02152fd5f9eaf84746133796d26a99e6",
+          "val_data.npy": "6e70388f5a7b18ccf250da0a7254f28778474e8dc7b6a9092cb374c25a720464",
+          "val_labels.npy": "47be38fead1a7118c791c22eae5f2bf9e228f8c04198adaaceb02310b50d77f3",
+          "val_path.npy": "403eaae383f76a7fbf48b2a782d10758b3cfc75c614a6b38c7c36d0ab5b51bb4"
+        }
+      },
+      "root": "/root/107552503710",
+      "tasks": [
+        "subdiagnostic",
+        "rhythm"
+      ]
+    }
+  }
+}
