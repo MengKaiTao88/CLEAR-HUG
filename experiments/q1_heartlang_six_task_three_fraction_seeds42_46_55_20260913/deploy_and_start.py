@@ -246,9 +246,9 @@ def main() -> None:
                 code = f"{root}/src/CLEAR-HUG/experiments/{CODE_DIRNAME}/run_node.py"
                 result = f"{root}/results/{CAMPAIGN}"
                 preload = "env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else ""
-                pattern = f"[r]un_node.py --root {root} --node {node} --mode canary"
+                queue_status = f"{result}/{node}-canary-queue-status.json"
                 command = (f"mkdir -p {shlex.quote(result)}; "
-                           f"if ! pgrep -f {shlex.quote(pattern)} >/dev/null; then "
+                           f"if ! test -f {shlex.quote(queue_status)}; then "
                            f"nohup setsid {preload}{python} {code} --root {root} --node {node} --mode canary "
                            f"> {result}/{node}-canary.log 2>&1 < /dev/null & "
                            f"echo $! > {result}/{node}-canary.pid; fi")
