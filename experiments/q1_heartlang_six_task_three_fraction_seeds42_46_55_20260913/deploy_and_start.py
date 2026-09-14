@@ -218,26 +218,28 @@ def smoke(client: paramiko.SSHClient, root: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start-canaries", action="store_true")
+    parser.add_argument("--start-only", action="store_true", help="skip deployment audit and only idempotently start canaries")
     args = parser.parse_args()
     clients = {node: connect(node) for node in NODES}
     source = clients[SOURCE_NODE]
     manifest = {"campaign": CAMPAIGN, "nodes": {}}
     try:
-        for node, client in clients.items():
-            root = NODES[node][3]
-            print(f"deploy code/models {node}", flush=True)
-            upload_code(client, root)
-            if node != SOURCE_NODE:
-                deploy_models(source, client, root)
-            hashes = {}
-            for task in NODE_TASKS[node]:
-                print(f"snapshot {node}:{task}", flush=True)
-                hashes[task] = deploy_raw_task(source, client, node, task)
-            smoke(client, root)
-            manifest["nodes"][node] = {"root": root, "tasks": list(NODE_TASKS[node]), "raw_sha256": hashes}
-        local_manifest = LOCAL_CODE / "deployment-manifest.json"
-        local_manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        if args.start_canaries:
+        if not args.start_only:
+            for node, client in clients.items():
+                root = NODES[node][3]
+                print(f"deploy code/models {node}", flush=True)
+                upload_code(client, root)
+                if node != SOURCE_NODE:
+                    deploy_models(source, client, root)
+                hashes = {}
+                for task in NODE_TASKS[node]:
+                    print(f"snapshot {node}:{task}", flush=True)
+                    hashes[task] = deploy_raw_task(source, client, node, task)
+                smoke(client, root)
+                manifest["nodes"][node] = {"root": root, "tasks": list(NODE_TASKS[node]), "raw_sha256": hashes}
+            local_manifest = LOCAL_CODE / "deployment-manifest.json"
+            local_manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        if args.start_canaries or args.start_only:
             for node, client in clients.items():
                 root = NODES[node][3]
                 python = f"{root}/.venv/bin/python"
