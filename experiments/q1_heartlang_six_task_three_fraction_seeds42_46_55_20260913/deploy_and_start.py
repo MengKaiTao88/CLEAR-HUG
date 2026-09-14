@@ -92,6 +92,10 @@ def relay_file(source: paramiko.SSHClient, destination: paramiko.SSHClient,
         digest = hashlib.sha256()
         transferred = 0
         with source_sftp.open(source_path, "rb") as reader, destination_sftp.open(incoming, "wb") as writer:
+            # Paramiko otherwise waits for an acknowledgement for every small
+            # SFTP packet, which is prohibitively slow when relaying between
+            # two isolated remote containers.
+            writer.set_pipelined(True)
             while True:
                 block = reader.read(8 * 1024 * 1024)
                 if not block:
