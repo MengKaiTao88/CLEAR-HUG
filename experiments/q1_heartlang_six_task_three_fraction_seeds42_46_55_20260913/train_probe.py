@@ -11,6 +11,9 @@ import random
 from pathlib import Path
 
 import numpy as np
+# Required by PyTorch for deterministic CuBLAS GEMM on CUDA >= 10.2.  Set it
+# before the first CUDA context is initialized.
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 

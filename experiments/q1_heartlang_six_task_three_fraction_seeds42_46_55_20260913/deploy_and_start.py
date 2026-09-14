@@ -219,12 +219,17 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start-canaries", action="store_true")
     parser.add_argument("--start-only", action="store_true", help="skip deployment audit and only idempotently start canaries")
+    parser.add_argument("--code-only", action="store_true", help="only update campaign source on all nodes")
     args = parser.parse_args()
     clients = {node: connect(node) for node in NODES}
     source = clients[SOURCE_NODE]
     manifest = {"campaign": CAMPAIGN, "nodes": {}}
     try:
-        if not args.start_only:
+        if args.code_only:
+            for node, client in clients.items():
+                upload_code(client, NODES[node][3])
+                print(f"UPDATED_CODE {node}", flush=True)
+        elif not args.start_only:
             for node, client in clients.items():
                 root = NODES[node][3]
                 print(f"deploy code/models {node}", flush=True)
