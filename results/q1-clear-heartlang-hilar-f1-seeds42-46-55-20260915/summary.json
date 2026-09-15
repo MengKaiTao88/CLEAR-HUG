@@ -1,0 +1,3043 @@
+{
+  "models": [
+    "CLEAR-HUG",
+    "HeartLang",
+    "no-anchor HiLAR"
+  ],
+  "seeds": [
+    42,
+    46,
+    55
+  ],
+  "threshold": 0.5,
+  "threshold_selected_on_test": false,
+  "label_and_order_audit": "passed",
+  "seed_results": [
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.5895914087066959,
+      "micro_f1": 0.6147448015122874,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\superdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6567312202479358,
+      "micro_f1": 0.7090352220520674,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\superdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6835131615865857,
+      "micro_f1": 0.7520692249811889,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\superdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.6027318068620098,
+      "micro_f1": 0.6284953395472703,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\superdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6501277502413596,
+      "micro_f1": 0.7000983284169124,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\superdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6907754507778638,
+      "micro_f1": 0.7506542056074766,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\superdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.6067336203879561,
+      "micro_f1": 0.6281789493224429,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\superdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6371357936064748,
+      "micro_f1": 0.6962962962962963,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\superdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6888652363670588,
+      "micro_f1": 0.7528174305033809,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\superdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.2899869643108289,
+      "micro_f1": 0.4974757281553398,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\subdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2611779101291746,
+      "micro_f1": 0.5758002818602779,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\subdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.3335368576294635,
+      "micro_f1": 0.658724340175953,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\subdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.3051963918483862,
+      "micro_f1": 0.5128604832424006,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\subdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.28390183228749993,
+      "micro_f1": 0.5831353919239906,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\subdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.32819161266461067,
+      "micro_f1": 0.6546816479400749,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\subdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.26184737344524356,
+      "micro_f1": 0.4896959804121608,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\subdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.27169944375027283,
+      "micro_f1": 0.5717188134904511,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\subdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.33189142405438465,
+      "micro_f1": 0.6549621142117908,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\subdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.11610152828873525,
+      "micro_f1": 0.34092307692307694,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\form-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13185889726077862,
+      "micro_f1": 0.358560794044665,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\form-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.21790985796267084,
+      "micro_f1": 0.4857296715131933,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\form-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.08851766485845769,
+      "micro_f1": 0.331421287444232,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\form-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14951118046448025,
+      "micro_f1": 0.37014563106796117,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\form-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2356555865820887,
+      "micro_f1": 0.46153846153846156,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\form-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.16072648904611944,
+      "micro_f1": 0.3958785249457701,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\form-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14935613316559584,
+      "micro_f1": 0.37163814180929094,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\form-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2552145356999944,
+      "micro_f1": 0.5007874015748032,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\form-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.31707090329325355,
+      "micro_f1": 0.8685468451242829,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\rhythm-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.3146474075257295,
+      "micro_f1": 0.8565891472868217,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\rhythm-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.45409974476193565,
+      "micro_f1": 0.8976490144858703,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\rhythm-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.3041578427977172,
+      "micro_f1": 0.8647492274780129,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\rhythm-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.29753722986178205,
+      "micro_f1": 0.859942638623327,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\rhythm-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.380763963532035,
+      "micro_f1": 0.8931297709923665,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\rhythm-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.29950647162139415,
+      "micro_f1": 0.8633672744494435,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\rhythm-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.3105488506168134,
+      "micro_f1": 0.8555582348685797,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\rhythm-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.3774863755904542,
+      "micro_f1": 0.8934543717152413,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\rhythm-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.48374805030395873,
+      "micro_f1": 0.559322033898305,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\cpsc2018-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2528152530995322,
+      "micro_f1": 0.37716615698267075,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\cpsc2018-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6489969167802045,
+      "micro_f1": 0.7322604242867593,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\cpsc2018-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.49013320861013415,
+      "micro_f1": 0.5436643835616438,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\cpsc2018-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2758263346723837,
+      "micro_f1": 0.39558232931726905,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\cpsc2018-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6672229238816954,
+      "micro_f1": 0.7254833040421793,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\cpsc2018-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.5018330303971331,
+      "micro_f1": 0.5826446280991735,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\cpsc2018-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2722127489146269,
+      "micro_f1": 0.387227572225038,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\cpsc2018-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6867219766824664,
+      "micro_f1": 0.742696233720521,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\cpsc2018-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.28026516422439895,
+      "micro_f1": 0.6386772106398274,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\csn-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2456356030771989,
+      "micro_f1": 0.6325704499455084,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\csn-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.34030661124016637,
+      "micro_f1": 0.7394422310756972,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\csn-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.2946213067309996,
+      "micro_f1": 0.5989628931241161,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\csn-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2533367722659623,
+      "micro_f1": 0.6339782251116158,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\csn-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.34577335361172706,
+      "micro_f1": 0.7282852390250958,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-clear-deepsets-hilar-10seed-20260903\\assembled\\csn-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.28010236828708923,
+      "micro_f1": 0.6398372802557024,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\csn-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.24952318026930712,
+      "micro_f1": 0.6326957329822659,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\csn-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.3758474431729084,
+      "micro_f1": 0.7349088640931457,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\100pct\\csn-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.49017716541680245,
+      "micro_f1": 0.6039434204886412,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\superdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.5787260620174428,
+      "micro_f1": 0.6523656776263032,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\superdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.5885663782147839,
+      "micro_f1": 0.6907176287051482,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\superdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.521536609100538,
+      "micro_f1": 0.6383133406034169,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\superdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.586605172357992,
+      "micro_f1": 0.6493975903614457,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\superdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6165593138741452,
+      "micro_f1": 0.6963360828697487,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\superdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.502062964251022,
+      "micro_f1": 0.6020430341230167,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\superdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.5855489186655182,
+      "micro_f1": 0.6483316481294237,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\superdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.6185974873091243,
+      "micro_f1": 0.7007438489414457,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\superdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.2164308166323251,
+      "micro_f1": 0.513672270609682,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\subdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18736802298284957,
+      "micro_f1": 0.5126903553299492,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\subdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.28421767098504674,
+      "micro_f1": 0.5959017906590364,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\subdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.22431799875768849,
+      "micro_f1": 0.5282185177746536,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\subdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18447405929859736,
+      "micro_f1": 0.5154464663563267,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\subdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2898501055349083,
+      "micro_f1": 0.6023251522421111,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\subdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.20859561332708695,
+      "micro_f1": 0.5442708333333334,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\subdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.183985517034318,
+      "micro_f1": 0.5083881928222552,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\subdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2786207327997703,
+      "micro_f1": 0.5893358278765201,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\subdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.0970562660436103,
+      "micro_f1": 0.33789411064842356,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\form-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07858394020589095,
+      "micro_f1": 0.25375170532060026,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\form-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.1618235855912673,
+      "micro_f1": 0.36757872999483737,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\form-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.10234855309811122,
+      "micro_f1": 0.36363636363636365,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\form-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08536986055157592,
+      "micro_f1": 0.30440414507772023,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\form-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.18772776768698932,
+      "micro_f1": 0.40334378265412746,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\form-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.12820517399572698,
+      "micro_f1": 0.35978835978835977,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\form-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08431712050573127,
+      "micro_f1": 0.271343481138319,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\form-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.16054303330826633,
+      "micro_f1": 0.37024608501118567,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\form-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.2562762712321704,
+      "micro_f1": 0.8511550369135509,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\rhythm-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2530785217102826,
+      "micro_f1": 0.8328060355317596,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\rhythm-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.3026124538316304,
+      "micro_f1": 0.8716216216216216,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\rhythm-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.31363288826839597,
+      "micro_f1": 0.8227474150664698,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\rhythm-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2018376782688394,
+      "micro_f1": 0.8335731414868105,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\rhythm-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.28886756314336653,
+      "micro_f1": 0.8616060532096657,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\rhythm-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.19648508291811198,
+      "micro_f1": 0.8407522018567007,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\rhythm-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18956177570640023,
+      "micro_f1": 0.8323251875151222,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\rhythm-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2275415248340327,
+      "micro_f1": 0.8464528668610302,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\rhythm-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.41657541025719225,
+      "micro_f1": 0.5173398612811098,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\cpsc2018-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0750095603739207,
+      "micro_f1": 0.16173808086904043,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\cpsc2018-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.4807873956745532,
+      "micro_f1": 0.5851627554882665,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\cpsc2018-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.40564856639666713,
+      "micro_f1": 0.46656050955414013,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\cpsc2018-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.042247841646733356,
+      "micro_f1": 0.07662337662337662,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\cpsc2018-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.42015397230662804,
+      "micro_f1": 0.5420118343195266,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\cpsc2018-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.408794616632204,
+      "micro_f1": 0.4716828478964401,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\cpsc2018-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09199106562802158,
+      "micro_f1": 0.19791666666666666,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\cpsc2018-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.36670063066960856,
+      "micro_f1": 0.5,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\cpsc2018-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.24111100367770155,
+      "micro_f1": 0.5969773299748111,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\csn-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14337393324997794,
+      "micro_f1": 0.5515698782205285,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\csn-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.25553156618503065,
+      "micro_f1": 0.6560058415480102,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\csn-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.22313872428930356,
+      "micro_f1": 0.6072208472849032,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\csn-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13899478305758697,
+      "micro_f1": 0.5461199367878233,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\csn-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2658317760956842,
+      "micro_f1": 0.6612672018348624,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\10pct\\csn-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.22141849032593974,
+      "micro_f1": 0.6036469062333104,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\csn-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.1517316706696797,
+      "micro_f1": 0.5602941176470588,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\10pct\\csn-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.25993616924091706,
+      "micro_f1": 0.6639314762830202,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\10pct\\csn-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.4008061614364424,
+      "micro_f1": 0.5743104158089749,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\superdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.49281622345377424,
+      "micro_f1": 0.5787941787941788,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\superdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.5523460255075435,
+      "micro_f1": 0.6341181011192589,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\superdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.36241058076191435,
+      "micro_f1": 0.5355490113588557,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\superdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.4928224587084492,
+      "micro_f1": 0.5736434108527132,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\superdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.5895594278750962,
+      "micro_f1": 0.6414885777450258,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\superdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.32443035739193926,
+      "micro_f1": 0.5055487053020962,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\superdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.46514718446980047,
+      "micro_f1": 0.5659540137152077,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\superdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.5170998078623232,
+      "micro_f1": 0.6131495623021047,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\superdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.1507470020213942,
+      "micro_f1": 0.4583622484385843,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\subdiagnostic-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0851671042787564,
+      "micro_f1": 0.3919574763115322,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\subdiagnostic-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.08381842844095042,
+      "micro_f1": 0.425482445942804,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\subdiagnostic-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.1387974350356978,
+      "micro_f1": 0.44404690916318823,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\subdiagnostic-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.11318189094264187,
+      "micro_f1": 0.4551451187335092,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\subdiagnostic-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.08685102210457697,
+      "micro_f1": 0.42069279854147673,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\subdiagnostic-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.1288148665982395,
+      "micro_f1": 0.2666997149584831,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\subdiagnostic-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09177849174772372,
+      "micro_f1": 0.438844232022594,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\subdiagnostic-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.1086930883522404,
+      "micro_f1": 0.45883326437732724,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\subdiagnostic-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.04622758757383648,
+      "micro_f1": 0.23170731707317074,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\form-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08084364362487895,
+      "micro_f1": 0.2043969102792632,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\form-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.10294144642680528,
+      "micro_f1": 0.2541033434650456,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\form-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.0903893026380843,
+      "micro_f1": 0.3732943469785575,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\form-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0758346710811108,
+      "micro_f1": 0.26519337016574585,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\form-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.0910132909690784,
+      "micro_f1": 0.3423728813559322,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\form-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.06668466018542746,
+      "micro_f1": 0.27958115183246074,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\form-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0680159013836921,
+      "micro_f1": 0.24150485436893204,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\form-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.028198616341185742,
+      "micro_f1": 0.3115626511852927,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\form-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.14663757611868877,
+      "micro_f1": 0.735632183908046,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\rhythm-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09270036643155394,
+      "micro_f1": 0.1747638708217861,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\rhythm-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.07200572772834203,
+      "micro_f1": 0.7614926987560844,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\rhythm-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.1171496756851287,
+      "micro_f1": 0.640079365079365,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\rhythm-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14105772406230796,
+      "micro_f1": 0.8032473734479465,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\rhythm-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.1282841070654173,
+      "micro_f1": 0.7871662992897379,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\rhythm-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.09390998288847752,
+      "micro_f1": 0.7656688493919551,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\rhythm-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13405878754512773,
+      "micro_f1": 0.8105237750422399,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\rhythm-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.15941295468475658,
+      "micro_f1": 0.7931119311193112,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\rhythm-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.24217131437390021,
+      "micro_f1": 0.3203779257032424,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\cpsc2018-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07438690969443142,
+      "micro_f1": 0.19070904645476772,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\cpsc2018-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.207039030836443,
+      "micro_f1": 0.319047619047619,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\cpsc2018-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.05873651164286041,
+      "micro_f1": 0.13593112822836428,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\cpsc2018-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.1527828185473115,
+      "micro_f1": 0.22606596942880128,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\cpsc2018-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.029054277741869375,
+      "micro_f1": 0.06809583858764187,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\cpsc2018-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.1945450371554602,
+      "micro_f1": 0.25844346549192365,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\cpsc2018-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09353061722137403,
+      "micro_f1": 0.20992167101827677,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\cpsc2018-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.2352408633883424,
+      "micro_f1": 0.3554913294797688,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\cpsc2018-seed55\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.06556975673873376,
+      "micro_f1": 0.18469244013147598,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\csn-seed42\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.06432148982727241,
+      "micro_f1": 0.37906203840472674,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\csn-seed42\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.09582270146322969,
+      "micro_f1": 0.5274352651048089,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\csn-seed42\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.0,
+      "micro_f1": 0.0,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\csn-seed46\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07064479404117238,
+      "micro_f1": 0.3691792917557394,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\csn-seed46\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.10085072416461349,
+      "micro_f1": 0.5268284763373651,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-low-label-10seed-20260909\\1pct\\csn-seed46\\formal-test\\paired\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "clear_hug",
+      "threshold": 0.5,
+      "macro_f1": 0.03469369474425163,
+      "micro_f1": 0.13312740149175017,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\csn-seed55\\formal-test\\hug\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07146744079418292,
+      "micro_f1": 0.40837226015091627,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\1pct\\csn-seed55\\heartlang\\formal-test\\test_predictions.npz"
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "hilar",
+      "threshold": 0.5,
+      "macro_f1": 0.11358129965239493,
+      "micro_f1": 0.5219010606428629,
+      "prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\results\\q1-six-task-three-fraction-seeds52-61-20260910\\1pct\\csn-seed55\\formal-test\\paired\\test_predictions.npz"
+    }
+  ],
+  "summary": [
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.5996856119855539,
+      "sample_sd": 0.008967905705921124,
+      "values": {
+        "42": 0.5895914087066959,
+        "46": 0.6027318068620098,
+        "55": 0.6067336203879561
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.6238063634606669,
+      "sample_sd": 0.007849137175628339,
+      "values": {
+        "42": 0.6147448015122874,
+        "46": 0.6284953395472703,
+        "55": 0.6281789493224429
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.6479982546985901,
+      "sample_sd": 0.009969766785899614,
+      "values": {
+        "42": 0.6567312202479358,
+        "46": 0.6501277502413596,
+        "55": 0.6371357936064748
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.7018099489217587,
+      "sample_sd": 0.0065396705511225495,
+      "values": {
+        "42": 0.7090352220520674,
+        "46": 0.7000983284169124,
+        "55": 0.6962962962962963
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.6877179495771695,
+      "sample_sd": 0.003764626317196666,
+      "values": {
+        "42": 0.6835131615865857,
+        "46": 0.6907754507778638,
+        "55": 0.6888652363670588
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.7518469536973488,
+      "sample_sd": 0.0010986077008104098,
+      "values": {
+        "42": 0.7520692249811889,
+        "46": 0.7506542056074766,
+        "55": 0.7528174305033809
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.28567690986815286,
+      "sample_sd": 0.021993562151300623,
+      "values": {
+        "42": 0.2899869643108289,
+        "46": 0.3051963918483862,
+        "55": 0.26184737344524356
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.5000107306033004,
+      "sample_sd": 0.011788478523601856,
+      "values": {
+        "42": 0.4974757281553398,
+        "46": 0.5128604832424006,
+        "55": 0.4896959804121608
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.2722597287223158,
+      "sample_sd": 0.0113723172221773,
+      "values": {
+        "42": 0.2611779101291746,
+        "46": 0.28390183228749993,
+        "55": 0.27169944375027283
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5768848290915732,
+      "sample_sd": 0.0057850451860787105,
+      "values": {
+        "42": 0.5758002818602779,
+        "46": 0.5831353919239906,
+        "55": 0.5717188134904511
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.3312066314494863,
+      "sample_sd": 0.0027376297443890726,
+      "values": {
+        "42": 0.3335368576294635,
+        "46": 0.32819161266461067,
+        "55": 0.33189142405438465
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.6561227007759397,
+      "sample_sd": 0.0022574456822190303,
+      "values": {
+        "42": 0.658724340175953,
+        "46": 0.6546816479400749,
+        "55": 0.6549621142117908
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.12178189406443747,
+      "sample_sd": 0.03643800885271433,
+      "values": {
+        "42": 0.11610152828873525,
+        "46": 0.08851766485845769,
+        "55": 0.16072648904611944
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.356074296437693,
+      "sample_sd": 0.03479731966930045,
+      "values": {
+        "42": 0.34092307692307694,
+        "46": 0.331421287444232,
+        "55": 0.3958785249457701
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.1435754036302849,
+      "sample_sd": 0.010147088303855143,
+      "values": {
+        "42": 0.13185889726077862,
+        "46": 0.14951118046448025,
+        "55": 0.14935613316559584
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3667815223073057,
+      "sample_sd": 0.007158364125579311,
+      "values": {
+        "42": 0.358560794044665,
+        "46": 0.37014563106796117,
+        "55": 0.37163814180929094
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.236259993414918,
+      "sample_sd": 0.018659681829711602,
+      "values": {
+        "42": 0.21790985796267084,
+        "46": 0.2356555865820887,
+        "55": 0.2552145356999944
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.4826851782088193,
+      "sample_sd": 0.019800796148245356,
+      "values": {
+        "42": 0.4857296715131933,
+        "46": 0.46153846153846156,
+        "55": 0.5007874015748032
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.30691173923745496,
+      "sample_sd": 0.009100289786015315,
+      "values": {
+        "42": 0.31707090329325355,
+        "46": 0.3041578427977172,
+        "55": 0.29950647162139415
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.8655544490172464,
+      "sample_sd": 0.002682028036644733,
+      "values": {
+        "42": 0.8685468451242829,
+        "46": 0.8647492274780129,
+        "55": 0.8633672744494435
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.307577829334775,
+      "sample_sd": 0.008933631429419145,
+      "values": {
+        "42": 0.3146474075257295,
+        "46": 0.29753722986178205,
+        "55": 0.3105488506168134
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.8573633402595761,
+      "sample_sd": 0.0022924397790252257,
+      "values": {
+        "42": 0.8565891472868217,
+        "46": 0.859942638623327,
+        "55": 0.8555582348685797
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.40411669462814165,
+      "sample_sd": 0.043317601747866,
+      "values": {
+        "42": 0.45409974476193565,
+        "46": 0.380763963532035,
+        "55": 0.3774863755904542
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.8947443857311593,
+      "sample_sd": 0.0025207127086090074,
+      "values": {
+        "42": 0.8976490144858703,
+        "46": 0.8931297709923665,
+        "55": 0.8934543717152413
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.49190476310374204,
+      "sample_sd": 0.00917171904473175,
+      "values": {
+        "42": 0.48374805030395873,
+        "46": 0.49013320861013415,
+        "55": 0.5018330303971331
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.5618770151863741,
+      "sample_sd": 0.01961532087650341,
+      "values": {
+        "42": 0.559322033898305,
+        "46": 0.5436643835616438,
+        "55": 0.5826446280991735
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.2669514455621809,
+      "sample_sd": 0.012374912262838518,
+      "values": {
+        "42": 0.2528152530995322,
+        "46": 0.2758263346723837,
+        "55": 0.2722127489146269
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3866586861749926,
+      "sample_sd": 0.00922125665882141,
+      "values": {
+        "42": 0.37716615698267075,
+        "46": 0.39558232931726905,
+        "55": 0.387227572225038
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.667647272448122,
+      "sample_sd": 0.018866109560179124,
+      "values": {
+        "42": 0.6489969167802045,
+        "46": 0.6672229238816954,
+        "55": 0.6867219766824664
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.73347998734982,
+      "sample_sd": 0.008671028634278053,
+      "values": {
+        "42": 0.7322604242867593,
+        "46": 0.7254833040421793,
+        "55": 0.742696233720521
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.2849962797474959,
+      "sample_sd": 0.00833591530392324,
+      "values": {
+        "42": 0.28026516422439895,
+        "46": 0.2946213067309996,
+        "55": 0.28010236828708923
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.6258257946732153,
+      "sample_sd": 0.02327118497425231,
+      "values": {
+        "42": 0.6386772106398274,
+        "46": 0.5989628931241161,
+        "55": 0.6398372802557024
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.24949851853748942,
+      "sample_sd": 0.003850643825291022,
+      "values": {
+        "42": 0.2456356030771989,
+        "46": 0.2533367722659623,
+        "55": 0.24952318026930712
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.6330814693464634,
+      "sample_sd": 0.0007791355059137261,
+      "values": {
+        "42": 0.6325704499455084,
+        "46": 0.6339782251116158,
+        "55": 0.6326957329822659
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.35397580267493395,
+      "sample_sd": 0.01913760203352896,
+      "values": {
+        "42": 0.34030661124016637,
+        "46": 0.34577335361172706,
+        "55": 0.3758474431729084
+      }
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.7342121113979796,
+      "sample_sd": 0.00561103521134573,
+      "values": {
+        "42": 0.7394422310756972,
+        "46": 0.7282852390250958,
+        "55": 0.7349088640931457
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.5045922462561209,
+      "sample_sd": 0.01583198116580275,
+      "values": {
+        "42": 0.49017716541680245,
+        "46": 0.521536609100538,
+        "55": 0.502062964251022
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.6147665984050249,
+      "sample_sd": 0.020414202610016693,
+      "values": {
+        "42": 0.6039434204886412,
+        "46": 0.6383133406034169,
+        "55": 0.6020430341230167
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.5836267176803176,
+      "sample_sd": 0.0042768256230838715,
+      "values": {
+        "42": 0.5787260620174428,
+        "46": 0.586605172357992,
+        "55": 0.5855489186655182
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.6500316387057242,
+      "sample_sd": 0.0020904213624494726,
+      "values": {
+        "42": 0.6523656776263032,
+        "46": 0.6493975903614457,
+        "55": 0.6483316481294237
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.6079077264660179,
+      "sample_sd": 0.016781071237242165,
+      "values": {
+        "42": 0.5885663782147839,
+        "46": 0.6165593138741452,
+        "55": 0.6185974873091243
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.6959325201721143,
+      "sample_sd": 0.005025278121146824,
+      "values": {
+        "42": 0.6907176287051482,
+        "46": 0.6963360828697487,
+        "55": 0.7007438489414457
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.21644814290570016,
+      "sample_sd": 0.007861207035621796,
+      "values": {
+        "42": 0.2164308166323251,
+        "46": 0.22431799875768849,
+        "55": 0.20859561332708695
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.5287205405725564,
+      "sample_sd": 0.01530545753499441,
+      "values": {
+        "42": 0.513672270609682,
+        "46": 0.5282185177746536,
+        "55": 0.5442708333333334
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.18527586643858832,
+      "sample_sd": 0.0018282526193795566,
+      "values": {
+        "42": 0.18736802298284957,
+        "46": 0.18447405929859736,
+        "55": 0.183985517034318
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.512175004836177,
+      "sample_sd": 0.0035572455522520506,
+      "values": {
+        "42": 0.5126903553299492,
+        "46": 0.5154464663563267,
+        "55": 0.5083881928222552
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.28422950310657513,
+      "sample_sd": 0.005614695717978863,
+      "values": {
+        "42": 0.28421767098504674,
+        "46": 0.2898501055349083,
+        "55": 0.2786207327997703
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.5958542569258891,
+      "sample_sd": 0.0064947926418381305,
+      "values": {
+        "42": 0.5959017906590364,
+        "46": 0.6023251522421111,
+        "55": 0.5893358278765201
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.10920333104581618,
+      "sample_sd": 0.016667471379504927,
+      "values": {
+        "42": 0.0970562660436103,
+        "46": 0.10234855309811122,
+        "55": 0.12820517399572698
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.353772944691049,
+      "sample_sd": 0.013885417218020255,
+      "values": {
+        "42": 0.33789411064842356,
+        "46": 0.36363636363636365,
+        "55": 0.35978835978835977
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.08275697375439937,
+      "sample_sd": 0.0036520846305588116,
+      "values": {
+        "42": 0.07858394020589095,
+        "46": 0.08536986055157592,
+        "55": 0.08431712050573127
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.2764997771788798,
+      "sample_sd": 0.025716880739712473,
+      "values": {
+        "42": 0.25375170532060026,
+        "46": 0.30440414507772023,
+        "55": 0.271343481138319
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.17003146219550766,
+      "sample_sd": 0.015338819204008432,
+      "values": {
+        "42": 0.1618235855912673,
+        "46": 0.18772776768698932,
+        "55": 0.16054303330826633
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.3803895325533835,
+      "sample_sd": 0.019923651622165996,
+      "values": {
+        "42": 0.36757872999483737,
+        "46": 0.40334378265412746,
+        "55": 0.37024608501118567
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.2554647474728928,
+      "sample_sd": 0.05857811880477138,
+      "values": {
+        "42": 0.2562762712321704,
+        "46": 0.31363288826839597,
+        "55": 0.19648508291811198
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.8382182179455738,
+      "sample_sd": 0.014372336295748087,
+      "values": {
+        "42": 0.8511550369135509,
+        "46": 0.8227474150664698,
+        "55": 0.8407522018567007
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.21482599189517407,
+      "sample_sd": 0.033691489635699554,
+      "values": {
+        "42": 0.2530785217102826,
+        "46": 0.2018376782688394,
+        "55": 0.18956177570640023
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.832901454844564,
+      "sample_sd": 0.000629425065281976,
+      "values": {
+        "42": 0.8328060355317596,
+        "46": 0.8335731414868105,
+        "55": 0.8323251875151222
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.2730071806030099,
+      "sample_sd": 0.039969674703272555,
+      "values": {
+        "42": 0.3026124538316304,
+        "46": 0.28886756314336653,
+        "55": 0.2275415248340327
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.8598935138974392,
+      "sample_sd": 0.012671469812994841,
+      "values": {
+        "42": 0.8716216216216216,
+        "46": 0.8616060532096657,
+        "55": 0.8464528668610302
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.4103395310953544,
+      "sample_sd": 0.005624859972649314,
+      "values": {
+        "42": 0.41657541025719225,
+        "46": 0.40564856639666713,
+        "55": 0.408794616632204
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.48519440624389665,
+      "sample_sd": 0.027956346277462036,
+      "values": {
+        "42": 0.5173398612811098,
+        "46": 0.46656050955414013,
+        "55": 0.4716828478964401
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.06974948921622522,
+      "sample_sd": 0.02528533852751762,
+      "values": {
+        "42": 0.0750095603739207,
+        "46": 0.042247841646733356,
+        "55": 0.09199106562802158
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.14542604138636125,
+      "sample_sd": 0.06227019773892471,
+      "values": {
+        "42": 0.16173808086904043,
+        "46": 0.07662337662337662,
+        "55": 0.19791666666666666
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.42254733288359664,
+      "sample_sd": 0.057081026781776664,
+      "values": {
+        "42": 0.4807873956745532,
+        "46": 0.42015397230662804,
+        "55": 0.36670063066960856
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.542391529935931,
+      "sample_sd": 0.042582647371428216,
+      "values": {
+        "42": 0.5851627554882665,
+        "46": 0.5420118343195266,
+        "55": 0.5
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.22855607276431497,
+      "sample_sd": 0.010906856508733872,
+      "values": {
+        "42": 0.24111100367770155,
+        "46": 0.22313872428930356,
+        "55": 0.22141849032593974
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.6026150278310083,
+      "sample_sd": 0.00519913372576551,
+      "values": {
+        "42": 0.5969773299748111,
+        "46": 0.6072208472849032,
+        "55": 0.6036469062333104
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.14470012899241488,
+      "sample_sd": 0.006471180176074049,
+      "values": {
+        "42": 0.14337393324997794,
+        "46": 0.13899478305758697,
+        "55": 0.1517316706696797
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5526613108851369,
+      "sample_sd": 0.007149844033516403,
+      "values": {
+        "42": 0.5515698782205285,
+        "46": 0.5461199367878233,
+        "55": 0.5602941176470588
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.26043317050721065,
+      "sample_sd": 0.005168059475751464,
+      "values": {
+        "42": 0.25553156618503065,
+        "46": 0.2658317760956842,
+        "55": 0.25993616924091706
+      }
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.6604015065552976,
+      "sample_sd": 0.004033112039851445,
+      "values": {
+        "42": 0.6560058415480102,
+        "46": 0.6612672018348624,
+        "55": 0.6639314762830202
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.36254903319676535,
+      "sample_sd": 0.03818809025951182,
+      "values": {
+        "42": 0.4008061614364424,
+        "46": 0.36241058076191435,
+        "55": 0.32443035739193926
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.5384693774899756,
+      "sample_sd": 0.034473752504083355,
+      "values": {
+        "42": 0.5743104158089749,
+        "46": 0.5355490113588557,
+        "55": 0.5055487053020962
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.4835952888773413,
+      "sample_sd": 0.015976527372781796,
+      "values": {
+        "42": 0.49281622345377424,
+        "46": 0.4928224587084492,
+        "55": 0.46514718446980047
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5727972011207,
+      "sample_sd": 0.006461773208394339,
+      "values": {
+        "42": 0.5787941787941788,
+        "46": 0.5736434108527132,
+        "55": 0.5659540137152077
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.5530017537483211,
+      "sample_sd": 0.03623426027592086,
+      "values": {
+        "42": 0.5523460255075435,
+        "46": 0.5895594278750962,
+        "55": 0.5170998078623232
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.6295854137221298,
+      "sample_sd": 0.014703193202450936,
+      "values": {
+        "42": 0.6341181011192589,
+        "46": 0.6414885777450258,
+        "55": 0.6131495623021047
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.13945310121844381,
+      "sample_sd": 0.010980758838181304,
+      "values": {
+        "42": 0.1507470020213942,
+        "46": 0.1387974350356978,
+        "55": 0.1288148665982395
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.3897029575200852,
+      "sample_sd": 0.10676413487282922,
+      "values": {
+        "42": 0.4583622484385843,
+        "46": 0.44404690916318823,
+        "55": 0.2666997149584831
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.09670916232304066,
+      "sample_sd": 0.014643793982348842,
+      "values": {
+        "42": 0.0851671042787564,
+        "46": 0.11318189094264187,
+        "55": 0.09177849174772372
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.4286489423558785,
+      "sample_sd": 0.03280438213490819,
+      "values": {
+        "42": 0.3919574763115322,
+        "46": 0.4551451187335092,
+        "55": 0.438844232022594
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.09312084629925593,
+      "sample_sd": 0.013570932097675547,
+      "values": {
+        "42": 0.08381842844095042,
+        "46": 0.08685102210457697,
+        "55": 0.1086930883522404
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.43500283628720265,
+      "sample_sd": 0.020776240222335936,
+      "values": {
+        "42": 0.425482445942804,
+        "46": 0.42069279854147673,
+        "55": 0.45883326437732724
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.06776718346578274,
+      "sample_sd": 0.022100750255213884,
+      "values": {
+        "42": 0.04622758757383648,
+        "46": 0.0903893026380843,
+        "55": 0.06668466018542746
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.294860938628063,
+      "sample_sd": 0.07201962005416661,
+      "values": {
+        "42": 0.23170731707317074,
+        "46": 0.3732943469785575,
+        "55": 0.27958115183246074
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.07489807202989394,
+      "sample_sd": 0.006464956000518302,
+      "values": {
+        "42": 0.08084364362487895,
+        "46": 0.0758346710811108,
+        "55": 0.0680159013836921
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.23703171160464706,
+      "sample_sd": 0.030644071830036385,
+      "values": {
+        "42": 0.2043969102792632,
+        "46": 0.26519337016574585,
+        "55": 0.24150485436893204
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.07405111791235647,
+      "sample_sd": 0.04015481475995856,
+      "values": {
+        "42": 0.10294144642680528,
+        "46": 0.0910132909690784,
+        "55": 0.028198616341185742
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.30267962533542353,
+      "sample_sd": 0.04480021139520158,
+      "values": {
+        "42": 0.2541033434650456,
+        "46": 0.3423728813559322,
+        "55": 0.3115626511852927
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.11923241156409832,
+      "sample_sd": 0.026425425512540294,
+      "values": {
+        "42": 0.14663757611868877,
+        "46": 0.1171496756851287,
+        "55": 0.09390998288847752
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.7137934661264554,
+      "sample_sd": 0.06558107073106956,
+      "values": {
+        "42": 0.735632183908046,
+        "46": 0.640079365079365,
+        "55": 0.7656688493919551
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.12260562601299656,
+      "sample_sd": 0.026134071459839134,
+      "values": {
+        "42": 0.09270036643155394,
+        "46": 0.14105772406230796,
+        "55": 0.13405878754512773
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5961783397706575,
+      "sample_sd": 0.36497376958438377,
+      "values": {
+        "42": 0.1747638708217861,
+        "46": 0.8032473734479465,
+        "55": 0.8105237750422399
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.11990092982617197,
+      "sample_sd": 0.04430252900818407,
+      "values": {
+        "42": 0.07200572772834203,
+        "46": 0.1282841070654173,
+        "55": 0.15941295468475658
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.7805903097217112,
+      "sample_sd": 0.016804067748882417,
+      "values": {
+        "42": 0.7614926987560844,
+        "46": 0.7871662992897379,
+        "55": 0.7931119311193112
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.16515095439074026,
+      "sample_sd": 0.09518450918835625,
+      "values": {
+        "42": 0.24217131437390021,
+        "46": 0.05873651164286041,
+        "55": 0.1945450371554602
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.23825083980784345,
+      "sample_sd": 0.0938667239957681,
+      "values": {
+        "42": 0.3203779257032424,
+        "46": 0.13593112822836428,
+        "55": 0.25844346549192365
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.10690011515437231,
+      "sample_sd": 0.040872206173053635,
+      "values": {
+        "42": 0.07438690969443142,
+        "46": 0.1527828185473115,
+        "55": 0.09353061722137403
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.2088988956339486,
+      "sample_sd": 0.01770063706941155,
+      "values": {
+        "42": 0.19070904645476772,
+        "46": 0.22606596942880128,
+        "55": 0.20992167101827677
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.1571113906555516,
+      "sample_sd": 0.11179357747948676,
+      "values": {
+        "42": 0.207039030836443,
+        "46": 0.029054277741869375,
+        "55": 0.2352408633883424
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.24754492903834324,
+      "sample_sd": 0.1564720999258449,
+      "values": {
+        "42": 0.319047619047619,
+        "46": 0.06809583858764187,
+        "55": 0.3554913294797688
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "macro_f1",
+      "mean": 0.033421150494328464,
+      "sample_sd": 0.03280339580508685,
+      "values": {
+        "42": 0.06556975673873376,
+        "46": 0.0,
+        "55": 0.03469369474425163
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "clear_hug",
+      "metric": "micro_f1",
+      "mean": 0.10593994720774207,
+      "sample_sd": 0.09530053836817232,
+      "values": {
+        "42": 0.18469244013147598,
+        "46": 0.0,
+        "55": 0.13312740149175017
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.06881124155420924,
+      "sample_sd": 0.003909934762525949,
+      "values": {
+        "42": 0.06432148982727241,
+        "46": 0.07064479404117238,
+        "55": 0.07146744079418292
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3855378634371274,
+      "sample_sd": 0.02038318977231077,
+      "values": {
+        "42": 0.37906203840472674,
+        "46": 0.3691792917557394,
+        "55": 0.40837226015091627
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "macro_f1",
+      "mean": 0.10341824176007937,
+      "sample_sd": 0.0091534726941924,
+      "values": {
+        "42": 0.09582270146322969,
+        "46": 0.10085072416461349,
+        "55": 0.11358129965239493
+      }
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "hilar",
+      "metric": "micro_f1",
+      "mean": 0.525388267361679,
+      "sample_sd": 0.003035211059694337,
+      "values": {
+        "42": 0.5274352651048089,
+        "46": 0.5268284763373651,
+        "55": 0.5219010606428629
+      }
+    }
+  ]
+}
