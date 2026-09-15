@@ -1,0 +1,1628 @@
+{
+  "threshold": 0.5,
+  "threshold_selected_on_test": false,
+  "seed_results": [
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2528152530995322,
+      "micro_f1": 0.37716615698267075
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.7055330960751864,
+      "micro_f1": 0.7887963663890991
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2758263346723837,
+      "micro_f1": 0.39558232931726905
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.7065338358434651,
+      "micro_f1": 0.7900113507377979
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2722127489146269,
+      "micro_f1": 0.387227572225038
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.7056390772505152,
+      "micro_f1": 0.7878787878787878
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2456356030771989,
+      "micro_f1": 0.6325704499455084
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.37506516014533214,
+      "micro_f1": 0.7388218075375046
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2533367722659623,
+      "micro_f1": 0.6339782251116158
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.37587990178142544,
+      "micro_f1": 0.7384908146087975
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.24952318026930712,
+      "micro_f1": 0.6326957329822659
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.3752588967855722,
+      "micro_f1": 0.7383601756954612
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13185889726077862,
+      "micro_f1": 0.358560794044665
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.21716351365093758,
+      "micro_f1": 0.49126760563380284
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14951118046448025,
+      "micro_f1": 0.37014563106796117
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.2185454827663093,
+      "micro_f1": 0.49213483146067416
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14935613316559584,
+      "micro_f1": 0.37163814180929094
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.21259031164682995,
+      "micro_f1": 0.48873873873873874
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.3146474075257295,
+      "micro_f1": 0.8565891472868217
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.4700655761676101,
+      "micro_f1": 0.9075670498084292
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.29753722986178205,
+      "micro_f1": 0.859942638623327
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.4692624206981096,
+      "micro_f1": 0.9086124401913875
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.3105488506168134,
+      "micro_f1": 0.8555582348685797
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.46635746755817814,
+      "micro_f1": 0.9076996652319465
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2611779101291746,
+      "micro_f1": 0.5758002818602779
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.3209498632510826,
+      "micro_f1": 0.6133072407045009
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.28390183228749993,
+      "micro_f1": 0.5831353919239906
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.31968466321273203,
+      "micro_f1": 0.6120368555185258
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.27169944375027283,
+      "micro_f1": 0.5717188134904511
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.31874842422052013,
+      "micro_f1": 0.6100827097282394
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6567312202479358,
+      "micro_f1": 0.7090352220520674
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.6672592987329372,
+      "micro_f1": 0.7204921184159938
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6501277502413596,
+      "micro_f1": 0.7000983284169124
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.6668438821244307,
+      "micro_f1": 0.7204156243986916
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.6371357936064748,
+      "micro_f1": 0.6962962962962963
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.6654512083779267,
+      "micro_f1": 0.7193387158785083
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0750095603739207,
+      "micro_f1": 0.16173808086904043
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.3648173370647166,
+      "micro_f1": 0.5464165464165465
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.042247841646733356,
+      "micro_f1": 0.07662337662337662
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.34363085213642236,
+      "micro_f1": 0.5647840531561462
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09199106562802158,
+      "micro_f1": 0.19791666666666666
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.3906854254819647,
+      "micro_f1": 0.5754583921015515
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14337393324997794,
+      "micro_f1": 0.5515698782205285
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.24810564664664364,
+      "micro_f1": 0.680453431372549
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13899478305758697,
+      "micro_f1": 0.5461199367878233
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.2453891318883081,
+      "micro_f1": 0.6758960159975388
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.1517316706696797,
+      "micro_f1": 0.5602941176470588
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.2511982026440198,
+      "micro_f1": 0.6824251726784344
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07858394020589095,
+      "micro_f1": 0.25375170532060026
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.10628480068561973,
+      "micro_f1": 0.35428571428571426
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08536986055157592,
+      "micro_f1": 0.30440414507772023
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.11094239911165038,
+      "micro_f1": 0.3926153846153846
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08431712050573127,
+      "micro_f1": 0.271343481138319
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.10504662797671686,
+      "micro_f1": 0.37641154328732745
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2530785217102826,
+      "micro_f1": 0.8328060355317596
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.35366285036104506,
+      "micro_f1": 0.8881372312152694
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.2018376782688394,
+      "micro_f1": 0.8335731414868105
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.34011387464385806,
+      "micro_f1": 0.8885672937771346
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18956177570640023,
+      "micro_f1": 0.8323251875151222
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.28928864089695744,
+      "micro_f1": 0.8824812212260722
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18736802298284957,
+      "micro_f1": 0.5126903553299492
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.20956510281769467,
+      "micro_f1": 0.5355329949238579
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.18447405929859736,
+      "micro_f1": 0.5154464663563267
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.20911811411071532,
+      "micro_f1": 0.5381013197105151
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.183985517034318,
+      "micro_f1": 0.5083881928222552
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.21486938512390716,
+      "micro_f1": 0.5370330843116329
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.5787260620174428,
+      "micro_f1": 0.6523656776263032
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.598785316645243,
+      "micro_f1": 0.6794466403162055
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.586605172357992,
+      "micro_f1": 0.6493975903614457
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.6101552879840513,
+      "micro_f1": 0.6834091358512953
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.5855489186655182,
+      "micro_f1": 0.6483316481294237
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.6037919531081049,
+      "micro_f1": 0.6765116743165037
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07438690969443142,
+      "micro_f1": 0.19070904645476772
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.2318060274050876,
+      "micro_f1": 0.4186746987951807
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.1527828185473115,
+      "micro_f1": 0.22606596942880128
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.24010412936688041,
+      "micro_f1": 0.39221710189452125
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09353061722137403,
+      "micro_f1": 0.20992167101827677
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.3473986492052096,
+      "micro_f1": 0.5535224153705398
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.06432148982727241,
+      "micro_f1": 0.37906203840472674
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.10908362468520026,
+      "micro_f1": 0.5721594190939846
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07064479404117238,
+      "micro_f1": 0.3691792917557394
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.08827949393173637,
+      "micro_f1": 0.548151959523197
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.07146744079418292,
+      "micro_f1": 0.40837226015091627
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.09434439741715941,
+      "micro_f1": 0.5428937259923176
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.08084364362487895,
+      "micro_f1": 0.2043969102792632
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.08267565380081406,
+      "micro_f1": 0.23675154852030283
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0758346710811108,
+      "micro_f1": 0.26519337016574585
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.07067446912370162,
+      "micro_f1": 0.30613535736875397
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0680159013836921,
+      "micro_f1": 0.24150485436893204
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.0770504256335408,
+      "micro_f1": 0.24893227577791335
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09270036643155394,
+      "micro_f1": 0.1747638708217861
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.22367166599050659,
+      "micro_f1": 0.8559509202453988
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.14105772406230796,
+      "micro_f1": 0.8032473734479465
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.19307582438144957,
+      "micro_f1": 0.8582486695694242
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.13405878754512773,
+      "micro_f1": 0.8105237750422399
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.1607856790223369,
+      "micro_f1": 0.8412973508294133
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.0851671042787564,
+      "micro_f1": 0.3919574763115322
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.0781614596826339,
+      "micro_f1": 0.42218080149114634
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.11318189094264187,
+      "micro_f1": 0.4551451187335092
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.0714220050974877,
+      "micro_f1": 0.4207637777269609
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.09177849174772372,
+      "micro_f1": 0.438844232022594
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.06274342822264528,
+      "micro_f1": 0.4073486051258789
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.49281622345377424,
+      "micro_f1": 0.5787941787941788
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 42,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.4292526447779732,
+      "micro_f1": 0.5848329048843187
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.4928224587084492,
+      "micro_f1": 0.5736434108527132
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 46,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.46886823574219766,
+      "micro_f1": 0.5897489981016664
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "heartlang",
+      "threshold": 0.5,
+      "macro_f1": 0.46514718446980047,
+      "micro_f1": 0.5659540137152077
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "seed": 55,
+      "model": "stmem",
+      "threshold": 0.5,
+      "macro_f1": 0.4242579184570583,
+      "micro_f1": 0.5554161438728565
+    }
+  ],
+  "summary": [
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.2669514455621809,
+      "sample_sd": 0.012374912262838518,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3866586861749926,
+      "sample_sd": 0.00922125665882141,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.705902003056389,
+      "sample_sd": 0.0005497431268322878,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.7888955016685616,
+      "sample_sd": 0.0010697321812645003,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.24949851853748942,
+      "sample_sd": 0.003850643825291022,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.6330814693464634,
+      "sample_sd": 0.0007791355059137261,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.3754013195707766,
+      "sample_sd": 0.00042563384581706447,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.7385575992805876,
+      "sample_sd": 0.00023795195667759153,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.1435754036302849,
+      "sample_sd": 0.010147088303855143,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3667815223073057,
+      "sample_sd": 0.007158364125579311,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.2160997693546923,
+      "sample_sd": 0.003116838095156059,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.49071372527773854,
+      "sample_sd": 0.0017644968208022028,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.307577829334775,
+      "sample_sd": 0.008933631429419145,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.8573633402595761,
+      "sample_sd": 0.0022924397790252257,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.4685618214746326,
+      "sample_sd": 0.001950806709745542,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.9079597184105878,
+      "sample_sd": 0.0005691493696618938,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.2722597287223158,
+      "sample_sd": 0.0113723172221773,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5768848290915732,
+      "sample_sd": 0.0057850451860787105,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.3197943168947783,
+      "sample_sd": 0.001104808308626739,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.6118089353170887,
+      "sample_sd": 0.0016243031483946777,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.6479982546985901,
+      "sample_sd": 0.009969766785899614,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.7018099489217587,
+      "sample_sd": 0.0065396705511225495,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.6665181297450983,
+      "sample_sd": 0.0009470394091330547,
+      "seeds": 3
+    },
+    {
+      "fraction": "100pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.7200821528977311,
+      "sample_sd": 0.0006449703751600295,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.06974948921622522,
+      "sample_sd": 0.02528533852751762,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.14542604138636125,
+      "sample_sd": 0.06227019773892471,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.3663778715610346,
+      "sample_sd": 0.02356607029435339,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.5622196638914146,
+      "sample_sd": 0.014689767507476543,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.14470012899241488,
+      "sample_sd": 0.006471180176074049,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5526613108851369,
+      "sample_sd": 0.007149844033516403,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.24823099372632385,
+      "sample_sd": 0.0029065632074676334,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.6795915400161742,
+      "sample_sd": 0.0033488228190763202,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.08275697375439937,
+      "sample_sd": 0.0036520846305588116,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.2764997771788798,
+      "sample_sd": 0.025716880739712473,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.10742460925799567,
+      "sample_sd": 0.003108762133892694,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.3744375473961421,
+      "sample_sd": 0.01924093037587099,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.21482599189517407,
+      "sample_sd": 0.033691489635699554,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.832901454844564,
+      "sample_sd": 0.000629425065281976,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.32768845530062024,
+      "sample_sd": 0.03393822322136266,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.886395248739492,
+      "sample_sd": 0.00339646094981753,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.18527586643858832,
+      "sample_sd": 0.0018282526193795566,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.512175004836177,
+      "sample_sd": 0.0035572455522520506,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.2111842006841057,
+      "sample_sd": 0.0031992792926779272,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.5368891329820019,
+      "sample_sd": 0.0012901994192435471,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.5836267176803176,
+      "sample_sd": 0.0042768256230838715,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.6500316387057242,
+      "sample_sd": 0.0020904213624494726,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.6042441859124664,
+      "sample_sd": 0.005698460137908813,
+      "seeds": 3
+    },
+    {
+      "fraction": "10pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.6797891501613348,
+      "sample_sd": 0.003461463368503283,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.10690011515437231,
+      "sample_sd": 0.040872206173053635,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.2088988956339486,
+      "sample_sd": 0.01770063706941155,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.2731029353257259,
+      "sample_sd": 0.06447561127813105,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "cpsc2018",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.45480473868674726,
+      "sample_sd": 0.08650945541282638,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.06881124155420924,
+      "sample_sd": 0.003909934762525949,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.3855378634371274,
+      "sample_sd": 0.02038318977231077,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.09723583867803202,
+      "sample_sd": 0.01069921906148355,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "csn",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.5544017015364998,
+      "sample_sd": 0.015601751651813704,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.07489807202989394,
+      "sample_sd": 0.006464956000518302,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.23703171160464706,
+      "sample_sd": 0.030644071830036385,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.07680018285268549,
+      "sample_sd": 0.006004504517490782,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "form",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.2639397272223234,
+      "sample_sd": 0.03704653737830089,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.12260562601299656,
+      "sample_sd": 0.026134071459839134,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5961783397706575,
+      "sample_sd": 0.36497376958438377,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.19251105646476432,
+      "sample_sd": 0.03144679731451185,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "rhythm",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.8518323135480786,
+      "sample_sd": 0.009195596370098506,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.09670916232304066,
+      "sample_sd": 0.014643793982348842,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.4286489423558785,
+      "sample_sd": 0.03280438213490819,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.07077563100092228,
+      "sample_sd": 0.007729312591028566,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "subdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.41676439478132865,
+      "sample_sd": 0.008185035749086461,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "macro_f1",
+      "mean": 0.4835952888773413,
+      "sample_sd": 0.015976527372781796,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "heartlang",
+      "metric": "micro_f1",
+      "mean": 0.5727972011207,
+      "sample_sd": 0.006461773208394339,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "macro_f1",
+      "mean": 0.4407929329924097,
+      "sample_sd": 0.024441845084289315,
+      "seeds": 3
+    },
+    {
+      "fraction": "1pct",
+      "task": "superdiagnostic",
+      "model": "stmem",
+      "metric": "micro_f1",
+      "mean": 0.5766660156196138,
+      "sample_sd": 0.01856636151944262,
+      "seeds": 3
+    }
+  ]
+}
