@@ -2,6 +2,7 @@
 """Deploy and launch the CPSC seed-42 single-crop diagnostic on node 10092."""
 from __future__ import annotations
 
+import argparse
 import shlex
 import time
 
@@ -12,7 +13,10 @@ AUDIT = "q1-stmem-cpsc-seed42-single-crop-audit-20260916"
 
 
 def main() -> None:
-    node = "10092"; root = NODES[node][3]; client = connect(node)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--node", choices=tuple(NODES), default="10110")
+    args = parser.parse_args()
+    node = args.node; root = NODES[node][3]; client = connect(node)
     try:
         upload_code(client, root)
         result = f"{root}/results/{AUDIT}"
@@ -21,7 +25,8 @@ def main() -> None:
         pattern = f"[r]un_single_crop_audit.py --root {root}"
         command = (f"mkdir -p {shlex.quote(result)}; "
                    f"if ! pgrep -af {shlex.quote(pattern)} >/dev/null; then "
-                   f"nohup setsid {python} {script} --root {root} > {result}/run.log 2>&1 < /dev/null & "
+                   f"nohup setsid " + ("env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else "") +
+                   f"{python} {script} --root {root} > {result}/run.log 2>&1 < /dev/null & "
                    f"echo $! > {result}/run.pid; fi")
         _, stdout, _ = client.exec_command(command); time.sleep(1); stdout.channel.close()
         print(f"started {node}:{result}")

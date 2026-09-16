@@ -104,6 +104,8 @@ def main():
     args = parser.parse_args()
     output = args.root / "results" / AUDIT
     raw = args.root / "campaign-inputs" / SOURCE / "raw/CPSC2018/data"
+    if not raw.exists():
+        raw = args.root / "src/CLEAR-HUG/datasets/ecg_datasets/CPSC2018/data"
     model, checkpoint, transform, payload = build(args.root)
     if args.stage == "audit":
         head = torch.nn.Linear(768, 9)
