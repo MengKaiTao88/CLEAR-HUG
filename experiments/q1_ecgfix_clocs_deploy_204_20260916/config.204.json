@@ -1,0 +1,34 @@
+{
+  "raw_data_dir": "/root/107552503710-1/results/q1-ecgfix-clocs/data/raw",
+  "processed_dir": "/root/107552503710-1/results/q1-ecgfix-clocs/data/processed",
+  "embeddings_dir": "/root/107552503710-1/results/q1-ecgfix-clocs/data/embeddings",
+  "results_dir": "/root/107552503710-1/results/q1-ecgfix-clocs/data/results",
+  "tables_dir": "/root/107552503710-1/results/q1-ecgfix-clocs/metrics",
+  "model_weights_dir": "/root/107552503710-1/model_weights/ecg-fix",
+  "physionet_dir": "/root/107552503710-1/data/ecg-fix-physionet",
+  "seed": 42,
+  "dataset_roots": {
+    "PTBXL": "/root/107552503710-1/data/ptb-xl/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3",
+    "CPSC": "/root/107552503710-1/data/ecg-fix-physionet/challenge-2020/1.0.2/training/cpsc_2018",
+    "CSN": "/root/107552503710-1/src/CLEAR-HUG/datasets/dataset_preprocess/CSN",
+    "ECHO_NEXT": "/root/107552503710-1/data/ecg-fix-physionet/echonext/1.1.0"
+  },
+  "preprocess_workers": 30,
+  "embedding": {
+    "chunk_size": 5,
+    "batch_size": 256,
+    "num_workers": 0,
+    "prefetch_factor": 0
+  },
+  "multi_process_eval": 4,
+  "eval": {
+    "batch_size": 256,
+    "num_workers": 0,
+    "sklearn_n_jobs": 1
+  },
+  "stats_tests": {
+    "alpha": 0.01,
+    "n_boot": 1000,
+    "n_perm": 1000
+  }
+}

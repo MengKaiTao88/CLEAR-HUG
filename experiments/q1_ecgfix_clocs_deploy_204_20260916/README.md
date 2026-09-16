@@ -15,6 +15,10 @@ Server paths are under `/root/107552503710-1`:
 - checkpoint: `model_weights/ecg-fix/best_weights_clocs`
 - isolated environment: `envs/ecg-fix`
 - deployment metadata: `deployment_logs/ecgfix-clocs-deployment.txt`
+- evaluation output: `results/q1-ecgfix-clocs`
+
+`config.204.json` pins the server's PTB-XL, CPSC2018, CSN, checkpoint, and
+output paths while retaining the upstream ECG-FIX evaluation settings.
 
 Run the strict loader and forward-pass audit with:
 
