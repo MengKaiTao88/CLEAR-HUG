@@ -1,0 +1,45 @@
+{
+  "batch_size": 16,
+  "campaign": "q1-stmem-cpsc-merl-protocol-seed42-20260916",
+  "cpsc_protocol": "MERL: first 2500 @500Hz, pad to 5000, global minmax [0,1], swap aVL/aVF",
+  "encoder": "official ST-MEM ViT-B/75 pretrained encoder",
+  "encoder_frozen": true,
+  "encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "epochs": 100,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "scheduler": "MultiStepLR(milestone=40,gamma=0.1); released MERL source steps per batch and epoch",
+  "seed": 42,
+  "selection_metric": "validation_macro_auroc",
+  "split_counts": {
+    "test": 1376,
+    "train": 4950,
+    "val": 551
+  },
+  "splits": {
+    "test": {
+      "features_sha256": "6149633594d666acfd705bd5a7788bebb7882e1d202510a15fae41ffced5b655",
+      "labels_sha256": "e6e46f5dd1b6259fce2edf17927d37c3638fdba63e696c50735fd77fc19f6642",
+      "record_ids_sha256": "fe4df9a039e217d01b7f247316955d2980c368eb92e18471be9eed87dccc9d7e",
+      "records": 1376
+    },
+    "train": {
+      "features_sha256": "db5151837c42c869d5e2816cabd4cc4e3bbc9c8363a3eb8812c1d6857bfca9d3",
+      "labels_sha256": "13c1f2c466f582beec70b748494490c795146f38a7c40bd5ed5cf2e36e2094dd",
+      "record_ids_sha256": "ecc90904dddb25587c33b6e2a73b3f4b338fb46d52df3f5a82815966b99e4367",
+      "records": 4950
+    },
+    "val": {
+      "features_sha256": "c974e994506fc35724447cd3e3c36cc0be70b13c2b580a8dc6027c7ac32e5135",
+      "labels_sha256": "c281e3f7b040dcd0718fa74c145a14a9a7fb9f79c3b91f9dafee0e86cd2549b1",
+      "record_ids_sha256": "cec8ec6de0b72d3d1b9b350932b90df42b9e7ddf7bdd29a534c067598ccb92be",
+      "records": 551
+    }
+  },
+  "status": "complete",
+  "stmem_extra_filters_or_standardization": false,
+  "stmem_length_adapter": "resample 500Hz->250Hz, one center crop 2500->2250; no multi-crop",
+  "test_used_for_selection": false,
+  "trainable_parameters": 6921,
+  "weight_decay": 0.0001
+}
