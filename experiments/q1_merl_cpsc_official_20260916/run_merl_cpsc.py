@@ -212,27 +212,28 @@ def build_model(checkpoint: Path) -> tuple[nn.Module, dict[str, object]]:
     }
 
 
-def subset_frame(frame: pd.DataFrame, ratio: int) -> pd.DataFrame:
+def subset_frame(frame: pd.DataFrame, ratio: int, seed: int) -> pd.DataFrame:
     if ratio == 100:
         return frame.reset_index(drop=True)
-    selected, _ = train_test_split(frame, train_size=ratio / 100, random_state=42)
+    selected, _ = train_test_split(frame, train_size=ratio / 100, random_state=seed)
     return selected.reset_index(drop=True)
 
 
-def train_ratio(root: Path, frames: dict[str, pd.DataFrame], ratio: int, output: Path) -> dict[str, object]:
+def train_ratio(root: Path, frames: dict[str, pd.DataFrame], ratio: int, seed: int,
+                output: Path) -> dict[str, object]:
     ratio_output = output / f"{ratio}pct"
     complete = ratio_output / "complete.json"
     if complete.exists():
         return json.loads(complete.read_text(encoding="utf-8"))
     ratio_output.mkdir(parents=True, exist_ok=True)
-    random.seed(0)
-    np.random.seed(0)
-    torch.manual_seed(42)
-    torch.cuda.manual_seed_all(42)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.benchmark = True
 
     raw_root = root / "src/CLEAR-HUG/datasets/dataset_preprocess/CPSC2018/kaggle/Training_WFDB"
-    train_frame = subset_frame(frames["train"], ratio)
+    train_frame = subset_frame(frames["train"], ratio, seed)
     datasets = {
         "train": CPSC(train_frame, raw_root),
         "val": CPSC(frames["val"], raw_root),
@@ -286,8 +287,9 @@ def train_ratio(root: Path, frames: dict[str, pd.DataFrame], ratio: int, output:
                 {"model": model.state_dict(), "epoch": epoch + 1, "validation": val_metric},
                 ratio_output / "checkpoint-best-validation.pth",
             )
-        atomic_json(ratio_output / "status.json", {"state": "training", "ratio": ratio, **row})
-        print(json.dumps({"ratio": ratio, **row}), flush=True)
+        atomic_json(ratio_output / "status.json", {"state": "training", "seed": seed,
+                                                    "ratio": ratio, **row})
+        print(json.dumps({"seed": seed, "ratio": ratio, **row}), flush=True)
         scheduler.step()  # released code also steps once per epoch
 
     payload = torch.load(ratio_output / "checkpoint-best-validation.pth", map_location="cpu")
@@ -304,7 +306,7 @@ def train_ratio(root: Path, frames: dict[str, pd.DataFrame], ratio: int, output:
     result = {
         "status": "complete",
         "fraction": f"{ratio}pct",
-        "seed": 42,
+        "seed": seed,
         "train_records": len(train_frame),
         "model_audit": model_audit,
         "best_validation": best,
@@ -321,9 +323,11 @@ def train_ratio(root: Path, frames: dict[str, pd.DataFrame], ratio: int, output:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--campaign", default=CAMPAIGN)
+    parser.add_argument("--seeds", type=int, nargs="+", default=[42])
     args = parser.parse_args()
     root = args.root.resolve()
-    output = root / "results" / CAMPAIGN
+    output = root / "results" / args.campaign
     output.mkdir(parents=True, exist_ok=True)
     status = output / "queue-status.json"
     try:
@@ -334,14 +338,15 @@ def main() -> None:
             root / "src/CLEAR-HUG/datasets/ecg_datasets/CPSC2018/data",
         )
         manifest = {
-            "campaign": CAMPAIGN,
+            "campaign": args.campaign,
             "source_repository": "https://github.com/cheliu-computation/MERL-ICML2024",
             "source_commit": SOURCE_COMMIT,
             "encoder": "official released MERL ResNet-18 encoder",
             "encoder_sha256": ENCODER_SHA256,
             "split_audit": split_audit,
             "ratios": list(RATIOS),
-            "seed_behavior": {"torch": 42, "python": 0, "numpy": 0, "fraction_split_random_state": 42},
+            "seeds": args.seeds,
+            "seed_behavior": "torch, python, numpy and fraction split random_state all use the task seed",
             "optimizer": "Adam(lr=1e-3, weight_decay=1e-4)",
             "batch_size": 16,
             "epochs": 100,
@@ -350,11 +355,15 @@ def main() -> None:
         }
         atomic_json(output / "manifest.json", manifest)
         results = []
-        for ratio in RATIOS:
-            atomic_json(status, {"state": "running", "ratio": ratio, "completed_ratios": len(results)})
-            results.append(train_ratio(root, frames, ratio, output))
+        total = len(args.seeds) * len(RATIOS)
+        for seed in args.seeds:
+            seed_output = output if args.seeds == [42] and args.campaign == CAMPAIGN else output / f"seed{seed}"
+            for ratio in RATIOS:
+                atomic_json(status, {"state": "running", "seed": seed, "ratio": ratio,
+                                     "completed_units": len(results), "total_units": total})
+                results.append(train_ratio(root, frames, ratio, seed, seed_output))
         atomic_json(output / "summary.json", {"status": "complete", "results": results})
-        atomic_json(status, {"state": "complete", "completed_ratios": len(results)})
+        atomic_json(status, {"state": "complete", "completed_units": len(results), "total_units": total})
     except Exception as error:
         atomic_json(status, {"state": "failed", "error": repr(error), "traceback": traceback.format_exc()})
         raise

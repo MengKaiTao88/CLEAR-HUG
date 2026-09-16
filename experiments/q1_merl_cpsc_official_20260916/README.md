@@ -24,3 +24,7 @@ shape mismatch under `strict=False`, so the unmodified public CPSC code fails
 when constructing its 9-class head. The runner removes only these two released
 head tensors and records their shapes in the model audit; all encoder tensors
 remain unchanged.
+
+The supplemental campaign `q1-merl-cpsc-official-seeds46-55-20260916` adds
+seeds 46 and 55 without overwriting seed 42. For this multi-seed extension,
+PyTorch, Python, NumPy and the low-label subset sampler all use the task seed.

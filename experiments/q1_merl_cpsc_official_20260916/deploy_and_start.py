@@ -12,6 +12,7 @@ import paramiko
 
 
 CAMPAIGN = "q1-merl-cpsc-official-20260916"
+SUPPLEMENT_CAMPAIGN = "q1-merl-cpsc-official-seeds46-55-20260916"
 ROOT = "/root/107552503710"
 EXPERIMENT = "q1_merl_cpsc_official_20260916"
 ENCODER_SHA256 = "38ba669c2cc319670c4172d8c292f123e86b8e7106b1a68bb7e10dd89f09daf5"
@@ -109,16 +110,17 @@ def main() -> None:
         verified = run(client, f"sha256sum {shlex.quote(remote_weight)} | cut -d' ' -f1").strip()
         if verified != ENCODER_SHA256:
             raise RuntimeError("remote MERL encoder verification failed")
-        result = f"{ROOT}/results/{CAMPAIGN}"
+        result = f"{ROOT}/results/{SUPPLEMENT_CAMPAIGN}"
         python = f"{ROOT}/.venv/bin/python"
         script = f"{destination}/run_merl_cpsc.py"
-        pattern = f"{script} --root {ROOT}"
+        arguments = f"--root {ROOT} --campaign {SUPPLEMENT_CAMPAIGN} --seeds 46 55"
+        pattern = f"{script} {arguments}"
         pidfile = result + "/run.pid"
         command = (
             f"mkdir -p {shlex.quote(result)}; "
             f"if ! test -s {shlex.quote(pidfile)} || ! kill -0 \"$(cat {shlex.quote(pidfile)})\" 2>/dev/null; then "
             f"nohup setsid env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 "
-            f"{shlex.quote(python)} {shlex.quote(script)} --root {shlex.quote(ROOT)} "
+            f"{shlex.quote(python)} {shlex.quote(script)} {arguments} "
             f"> {shlex.quote(result + '/run.log')} 2>&1 < /dev/null & "
             f"echo $! > {shlex.quote(pidfile)}; fi"
         )
