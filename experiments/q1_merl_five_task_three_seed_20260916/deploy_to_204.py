@@ -79,15 +79,29 @@ def relay(source: paramiko.SSHClient, destination: paramiko.SSHClient,
         except FileNotFoundError: transferred = 0
         if transferred > size:
             destination_sftp.remove(incoming); transferred = 0
-        with source_sftp.open(source_path, "rb") as reader, destination_sftp.open(incoming, "ab" if transferred else "wb") as writer:
-            writer.set_pipelined(True)
-            if transferred: reader.seek(transferred)
-            while True:
-                block = reader.read(8 * 1024 * 1024)
-                if not block: break
-                writer.write(block); transferred += len(block)
-                if transferred % (256 * 1024 * 1024) < len(block):
-                    print(f"relay {PurePosixPath(source_path).name}: {transferred}/{size}", flush=True)
+        # SFTP write acknowledgements are extremely slow across the two public
+        # SSH endpoints.  Pump an authenticated stdout/stdin stream instead;
+        # the existing .incoming byte count remains the resume boundary.
+        start = transferred + 1
+        source_command = f"tail -c +{start} {shlex.quote(source_path)}"
+        destination_command = f"cat >> {shlex.quote(incoming)}"
+        _, reader, source_error = source.exec_command(source_command)
+        writer, destination_output, destination_error = destination.exec_command(destination_command)
+        while True:
+            block = reader.read(8 * 1024 * 1024)
+            if not block: break
+            writer.write(block); transferred += len(block)
+            if transferred % (256 * 1024 * 1024) < len(block):
+                print(f"relay {PurePosixPath(source_path).name}: {transferred}/{size}", flush=True)
+        writer.channel.shutdown_write()
+        source_code = reader.channel.recv_exit_status()
+        destination_code = destination_output.channel.recv_exit_status()
+        if source_code or destination_code:
+            raise RuntimeError(
+                f"stream relay failed source={source_code} destination={destination_code}: "
+                f"{source_error.read().decode(errors='replace')} "
+                f"{destination_error.read().decode(errors='replace')}"
+            )
         destination_sftp.chmod(incoming, stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH)
         destination_sftp.posix_rename(incoming, destination_path)
     finally:
