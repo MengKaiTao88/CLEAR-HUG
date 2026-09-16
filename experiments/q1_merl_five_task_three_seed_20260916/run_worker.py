@@ -153,22 +153,26 @@ class ECGDataset(Dataset):
 def load_frames(root: Path, code_root: Path, task: str) -> tuple[dict[str, pd.DataFrame], tuple[str, ...], dict]:
     config = TASKS[task]
     split_root = code_root / "data_split" / config["split_dir"]
-    frames, audit = {}, {"counts": {}, "official_split_files": {}, "record_overlap": {}}
+    frames, audit = {}, {"counts": {}, "official_split_files": {}, "record_overlap": {},
+                         "original_label_order": {}}
     labels = None
     for split in ("train", "val", "test"):
         frame = pd.read_csv(split_root / f"{config['prefix']}_{split}.csv")
         if len(frame) != config["counts"][split]:
             raise RuntimeError(f"{task} {split} count mismatch")
         current_labels = tuple(frame.columns[config["meta_columns"]:])
+        audit["original_label_order"][split] = current_labels
         if len(current_labels) != config["classes"]:
             raise RuntimeError(f"{task} label-count mismatch")
-        labels = labels or current_labels
-        if labels != current_labels:
-            raise RuntimeError(f"{task} label order differs across splits")
+        if labels is None:
+            labels = current_labels
+        elif set(labels) != set(current_labels):
+            raise RuntimeError(f"{task} label set differs across splits")
         frames[split] = frame
         audit["counts"][split] = len(frame)
         split_file = split_root / f"{config['prefix']}_{split}.csv"
         audit["official_split_files"][split] = {"path": str(split_file), "sha256": sha256(split_file)}
+    audit["canonical_label_order"] = labels
     identity = "patient_id" if config["kind"] == "ptbxl" else "ecg_path"
     for left, right in (("train", "val"), ("train", "test"), ("val", "test")):
         overlap = set(frames[left][identity].astype(str)) & set(frames[right][identity].astype(str))
