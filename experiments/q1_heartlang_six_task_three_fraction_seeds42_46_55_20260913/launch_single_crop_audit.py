@@ -5,9 +5,10 @@ from __future__ import annotations
 import shlex
 import time
 
-from audit_stmem_cpsc_seed42 import AUDIT
 from deploy_and_start import CODE_DIRNAME, connect, upload_code
 from protocol import NODES
+
+AUDIT = "q1-stmem-cpsc-seed42-single-crop-audit-20260916"
 
 
 def main() -> None:
