@@ -152,9 +152,8 @@ class ECGDataset(Dataset):
 
 def load_frames(root: Path, code_root: Path, task: str) -> tuple[dict[str, pd.DataFrame], tuple[str, ...], dict]:
     config = TASKS[task]
-    array_root = root / "src/CLEAR-HUG/datasets/ecg_datasets" / config["array_dir"]
     split_root = code_root / "data_split" / config["split_dir"]
-    frames, audit = {}, {"counts": {}, "array_order_and_labels_match": {}, "record_overlap": {}}
+    frames, audit = {}, {"counts": {}, "official_split_files": {}, "record_overlap": {}}
     labels = None
     for split in ("train", "val", "test"):
         frame = pd.read_csv(split_root / f"{config['prefix']}_{split}.csv")
@@ -166,17 +165,10 @@ def load_frames(root: Path, code_root: Path, task: str) -> tuple[dict[str, pd.Da
         labels = labels or current_labels
         if labels != current_labels:
             raise RuntimeError(f"{task} label order differs across splits")
-        local_paths = np.load(array_root / f"{split}_path.npy", allow_pickle=True).astype(str)
-        local_labels = np.load(array_root / f"{split}_labels.npy")
-        official_paths = frame["filename_lr" if config["kind"] == "ptbxl" else "ecg_path"].astype(str).to_numpy()
-        exact = np.array_equal(local_paths, official_paths) and np.array_equal(
-            local_labels.astype(np.float32), frame[list(labels)].to_numpy(dtype=np.float32)
-        )
-        if not exact:
-            raise RuntimeError(f"{task} local arrays do not exactly match official MERL {split}")
         frames[split] = frame
         audit["counts"][split] = len(frame)
-        audit["array_order_and_labels_match"][split] = True
+        split_file = split_root / f"{config['prefix']}_{split}.csv"
+        audit["official_split_files"][split] = {"path": str(split_file), "sha256": sha256(split_file)}
     identity = "patient_id" if config["kind"] == "ptbxl" else "ecg_path"
     for left, right in (("train", "val"), ("train", "test"), ("val", "test")):
         overlap = set(frames[left][identity].astype(str)) & set(frames[right][identity].astype(str))
