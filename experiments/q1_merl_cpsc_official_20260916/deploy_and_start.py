@@ -113,13 +113,14 @@ def main() -> None:
         python = f"{ROOT}/.venv/bin/python"
         script = f"{destination}/run_merl_cpsc.py"
         pattern = f"{script} --root {ROOT}"
+        pidfile = result + "/run.pid"
         command = (
             f"mkdir -p {shlex.quote(result)}; "
-            f"if ! pgrep -f {shlex.quote(pattern)} >/dev/null; then "
+            f"if ! test -s {shlex.quote(pidfile)} || ! kill -0 \"$(cat {shlex.quote(pidfile)})\" 2>/dev/null; then "
             f"nohup setsid env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 "
             f"{shlex.quote(python)} {shlex.quote(script)} --root {shlex.quote(ROOT)} "
             f"> {shlex.quote(result + '/run.log')} 2>&1 < /dev/null & "
-            f"echo $! > {shlex.quote(result + '/run.pid')}; fi"
+            f"echo $! > {shlex.quote(pidfile)}; fi"
         )
         _, stdout, _ = client.exec_command(command)
         time.sleep(2)
