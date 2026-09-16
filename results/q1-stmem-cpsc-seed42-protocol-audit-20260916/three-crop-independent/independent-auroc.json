@@ -1,0 +1,19 @@
+{
+  "source_prediction": "C:\\Users\\14014\\Desktop\\CLEAR-HUG\\src\\CLEAR-HUG\\results\\q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914\\100pct\\cpsc2018-seed42\\stmem\\formal-test\\test_predictions.npz",
+  "implementation": "sklearn.metrics.roc_auc_score",
+  "sklearn_call": "roc_auc_score(y_true, y_prob, average='macro')",
+  "records": 1376,
+  "classes": 9,
+  "macro_auroc": 0.9537256777612496,
+  "per_class_auroc": {
+    "0": 0.9919609236234459,
+    "1": 0.9135884391358844,
+    "2": 0.9556326597607236,
+    "3": 0.9883543367414336,
+    "4": 0.9858542042921191,
+    "5": 0.9478601211549053,
+    "6": 0.904511677282378,
+    "7": 0.9587530566107377,
+    "8": 0.9370156812496188
+  }
+}

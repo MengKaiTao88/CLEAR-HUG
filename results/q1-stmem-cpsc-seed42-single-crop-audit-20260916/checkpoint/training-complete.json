@@ -1,0 +1,29 @@
+{
+  "batch_size": 256,
+  "best_epoch": 90,
+  "best_validation_auroc": 0.9399479832640947,
+  "campaign": "q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914",
+  "checkpoint_sha256": "d9a4bf8fb8273dc5b5fad1a510a954e3d8c9ea64e6d861068384987440232b94",
+  "classes": 9,
+  "encoder_frozen": true,
+  "epochs": 100,
+  "fraction": 1.0,
+  "fraction_key": "100pct",
+  "initial_head_sha256": "dd22c5bcb073a684cf8dc0c11b05bc5103cfe064289287735d506e8940700632",
+  "learning_rate": 0.005,
+  "min_lr": 1e-05,
+  "model": "stmem",
+  "optimizer": "AdamW",
+  "seed": 42,
+  "selection_metric": "validation_macro_auroc",
+  "status": "complete",
+  "subset_indices_sha256": "58be38b771f3daa8d1049d362da474fb5422a1c1f26f8eb9994acc94d3836e5e",
+  "task": "cpsc2018",
+  "test_used_for_selection": false,
+  "trainable_parameters": [
+    "weight",
+    "bias"
+  ],
+  "warmup_epochs": 10,
+  "weight_decay": 0.05
+}

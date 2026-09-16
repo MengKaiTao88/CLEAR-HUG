@@ -1,0 +1,129 @@
+RUN identity-freeze-split-audit
+{
+  "status": "passed",
+  "checkpoint_path": "/root/107552503710/model_weights/ST-MEM/st_mem_vit_base_encoder.pth",
+  "checkpoint_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "expected_official_encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "checkpoint_top_level": [
+    "epoch",
+    "model",
+    "optimizer",
+    "scaler",
+    "config"
+  ],
+  "encoder_state_tensors": 166,
+  "checkpoint_contains_classifier_head": false,
+  "encoder_total_parameters": 85150614,
+  "encoder_trainable_parameters": 0,
+  "linear_head_trainable_parameters": 6921,
+  "optimizer_parameter_count": 6921,
+  "optimizer_contains_encoder_parameter": false,
+  "splits": {
+    "record_counts": {
+      "train": 4950,
+      "val": 551,
+      "test": 1376
+    },
+    "source_record_id_sha256": {
+      "train": "ecc90904dddb25587c33b6e2a73b3f4b338fb46d52df3f5a82815966b99e4367",
+      "val": "cec8ec6de0b72d3d1b9b350932b90df42b9e7ddf7bdd29a534c067598ccb92be",
+      "test": "fe4df9a039e217d01b7f247316955d2980c368eb92e18471be9eed87dccc9d7e"
+    },
+    "source_record_id_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "pipeline_order": "record-level split files -> resample each record -> one fixed center crop"
+  }
+}
+RUN extract-train
+{
+  "status": "complete",
+  "split": "train",
+  "records": 4950,
+  "features_sha256": "4c777fba5f83bd7582290482c576bae657f60ca7132db5982fb131c40b9aa7d1",
+  "labels_sha256": "20fc3637ac7743fdcc1108ac6f1d6a8702c81f9ab9d19d8260d59539c34598b5",
+  "encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "encoder_frozen": true,
+  "crop": "one fixed center crop",
+  "crop_length": 2250,
+  "source_record_ids_sha256": "ecc90904dddb25587c33b6e2a73b3f4b338fb46d52df3f5a82815966b99e4367"
+}
+RUN extract-val
+{
+  "status": "complete",
+  "split": "val",
+  "records": 551,
+  "features_sha256": "78ad2c3859d55c5d72178b6ac9e66f371798afc0a69a7ab82bcc60a7d26a2f14",
+  "labels_sha256": "fab3dcb12e13a41c85e3707c3e09367d3f0d4420f76edbdba5665d3762767448",
+  "encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "encoder_frozen": true,
+  "crop": "one fixed center crop",
+  "crop_length": 2250,
+  "source_record_ids_sha256": "cec8ec6de0b72d3d1b9b350932b90df42b9e7ddf7bdd29a534c067598ccb92be"
+}
+RUN linear-probe
+{
+  "status": "complete",
+  "campaign": "q1-heartlang-stmem-linear-probe-seeds42-46-55-20260914",
+  "model": "stmem",
+  "task": "cpsc2018",
+  "fraction_key": "100pct",
+  "fraction": 1.0,
+  "seed": 42,
+  "classes": 9,
+  "epochs": 100,
+  "batch_size": 256,
+  "optimizer": "AdamW",
+  "learning_rate": 0.005,
+  "weight_decay": 0.05,
+  "warmup_epochs": 10,
+  "min_lr": 1e-05,
+  "selection_metric": "validation_macro_auroc",
+  "test_used_for_selection": false,
+  "encoder_frozen": true,
+  "trainable_parameters": [
+    "weight",
+    "bias"
+  ],
+  "initial_head_sha256": "dd22c5bcb073a684cf8dc0c11b05bc5103cfe064289287735d506e8940700632",
+  "best_epoch": 90,
+  "best_validation_auroc": 0.9399479832640947,
+  "checkpoint_sha256": "d9a4bf8fb8273dc5b5fad1a510a954e3d8c9ea64e6d861068384987440232b94",
+  "subset_indices_sha256": "58be38b771f3daa8d1049d362da474fb5422a1c1f26f8eb9994acc94d3836e5e"
+}
+RUN extract-test
+{
+  "status": "complete",
+  "split": "test",
+  "records": 1376,
+  "features_sha256": "cd839dad9f25c0348d412d5db816f6df05e450ff0f512ea066ded387491dd6a9",
+  "labels_sha256": "3afe1688ad9bfe9fe4a8f7e25cfae0ebe627f26c6d0c3ebf41e880049e0e2f42",
+  "encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "encoder_frozen": true,
+  "crop": "one fixed center crop",
+  "crop_length": 2250,
+  "source_record_ids_sha256": "fe4df9a039e217d01b7f247316955d2980c368eb92e18471be9eed87dccc9d7e"
+}
+RUN independent-evaluate
+{
+  "status": "complete",
+  "metric_implementation": "sklearn.metrics.roc_auc_score",
+  "average": "macro",
+  "macro_auroc": 0.9512989360916804,
+  "per_class_auroc": {
+    "0": 0.9921705150976908,
+    "1": 0.9034420567267283,
+    "2": 0.954821089874526,
+    "3": 0.9870175160497742,
+    "4": 0.9848728500232281,
+    "5": 0.9449295885453544,
+    "6": 0.9000464437367303,
+    "7": 0.9599526321455485,
+    "8": 0.9344377326255415
+  },
+  "records": 1376,
+  "classes": 9,
+  "checkpoint_sha256": "d9a4bf8fb8273dc5b5fad1a510a954e3d8c9ea64e6d861068384987440232b94"
+}

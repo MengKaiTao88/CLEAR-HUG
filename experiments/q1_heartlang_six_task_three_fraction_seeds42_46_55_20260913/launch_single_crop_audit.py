@@ -22,7 +22,9 @@ def main() -> None:
         result = f"{root}/results/{AUDIT}"
         script = f"{root}/src/CLEAR-HUG/experiments/{CODE_DIRNAME}/run_single_crop_audit.py"
         python = f"{root}/.venv/bin/python"
-        pattern = f"[r]un_single_crop_audit.py --root {root}"
+        # Anchor the argv so the remote wrapper shell's own command line cannot
+        # satisfy the guard merely because it contains the launch command.
+        pattern = f"^{python} {script} --root {root}$"
         command = (f"mkdir -p {shlex.quote(result)}; "
                    f"if ! pgrep -af {shlex.quote(pattern)} >/dev/null; then "
                    f"nohup setsid " + ("env LD_PRELOAD=/lib/x86_64-linux-gnu/libcuda.so.1 " if node == "10110" else "") +

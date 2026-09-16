@@ -1,0 +1,38 @@
+{
+  "checkpoint_contains_classifier_head": false,
+  "checkpoint_path": "/root/107552503710/model_weights/ST-MEM/st_mem_vit_base_encoder.pth",
+  "checkpoint_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "checkpoint_top_level": [
+    "epoch",
+    "model",
+    "optimizer",
+    "scaler",
+    "config"
+  ],
+  "encoder_state_tensors": 166,
+  "encoder_total_parameters": 85150614,
+  "encoder_trainable_parameters": 0,
+  "expected_official_encoder_sha256": "6f63d370fd1a2ccf2fbddd681571adf985eeae3f652973f0071342a39b7793d6",
+  "linear_head_trainable_parameters": 6921,
+  "optimizer_contains_encoder_parameter": false,
+  "optimizer_parameter_count": 6921,
+  "splits": {
+    "pipeline_order": "record-level split files -> resample each record -> one fixed center crop",
+    "record_counts": {
+      "test": 1376,
+      "train": 4950,
+      "val": 551
+    },
+    "source_record_id_overlap": {
+      "train_test": 0,
+      "train_val": 0,
+      "val_test": 0
+    },
+    "source_record_id_sha256": {
+      "test": "fe4df9a039e217d01b7f247316955d2980c368eb92e18471be9eed87dccc9d7e",
+      "train": "ecc90904dddb25587c33b6e2a73b3f4b338fb46d52df3f5a82815966b99e4367",
+      "val": "cec8ec6de0b72d3d1b9b350932b90df42b9e7ddf7bdd29a534c067598ccb92be"
+    }
+  },
+  "status": "passed"
+}

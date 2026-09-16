@@ -1,0 +1,10 @@
+{
+  "fraction": 1.0,
+  "fraction_key": "100pct",
+  "indices_sha256": "58be38b771f3daa8d1049d362da474fb5422a1c1f26f8eb9994acc94d3836e5e",
+  "seed": 42,
+  "selected_labels_sha256": "13c1f2c466f582beec70b748494490c795146f38a7c40bd5ed5cf2e36e2094dd",
+  "selected_records": 4950,
+  "source_records": 4950,
+  "task": "cpsc2018"
+}
