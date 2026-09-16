@@ -184,6 +184,13 @@ def build_model(checkpoint: Path) -> tuple[nn.Module, dict[str, object]]:
     if isinstance(payload, dict) and "state_dict" in payload:
         payload = payload["state_dict"]
     payload = {key.removeprefix("module."): value for key, value in payload.items()}
+    # Despite its released "encoder" filename, the ResNet checkpoint contains
+    # a 10-class pretraining head.  The public downstream script asks
+    # load_state_dict(strict=False) to ignore it, but PyTorch still raises on
+    # shape mismatch against CPSC's 9-class head.  Removing only linear.* is
+    # the minimal adapter that realizes the source code's stated intention.
+    released_head = {key: list(value.shape) for key, value in payload.items() if key.startswith("linear.")}
+    payload = {key: value for key, value in payload.items() if not key.startswith("linear.")}
     incompatible = model.load_state_dict(payload, strict=False)
     allowed_missing = {"linear.weight", "linear.bias"}
     if set(incompatible.missing_keys) - allowed_missing or incompatible.unexpected_keys:
@@ -198,6 +205,8 @@ def build_model(checkpoint: Path) -> tuple[nn.Module, dict[str, object]]:
     return model.cuda(), {
         "missing_keys": list(incompatible.missing_keys),
         "unexpected_keys": list(incompatible.unexpected_keys),
+        "removed_released_pretraining_head": released_head,
+        "checkpoint_adapter": "removed only linear.* because released encoder carries a mismatched 10-class head",
         "trainable_parameters": trainable,
         "encoder_parameters_in_optimizer_with_grad": 0,
     }

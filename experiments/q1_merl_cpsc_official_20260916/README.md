@@ -17,3 +17,10 @@ reports the maximum test metric. This runner records that value as
 `released_code_max_test_over_epochs`, but the primary fair-comparison output is
 `validation_selected_test`, obtained from the checkpoint selected only by
 validation Macro AUROC.
+
+The released `res18_best_encoder.pth` unexpectedly contains `linear.weight`
+and `linear.bias` for a 10-class pretraining head. PyTorch does not ignore a
+shape mismatch under `strict=False`, so the unmodified public CPSC code fails
+when constructing its 9-class head. The runner removes only these two released
+head tensors and records their shapes in the model audit; all encoder tensors
+remain unchanged.
