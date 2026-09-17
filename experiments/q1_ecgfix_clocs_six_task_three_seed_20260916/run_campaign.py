@@ -78,7 +78,11 @@ def config(root: Path, seed: int) -> dict:
         },
         "preprocess_workers": 30,
         "embedding": {"chunk_size": 5, "batch_size": 256, "num_workers": 0, "prefetch_factor": 0},
-        "multi_process_eval": 4,
+        # Evaluation remains deterministic and statistically identical when
+        # serialized inside each seed process.  This also keeps the runtime
+        # config monkeypatch process-local instead of relying on ECG-FIX's
+        # repository-global ./config.json from spawned workers.
+        "multi_process_eval": 1,
         "eval": {"batch_size": 256, "num_workers": 0, "sklearn_n_jobs": 1},
         "stats_tests": {"alpha": 0.01, "n_boot": 1000, "n_perm": 1000},
     }
@@ -147,6 +151,20 @@ def configure_csn_label_space(csn_root: Path, raw_dir: Path, campaign: Path, p_c
     return labels
 
 
+def install_runtime_config(cfg: dict) -> None:
+    """Route released loaders to this campaign without editing pinned source."""
+    from src.preprocess import load_embeddings
+    from src.preprocess.CPSC import data_CPSC
+    from src.preprocess.CSN import data_CSN
+    from src.preprocess.PTBXL import data_PTBXL
+
+    def current_config() -> dict:
+        return cfg
+
+    for module in (load_embeddings, data_CPSC, data_CSN, data_PTBXL):
+        module.load_config = current_config
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -166,6 +184,7 @@ def main() -> None:
 
     selected = SimpleNamespace(datasets=list(DATASETS), models=["CLOCS"])
     cfg = config(root, args.seed)
+    install_runtime_config(cfg)
     if args.phase == "prepare":
         status = campaign / "prepare-status.json"
         atomic_json(status, {"state": "running", "datasets": DATASETS, "model": "CLOCS", **audit})
