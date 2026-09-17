@@ -13,6 +13,8 @@ import time
 from pathlib import Path
 from types import SimpleNamespace
 
+import numpy as np
+
 
 CAMPAIGN = "q1-ecgfix-clocs-six-task-three-fraction-seeds42-46-55-20260916"
 ECGFIX_COMMIT = "991a31f14c94f72d5658bc172eae5736ba2fa149"
@@ -119,7 +121,14 @@ def configure_csn_label_space(csn_root: Path, raw_dir: Path, campaign: Path, p_c
     class_map = raw_dir / "csn_class_to_index.json"
     if class_map.is_file():
         current = json.loads(class_map.read_text(encoding="utf-8"))
-        if set(current) != set(labels):
+        zero_positive_labels = []
+        label_array = raw_dir / "csn_labels.npy"
+        if set(current) == set(labels) and label_array.is_file():
+            values = np.load(label_array, mmap_mode="r")
+            zero_positive_labels = [
+                label for label in labels if int(values[:, int(current[label])].sum()) == 0
+            ]
+        if set(current) != set(labels) or zero_positive_labels:
             archive = campaign / "history" / f"csn-label-space-{time.time_ns()}"
             archive.mkdir(parents=True, exist_ok=False)
             moved = []
@@ -132,6 +141,7 @@ def configure_csn_label_space(csn_root: Path, raw_dir: Path, campaign: Path, p_c
                 "reason": "replace non-canonical ECG-FIX CSN vocabulary",
                 "old_labels": sorted(current),
                 "canonical_labels": labels,
+                "zero_positive_labels": zero_positive_labels,
                 "moved_files": moved,
             })
     return labels
@@ -161,7 +171,11 @@ def main() -> None:
         atomic_json(status, {"state": "running", "datasets": DATASETS, "model": "CLOCS", **audit})
         csn_root = Path(cfg["dataset_roots"]["CSN"])
         header_manifest = csn_root / "ecgfix-csn-headers-complete.json"
-        if not header_manifest.is_file():
+        try:
+            header_state = json.loads(header_manifest.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            header_state = {}
+        if header_state.get("dx_encoding") != "canonical_acronym":
             helper = Path(__file__).with_name("prepare_csn_headers.py")
             subprocess.run(
                 [sys.executable, str(helper), "--base-dir", str(csn_root)],

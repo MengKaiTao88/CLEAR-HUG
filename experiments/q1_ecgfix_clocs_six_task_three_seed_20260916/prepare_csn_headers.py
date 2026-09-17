@@ -76,7 +76,7 @@ def signed_checksum(values: np.ndarray) -> int:
     return value - 0x10000 if value >= 0x8000 else value
 
 
-def header_text(record_id: str, signal: np.ndarray, dx_codes: list[str]) -> str:
+def header_text(record_id: str, signal: np.ndarray, dx_values: list[str]) -> str:
     if signal.shape != (12, 5000) or signal.dtype.kind not in "iu":
         raise RuntimeError(f"unexpected signal for {record_id}: shape={signal.shape}, dtype={signal.dtype}")
     lines = [f"{record_id} 12 500 5000"]
@@ -86,7 +86,7 @@ def header_text(record_id: str, signal: np.ndarray, dx_codes: list[str]) -> str:
             f"{record_id}.mat 16+24 1000/mV 16 0 {int(channel[0])} "
             f"{signed_checksum(channel)} 0 {lead}"
         )
-    lines.extend(("#Age: NaN", "#Sex: Unknown", f"#Dx: {','.join(dx_codes)}"))
+    lines.extend(("#Age: NaN", "#Sex: Unknown", f"#Dx: {','.join(dx_values)}"))
     return "\n".join(lines) + "\n"
 
 
@@ -104,7 +104,13 @@ def main() -> None:
     if missing_labels:
         raise RuntimeError(f"labels missing from SNOMED map: {missing_labels}")
 
+    try:
+        previous_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        previous_manifest = {}
+    rewrite_dx = previous_manifest.get("dx_encoding") != "canonical_acronym"
     written = 0
+    dx_rewritten = 0
     for row in rows:
         relative = Path(row["ecg_path"].removeprefix("/chapman/").lstrip("/"))
         mat_path = base / relative
@@ -112,12 +118,25 @@ def main() -> None:
             raise FileNotFoundError(mat_path)
         record_id = mat_path.stem
         header_path = mat_path.with_suffix(".hea")
-        dx_codes = [code_map[label] for label in labels if int(row[label]) == 1]
+        dx_values = [label for label in labels if int(row[label]) == 1]
         if header_path.exists():
+            if rewrite_dx:
+                lines = header_path.read_text(encoding="ascii").splitlines()
+                replacement = f"#Dx: {','.join(dx_values)}"
+                for index, line in enumerate(lines):
+                    if line.startswith("#Dx:"):
+                        lines[index] = replacement
+                        break
+                else:
+                    lines.append(replacement)
+                incoming = header_path.with_suffix(".hea.incoming")
+                incoming.write_text("\n".join(lines) + "\n", encoding="ascii")
+                os.replace(incoming, header_path)
+                dx_rewritten += 1
             continue
         signal = np.asarray(loadmat(mat_path)["val"])
         incoming = header_path.with_suffix(".hea.incoming")
-        incoming.write_text(header_text(record_id, signal, dx_codes), encoding="ascii")
+        incoming.write_text(header_text(record_id, signal, dx_values), encoding="ascii")
         os.replace(incoming, header_path)
         written += 1
 
@@ -133,6 +152,8 @@ def main() -> None:
         "label_count": len(labels),
         "split_csv_sha256": split_hashes,
         "headers_written_this_run": written,
+        "dx_headers_rewritten_this_run": dx_rewritten,
+        "dx_encoding": "canonical_acronym",
         "signal_files_modified": 0,
     }
     incoming = manifest_path.with_suffix(".json.incoming")
