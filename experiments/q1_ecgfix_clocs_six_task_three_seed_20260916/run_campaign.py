@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import os
 import subprocess
 import sys
+import time
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -18,6 +20,7 @@ CLOCS_SHA256 = "039975cf563e76dd25a7975abfe1b74ff37308bd1e9fb24aaf6282f4ffdc5805
 DATASETS = ("PTBXL_form", "PTBXL_super", "PTBXL_sub", "PTBXL_rhythm", "CPSC", "CSN")
 SEEDS = (42, 46, 55)
 EXPECTED_UNITS_PER_SEED = len(DATASETS) * 3
+CSN_META_COLUMNS = {"ecg_path", "age", "diagnose"}
 
 
 def atomic_json(path: Path, payload: object) -> None:
@@ -91,6 +94,49 @@ def done_payloads(results_dir: Path, seed: int) -> list[dict]:
     return payloads
 
 
+def configure_csn_label_space(csn_root: Path, raw_dir: Path, campaign: Path, p_csn) -> list[str]:
+    """Make ECG-FIX use the campaign's canonical 38-label CSN task."""
+    with (csn_root / "chapman_train.csv").open(newline="", encoding="utf-8-sig") as stream:
+        reader = csv.DictReader(stream)
+        labels = [name for name in (reader.fieldnames or []) if name not in CSN_META_COLUMNS]
+    if len(labels) != 38:
+        raise RuntimeError(f"expected 38 canonical CSN labels, found {len(labels)}")
+
+    with (csn_root / "ConditionNames_SNOMED-CT.csv").open(
+        newline="", encoding="utf-8-sig"
+    ) as stream:
+        condition_labels = {row["Acronym Name"].strip() for row in csv.DictReader(stream)}
+    missing = sorted(set(labels) - condition_labels)
+    if missing:
+        raise RuntimeError(f"canonical CSN labels missing from condition map: {missing}")
+
+    # p_CSN derives its vocabulary from this exclusion set.  Override the two
+    # released generic filters so the downstream task is exactly the audited
+    # 38-label Chapman/CSN benchmark used by this campaign.
+    p_csn.ZERO_COUNT_LABELS = condition_labels - set(labels)
+    p_csn.LESS_THAN_2_COUNT_LABELS = set()
+
+    class_map = raw_dir / "csn_class_to_index.json"
+    if class_map.is_file():
+        current = json.loads(class_map.read_text(encoding="utf-8"))
+        if set(current) != set(labels):
+            archive = campaign / "history" / f"csn-label-space-{time.time_ns()}"
+            archive.mkdir(parents=True, exist_ok=False)
+            moved = []
+            for path in sorted(raw_dir.glob("csn*")):
+                if path.is_file():
+                    destination = archive / path.name
+                    os.replace(path, destination)
+                    moved.append(path.name)
+            atomic_json(archive / "archive-manifest.json", {
+                "reason": "replace non-canonical ECG-FIX CSN vocabulary",
+                "old_labels": sorted(current),
+                "canonical_labels": labels,
+                "moved_files": moved,
+            })
+    return labels
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -106,6 +152,7 @@ def main() -> None:
     from src.eval import main_eval
     from src.metrics.export_results import main_export
     from src.preprocess.process_data import main_preprocess
+    from src.preprocess.CSN import p_CSN
 
     selected = SimpleNamespace(datasets=list(DATASETS), models=["CLOCS"])
     cfg = config(root, args.seed)
@@ -120,6 +167,7 @@ def main() -> None:
                 [sys.executable, str(helper), "--base-dir", str(csn_root)],
                 check=True,
             )
+        configure_csn_label_space(csn_root, Path(cfg["raw_data_dir"]), campaign, p_CSN)
         main_preprocess(selected, cfg)
         marker = {
             "state": "complete", "datasets": DATASETS, "model": "CLOCS",
