@@ -113,8 +113,6 @@ def main() -> None:
         record_id = mat_path.stem
         header_path = mat_path.with_suffix(".hea")
         dx_codes = [code_map[label] for label in labels if int(row[label]) == 1]
-        if not dx_codes:
-            raise RuntimeError(f"record has no positive labels: {record_id}")
         if header_path.exists():
             continue
         signal = np.asarray(loadmat(mat_path)["val"])
