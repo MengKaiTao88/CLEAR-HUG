@@ -69,7 +69,13 @@ def main() -> None:
     try:
         destination = f"{ROOT}/src/CLEAR-HUG/experiments/{EXPERIMENT}"
         sftp = client.open_sftp()
-        for name in ("run_campaign.py", "queue_runner.py", "deploy_queue.py", "README.md"):
+        for name in (
+            "run_campaign.py",
+            "prepare_csn_headers.py",
+            "queue_runner.py",
+            "deploy_queue.py",
+            "README.md",
+        ):
             upload(sftp, HERE / name, f"{destination}/{name}")
         sftp.close()
         output = f"{ROOT}/results/{CAMPAIGN}"
@@ -79,6 +85,7 @@ def main() -> None:
         runner = f"{destination}/queue_runner.py"
         run(client, f"{shlex.quote(python)} -m py_compile "
                     f"{shlex.quote(destination + '/run_campaign.py')} "
+                    f"{shlex.quote(destination + '/prepare_csn_headers.py')} "
                     f"{shlex.quote(destination + '/queue_runner.py')}")
         run(client, f"mkdir -p {shlex.quote(output)}")
         command = (
