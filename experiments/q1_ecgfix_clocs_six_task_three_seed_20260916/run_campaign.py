@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -111,6 +112,14 @@ def main() -> None:
     if args.phase == "prepare":
         status = campaign / "prepare-status.json"
         atomic_json(status, {"state": "running", "datasets": DATASETS, "model": "CLOCS", **audit})
+        csn_root = Path(cfg["dataset_roots"]["CSN"])
+        records_root = csn_root / "WFDBRecords"
+        if not any(records_root.rglob("*.hea")):
+            helper = Path(__file__).with_name("prepare_csn_headers.py")
+            subprocess.run(
+                [sys.executable, str(helper), "--base-dir", str(csn_root)],
+                check=True,
+            )
         main_preprocess(selected, cfg)
         marker = {
             "state": "complete", "datasets": DATASETS, "model": "CLOCS",
