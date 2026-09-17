@@ -113,8 +113,8 @@ def main() -> None:
         status = campaign / "prepare-status.json"
         atomic_json(status, {"state": "running", "datasets": DATASETS, "model": "CLOCS", **audit})
         csn_root = Path(cfg["dataset_roots"]["CSN"])
-        records_root = csn_root / "WFDBRecords"
-        if not any(records_root.rglob("*.hea")):
+        header_manifest = csn_root / "ecgfix-csn-headers-complete.json"
+        if not header_manifest.is_file():
             helper = Path(__file__).with_name("prepare_csn_headers.py")
             subprocess.run(
                 [sys.executable, str(helper), "--base-dir", str(csn_root)],
