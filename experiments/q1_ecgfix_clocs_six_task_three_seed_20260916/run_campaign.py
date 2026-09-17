@@ -6,7 +6,6 @@ import argparse
 import hashlib
 import json
 import os
-import subprocess
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -40,9 +39,10 @@ def verify_deployment(root: Path, ecgfix: Path) -> dict:
     checkpoint_hash = sha256(checkpoint)
     if checkpoint_hash != CLOCS_SHA256:
         raise RuntimeError(f"CLOCS checkpoint SHA256 mismatch: {checkpoint_hash}")
-    commit = subprocess.check_output(
-        ["git", "-C", str(ecgfix), "rev-parse", "HEAD"], text=True
-    ).strip()
+    deployment_marker = ecgfix / ".deployment-complete"
+    if not deployment_marker.is_file():
+        raise RuntimeError("ECG-FIX deployment marker is missing")
+    commit = deployment_marker.read_text(encoding="utf-8").strip()
     if commit != ECGFIX_COMMIT:
         raise RuntimeError(f"ECG-FIX commit mismatch: {commit}")
     return {
