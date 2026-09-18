@@ -14,3 +14,7 @@ and each keep-one-lead 768D representation. The encoder and baseline head remain
 frozen. The residual head is zero-initialized and the class-wise gate starts at
 0.1, preserving exact baseline logits at initialization while allowing the
 residual head to receive a first-step gradient.
+
+The frozen architecture is additionally extended, without modification, to
+`PTBXL_sub` and `PTBXL_rhythm` at seed 42 and 100% labels. These two tasks use
+the same validation-only protocol and are launched by `run_sub_rhythm.sh`.
