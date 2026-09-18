@@ -12,6 +12,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import torch
@@ -85,6 +86,55 @@ def create_tolerant(experiment: Path, checkpoint: Path) -> torch.nn.Module:
     return model
 
 
+class DBETAEcgOnly(torch.nn.Module):
+    """The exact released D-BETA ECG inference path, without its unused T5 branch."""
+
+    def __init__(self, cfg) -> None:
+        super().__init__()
+        from external_src.D_BETA.models.supporter import Pooler  # noqa: PLC0415
+        from external_src.D_BETA.models.transformer import ECGTransformerModel  # noqa: PLC0415
+
+        self.ecg_encoder = ECGTransformerModel(cfg)
+        self.class_embedding = torch.nn.Parameter(torch.empty(cfg.encoder_embed_dim))
+        self.multi_modal_ecg_proj = torch.nn.Linear(cfg.encoder_embed_dim, cfg.hidden_dim)
+        self.unimodal_ecg_pooler = Pooler(cfg.hidden_dim)
+
+
+def create_dbeta_ecg_only(checkpoint: Path, config: Path) -> torch.nn.Module:
+    """Load only parameters used by ECG-FIX's released D-BETA feature extractor.
+
+    The upstream DBETA constructor unconditionally downloads flan-t5-base, although
+    ECG-only inference never calls the language encoder. Loading the four used
+    modules directly is offline-safe and avoids allocating an unused T5 model.
+    """
+    cfg = SimpleNamespace(**json.loads(config.read_text(encoding="utf-8"))["model"])
+    model = DBETAEcgOnly(cfg)
+    payload = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    state = payload["model"]
+
+    def load_component(module: torch.nn.Module, prefix: str) -> None:
+        component = {
+            key[len(prefix):]: value for key, value in state.items() if key.startswith(prefix)
+        }
+        if prefix == "ecg_encoder.":
+            component.pop("mask_emb", None)
+        missing, unexpected = module.load_state_dict(component, strict=True)
+        if missing or unexpected:
+            raise RuntimeError(
+                f"D-BETA state mismatch for {prefix}: missing={missing}, unexpected={unexpected}"
+            )
+
+    load_component(model.ecg_encoder, "ecg_encoder.")
+    load_component(model.multi_modal_ecg_proj, "multi_modal_ecg_proj.")
+    load_component(model.unimodal_ecg_pooler, "unimodal_ecg_pooler.")
+    released_class_embedding = state.get("class_embedding")
+    if released_class_embedding is None or released_class_embedding.shape != model.class_embedding.shape:
+        raise RuntimeError("D-BETA class_embedding is missing or has an unexpected shape")
+    with torch.no_grad():
+        model.class_embedding.copy_(released_class_embedding)
+    return model
+
+
 def model_and_provenance(root: Path, model_name: str):
     experiment = Path(__file__).resolve().parent
     weights = root / "model_weights/modern-mimic-baselines"
@@ -98,7 +148,7 @@ def model_and_provenance(root: Path, model_name: str):
         config = weights / "dbeta_config.json"
         if not config.is_file():
             raise FileNotFoundError(config)
-        model = create_embedding_model("D_BETA", str(weights))
+        model = create_dbeta_ecg_only(checkpoint, config)
         source = "doprakah/ecg-fix-weights mirror of released D-BETA checkpoint"
     elif model_name == "TolerantECG":
         checkpoint = weights / "TolerantECG_encoder.pth"
