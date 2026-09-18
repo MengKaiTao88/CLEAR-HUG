@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="${CLEAR_HUG_ROOT:?}"; FKEY="${1:?}"; TASK="${2:?}"; SEED="${3:?}"
+ROOT="${CLEAR_HUG_ROOT:?}"; source "${ROOT}/mvp/activate_mvp.sh"; FKEY="${1:?}"; TASK="${2:?}"; SEED="${3:?}"
 CAMPAIGN=q1-hilar-rerun-six-task-three-fraction-seeds42-46-55-20260918
 CODE="${ROOT}/src/CLEAR-HUG/experiments/q1_hilar_rerun_six_task_three_fraction_seeds42_46_55_20260918"
 INPUT_ROOT="${ROOT}/campaign-inputs/q1-clear-deepsets-hilar-10seed-20260903/ecg_datasets-resolved-v2"
@@ -18,7 +18,7 @@ import json,sys
 p=json.load(open(sys.argv[1]));assert p['status']=='passed' and p['formal_test_authorized'] is True and p['train_val_units']==54
 PY
 [[ -s "${RUN}/formal-test/complete.json" ]] && exit 0
-source "${ROOT}/mvp/activate_mvp.sh"; export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}" OMP_NUM_THREADS=1
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}" OMP_NUM_THREADS=1
 if [[ ! -s "${RUN}/features/test/labels.npy" ]]; then
  python "${CODE}/cache_paired_features.py" --root "${ROOT}" --dataset "${QRS}" --checkpoint "${RUN}/hila/checkpoint-best.pth" \
   --output "${RUN}/features" --classes "${CLASSES}" --seed "${SEED}" --splits test --train-split-ratio "${FRACTION}" --sampling-method random

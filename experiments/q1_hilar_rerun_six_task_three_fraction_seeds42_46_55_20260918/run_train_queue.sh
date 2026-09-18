@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="${CLEAR_HUG_ROOT:?}"; GPU="${1:?gpu required}"; SEED="${2:?seed required}"
+ROOT="${CLEAR_HUG_ROOT:?}"; source "${ROOT}/mvp/activate_mvp.sh"; GPU="${1:?gpu required}"; SEED="${2:?seed required}"
 CAMPAIGN=q1-hilar-rerun-six-task-three-fraction-seeds42-46-55-20260918
 CODE="${ROOT}/src/CLEAR-HUG/experiments/q1_hilar_rerun_six_task_three_fraction_seeds42_46_55_20260918"
 case "${GPU}" in 0|1|2) ;; *) exit 2 ;; esac; case "${SEED}" in 42|46|55) ;; *) exit 2 ;; esac

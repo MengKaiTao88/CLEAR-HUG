@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="${CLEAR_HUG_ROOT:?CLEAR_HUG_ROOT required}"
+source "${ROOT}/mvp/activate_mvp.sh"
 FKEY="${1:?fraction key required}"; TASK="${2:?task required}"; SEED="${3:?seed required}"
 CAMPAIGN=q1-hilar-rerun-six-task-three-fraction-seeds42-46-55-20260918
 CODE="${ROOT}/src/CLEAR-HUG/experiments/q1_hilar_rerun_six_task_three_fraction_seeds42_46_55_20260918"
@@ -40,7 +41,7 @@ PY
 }
 stage=initializing; trap 'c=$?; [[ $c -eq 0 ]] || write_status failed "${stage}:exit=${c}"' EXIT
 write_status running "${stage}"
-source "${ROOT}/mvp/activate_mvp.sh"; export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}" OMP_NUM_THREADS=1
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}" OMP_NUM_THREADS=1
 for split in train val test; do test -s "${QRS}/${split}_data.npy"; test -s "${QRS}/${split}_labels.npy"; done
 python - "${ROOT}/checkpoints/released_ckpt.pth" <<'PY'
 import hashlib,sys
