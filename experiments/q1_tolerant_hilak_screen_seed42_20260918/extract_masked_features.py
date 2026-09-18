@@ -97,7 +97,13 @@ def verify_against_baseline(root: Path, task: str, split: str,
 @torch.inference_mode()
 def encode_masked(model: torch.nn.Module, waveforms: np.ndarray,
                   device: torch.device) -> np.ndarray:
-    values = torch.from_numpy(np.asarray(waveforms, dtype=np.float32)).to(device)
+    # Some processed CSN records retain non-finite source samples. The audited
+    # baseline extraction sanitizes recovered raw records before inference; do
+    # the same for every masked view so a single bad sample cannot poison an
+    # entire ConvNeXt feature vector.
+    clean = np.nan_to_num(np.asarray(waveforms, dtype=np.float32),
+                          nan=0.0, posinf=0.0, neginf=0.0)
+    values = torch.from_numpy(clean).to(device)
     batch = len(values)
     masked = torch.zeros((batch, LEADS, LEADS, values.shape[-1]), device=device)
     lead_ids = torch.arange(LEADS, device=device)
@@ -130,6 +136,8 @@ def extract(root: Path, task: str, device: torch.device,
         for start in range(0, count, batch_size):
             stop = min(start + batch_size, count)
             features[start:stop] = encode_masked(model, dataset.ecg[indices[start:stop]], device)
+            if not np.isfinite(features[start:stop]).all():
+                raise RuntimeError(f"non-finite masked features for {task}/{split}/{start}:{stop}")
             features.flush()
             atomic_json(output / "status.json", {"state": "extracting", "task": task,
                 "split": split, "records_done": stop, "records_total": count})
