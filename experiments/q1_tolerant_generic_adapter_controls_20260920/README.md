@@ -47,3 +47,20 @@ downstream capacity explains part, but not all, of the HiLAR validation gain.
 The machine-readable summary is stored at
 `results/q1-tolerant-generic-adapter-controls-20260920/validation_summary.json`
 on the experiment server.
+
+## Frozen formal test
+
+After validation selection was locked, the 36 generic-control checkpoints were
+each evaluated on test exactly once. No architecture, parameter budget,
+optimizer, or checkpoint criterion was changed.
+
+| Method | Test AUROC | Test AUPRC | Macro-F1 | Exact ACC |
+|---|---:|---:|---:|---:|
+| TolerantECG + LP | 0.9206 | 0.5943 | 0.4881 | 0.5170 |
+| Parameter-matched MLP | 0.9390 | 0.6131 | 0.5423 | 0.6292 |
+| Generic adapter | 0.9378 | 0.6138 | 0.5429 | 0.6301 |
+| TolerantECG + HiLAR | **0.9392** | **0.6196** | **0.5489** | **0.6355** |
+
+The machine-readable formal-test summary is stored at
+`results/q1-tolerant-generic-adapter-controls-formal-test-20260920/metrics_summary.json`
+on the experiment server.
