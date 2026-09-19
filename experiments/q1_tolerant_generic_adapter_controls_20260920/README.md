@@ -28,3 +28,22 @@ After all 36 control runs complete:
 ```bash
 /root/107552503710-1/.venv/bin/python summarize.py --root /root/107552503710-1
 ```
+
+## Completed validation result
+
+All 36 control runs completed without loading or evaluating test data. Mean
+Macro AUROC over 6 tasks x 3 seeds was:
+
+| Method | Mean validation AUROC | Gain vs LP | Wins vs LP |
+|---|---:|---:|---:|
+| TolerantECG + LP | 0.929514 | - | - |
+| Parameter-matched MLP | 0.940271 | +1.076 pp | 14/18 |
+| Generic adapter | 0.940198 | +1.068 pp | 17/18 |
+| TolerantECG + HiLAR | **0.943950** | **+1.444 pp** | **18/18** |
+
+HiLAR exceeded the parameter-matched MLP by 0.368 pp on average (14/18
+pairs) and the generic adapter by 0.375 pp (15/18 pairs). Thus added global
+downstream capacity explains part, but not all, of the HiLAR validation gain.
+The machine-readable summary is stored at
+`results/q1-tolerant-generic-adapter-controls-20260920/validation_summary.json`
+on the experiment server.

@@ -18,7 +18,7 @@ def read(path: Path) -> dict:
 
 def hilar_result(root: Path, task: str, seed: int) -> dict:
     if seed == 42:
-        folder = (root / "results" / SEED42_LRA_CAMPAIGN / task / "hila-k-lra" / "complete.json")
+        folder = root / "results" / SEED42_LRA_CAMPAIGN / task / "complete.json"
     else:
         folder = (root / "results" / HILAR_CAMPAIGN / f"seed-{seed}" / task
                   / "hila-k-lra" / "complete.json")
@@ -60,4 +60,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
