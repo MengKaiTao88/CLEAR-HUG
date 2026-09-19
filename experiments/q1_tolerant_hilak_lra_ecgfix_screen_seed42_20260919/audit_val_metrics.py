@@ -23,7 +23,7 @@ def infer(model: nn.Module, dataset: FeatureDataset, device: torch.device,
           stage: str) -> tuple[np.ndarray, np.ndarray]:
     loader = DataLoader(dataset, batch_size=512, shuffle=False, num_workers=0,
                         pin_memory=True)
-    logits = []
+    logits, probabilities = [], []
     model.eval()
     for global_f, lead_f, local_f, local_mask, _ in loader:
         global_f = global_f.to(device, non_blocking=True)
@@ -41,9 +41,10 @@ def infer(model: nn.Module, dataset: FeatureDataset, device: torch.device,
         else:
             raise ValueError(stage)
         logits.append(output.cpu().numpy())
+        probabilities.append(torch.sigmoid(output).cpu().numpy())
     logits_array = np.concatenate(logits).astype(np.float64)
-    probabilities = 1.0 / (1.0 + np.exp(-logits_array))
-    return logits_array, probabilities
+    probability_array = np.concatenate(probabilities)
+    return logits_array, probability_array
 
 
 def class_diagnostics(labels: np.ndarray, predictions: np.ndarray) -> list[dict]:
