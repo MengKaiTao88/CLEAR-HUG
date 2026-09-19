@@ -1,0 +1,28 @@
+"""Frozen HILA-K plus heartbeat-local LRA validation screen."""
+
+CAMPAIGN = "q1-tolerant-hilak-lra-ecgfix-screen-seed42-20260919"
+HILAK_CAMPAIGN = "q1-tolerant-hilak-ecgfix-screen-seed42-20260918"
+BASELINE_CAMPAIGN = "q1-modern-mimic-baselines-six-task-three-fraction-seeds42-46-55-20260918"
+SEED = 42
+FRACTION = 1.0
+SPLITS = ("train", "val")
+TASKS = ("PTBXL_form", "CPSC", "PTBXL_rhythm")
+EMBED_DIM = 768
+LEADS = 12
+LEAD_EMBED_DIM = 32
+HILA_HIDDEN_DIM = 1408
+LRA_DIMS = (512, 256, 128)
+BATCH_SIZE = 256
+EXTRACTION_BATCH_SIZE = 64
+LEARNING_RATE = 1e-3
+WEIGHT_DECAY = 1e-4
+MAX_EPOCHS = 100
+MIN_EPOCHS = 10
+PATIENCE = 12
+GATE_INITIAL_VALUE = 0.1
+SAMPLING_RATE = 500
+MAX_BEATS = 24
+REFRACTORY_SECONDS = 0.25
+REFINE_SECONDS = 0.08
+INTEGRATION_SECONDS = 0.12
+FEATURE_WINDOW_RADIUS = 4
