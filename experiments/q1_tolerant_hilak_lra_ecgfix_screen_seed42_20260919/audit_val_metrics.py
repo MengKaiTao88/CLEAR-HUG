@@ -114,8 +114,15 @@ def manifest_audit(root: Path, task: str) -> dict:
         name: json.loads((folder / "complete.json").read_text(encoding="utf-8"))
         for name, folder in folders.items()
     }
-    keys = ("source_indices_sha256", "source_labels_sha256")
-    hashes = {key: {name: value[key] for name, value in manifests.items()} for key in keys}
+    hashes = {
+        "source_indices_sha256": {
+            name: value["source_indices_sha256"] for name, value in manifests.items()
+        },
+        "source_labels_sha256": {
+            name: value.get("source_labels_sha256", value.get("labels_sha256"))
+            for name, value in manifests.items()
+        },
+    }
     return {
         "records": {name: value["records"] for name, value in manifests.items()},
         "hashes": hashes,
