@@ -20,3 +20,8 @@ The HILA-K epoch-0 checkpoint is included as a selection candidate, so LRA can
 never silently replace it with a worse validation checkpoint. The screen asks
 whether this fixed local branch improves HILA-K consistently without any test
 access; it does not reopen HILA architecture search.
+
+After the architecture was locked on the original three tasks, it is extended
+without modification to `PTBXL_super`, `PTBXL_sub`, and `CSN` by
+`run_extension.sh`. The extension retains seed 42, 100% labels, all training
+hyperparameters, validation-only selection, and zero test access.
