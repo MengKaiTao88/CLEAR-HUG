@@ -64,3 +64,19 @@ optimizer, or checkpoint criterion was changed.
 The machine-readable formal-test summary is stored at
 `results/q1-tolerant-generic-adapter-controls-formal-test-20260920/metrics_summary.json`
 on the experiment server.
+
+## Low-label validation controls
+
+The locked global-only controls were also trained on the exact baseline subset
+indices for 1% and 10% labels (72/72 runs, no test evaluation):
+
+| Fraction | LP | Parameter-matched MLP | Generic adapter | HiLAR |
+|---|---:|---:|---:|---:|
+| 1% | 0.8089 | 0.8368 | 0.8392 | **0.8435** |
+| 10% | 0.8872 | **0.9005** | 0.8915 | 0.8986 |
+
+Values are mean validation Macro AUROC over 6 tasks x 3 seeds. HiLAR is best
+at 1%; the parameter-matched MLP is best at 10%, so the low-label control does
+not support an unconditional claim that HiLAR always beats generic capacity.
+The machine-readable summary is stored at
+`results/q1-tolerant-generic-adapter-controls-low-label-20260920/validation_summary.json`.
