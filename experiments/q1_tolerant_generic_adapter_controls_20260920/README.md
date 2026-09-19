@@ -80,3 +80,22 @@ at 1%; the parameter-matched MLP is best at 10%, so the low-label control does
 not support an unconditional claim that HiLAR always beats generic capacity.
 The machine-readable summary is stored at
 `results/q1-tolerant-generic-adapter-controls-low-label-20260920/validation_summary.json`.
+
+### Low-label frozen formal test
+
+All 72 frozen low-label control checkpoints were evaluated on test exactly
+once. The resulting overall metrics are:
+
+| Fraction | Method | AUROC | AUPRC | Macro-F1 | Exact ACC |
+|---|---|---:|---:|---:|---:|
+| 1% | LP | 0.7939 | **0.4301** | 0.2862 | 0.0629 |
+| 1% | Parameter-matched MLP | 0.8336 | 0.4072 | **0.3429** | **0.5130** |
+| 1% | Generic adapter | 0.8331 | 0.4108 | 0.3307 | 0.4456 |
+| 1% | HiLAR | **0.8381** | 0.4277 | 0.3158 | 0.3923 |
+| 10% | LP | 0.8758 | 0.5329 | 0.3525 | 0.1787 |
+| 10% | Parameter-matched MLP | **0.8995** | **0.5402** | **0.4788** | **0.6015** |
+| 10% | Generic adapter | 0.8891 | 0.5201 | 0.4372 | 0.5302 |
+| 10% | HiLAR | 0.8958 | 0.5254 | 0.4020 | 0.5054 |
+
+The machine-readable summary is stored at
+`results/q1-tolerant-generic-adapter-controls-low-label-formal-test-20260920/metrics_summary.json`.
